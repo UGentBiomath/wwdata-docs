@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>&lt;no title&gt; &#8212; wwdata 0.1.0 documentation</title>
+    <title>wwdata &#8212; wwdata 0.1.0 documentation</title>
     
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -54,7 +54,40 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>::include:: ../README.rst</p>
+  <div class="section" id="wwdata">
+<h1>wwdata<a class="headerlink" href="#wwdata" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/wwdata"><img alt="https://img.shields.io/pypi/v/wwdata.svg" src="https://img.shields.io/pypi/v/wwdata.svg" /></a>
+<a class="reference external image-reference" href="https://travis-ci.org/UGentBiomath/wwdata?branch=master"><img alt="https://img.shields.io/travis/cdemulde/wwdata.svg" src="https://img.shields.io/travis/cdemulde/wwdata.svg" /></a>
+<a class="reference external image-reference" href="https://wwdata.readthedocs.io/en/master/"><img alt="Documentation Status" src="https://readthedocs.org/projects/wwdata/badge/?version=master" /></a>
+<a class="reference external image-reference" href="https://pyup.io/repos/github/UGentBiomath/wwdata/"><img alt="Updates" src="https://pyup.io/repos/github/UGentBiomath/wwdata/shield.svg" /></a>
+<a class="reference external image-reference" href="https://doi.org/10.5281/zenodo.1035739"><img alt="https://zenodo.org/badge/DOI/10.5281/zenodo.1035739.svg" src="https://zenodo.org/badge/DOI/10.5281/zenodo.1035739.svg" /></a>
+<p>Data analysis package aimed at data obtained in the context of (waste)water</p>
+<ul class="simple">
+<li>Free software: GNU General Public License v3</li>
+<li>Documentation: <a class="reference external" href="https://wwdata.readthedocs.io">https://wwdata.readthedocs.io</a></li>
+<li>Funding: Waterboard De Dommel</li>
+<li>Context: PhD research at BIOMATH, Ghent University</li>
+</ul>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<p>The package contains one class and three subclasses, all in separate .py files. Division in subclasses is based on the type of data:</p>
+<ul class="simple">
+<li>online data from full scale installations (OnlineSensorBased)</li>
+<li>online data from lab experiments (LabSensorBased)</li>
+<li>offline data obtained from lab experiments (LabExperimentBased).</li>
+</ul>
+<p>Jupyter notbeook files (.ipynb) illustrate the use of the available functions. The most developed class is the OnlineSensorBased one. The workflow of this class is shown in below Figure, where OSB represents an OnlineSensorBased object. Main premises are to never delete data but to tag it and to be able to check the reliability when gaps in datasets are filled.</p>
+<img alt="_images/packagestructure_rel.png" class="align-center" src="_images/packagestructure_rel.png" />
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>For the workflow with code and more specific examples, check out the Showcase Jupyter Notebook(s) included as documentation of the package.</p>
+</div>
+<div class="section" id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<p>This package was created with <a class="reference external" href="https://github.com/audreyr/cookiecutter">Cookiecutter</a> and the <a class="reference external" href="https://github.com/audreyr/cookiecutter-pypackage">audreyr/cookiecutter-pypackage</a> project template.</p>
+</div>
+</div>
 
 
           </div>
@@ -62,6 +95,16 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">wwdata</a><ul>
+<li><a class="reference internal" href="#structure">Structure</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#credits">Credits</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
                         title="previous chapter">Welcome to wwdata&#8217;s documentation!</a></p>
