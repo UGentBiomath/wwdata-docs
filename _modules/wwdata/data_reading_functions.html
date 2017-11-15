@@ -1,0 +1,458 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>wwdata.data_reading_functions &#8212; wwdata 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">wwdata 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for wwdata.data_reading_functions</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    data_reading_functions provides functionalities for data reading in the context of the wwdata package.</span>
+<span class="sd">    Copyright (C) 2016 Chaim De Mulder</span>
+
+<span class="sd">    This program is free software: you can redistribute it and/or modify</span>
+<span class="sd">    it under the terms of the GNU Affero General Public License as published</span>
+<span class="sd">    by the Free Software Foundation, either version 3 of the License, or</span>
+<span class="sd">    (at your option) any later version.</span>
+
+<span class="sd">    This program is distributed in the hope that it will be useful,</span>
+<span class="sd">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="sd">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="sd">    GNU Affero General Public License for more details.</span>
+
+<span class="sd">    You should have received a copy of the GNU Affero General Public License</span>
+<span class="sd">    along with this program.  If not, see http://www.gnu.org/licenses/.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">listdir</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>   <span class="c1">#plotten in python</span>
+<span class="kn">import</span> <span class="nn">xlrd</span>
+
+<div class="viewcode-block" id="list_files"><a class="viewcode-back" href="../../wwdata.html#wwdata.data_reading_functions.list_files">[docs]</a><span class="k">def</span> <span class="nf">list_files</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">ext</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;excel&#39;</span><span class="p">:</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;.xls&#39;</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;text&#39;</span><span class="p">:</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.txt&#39;</span><span class="p">)]</span>
+    <span class="k">elif</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;csv&#39;</span><span class="p">:</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.csv&#39;</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No files with&#39;</span><span class="p">,</span><span class="n">ext</span><span class="p">,</span><span class="s1">&#39;extension found in directory&#39;</span><span class="p">,</span><span class="n">path</span><span class="p">,</span><span class="s1">&#39;Please </span><span class="se">\</span>
+<span class="s1">        choose one of the following: text, excel, csv&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="n">files</span></div>
+
+<div class="viewcode-block" id="remove_empty_lines"><a class="viewcode-back" href="../../wwdata.html#wwdata.data_reading_functions.remove_empty_lines">[docs]</a><span class="k">def</span> <span class="nf">remove_empty_lines</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">ext</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">list_files</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">ext</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">files</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Please provide a directory that contains &#39;</span><span class="o">+</span><span class="n">ext</span><span class="o">+</span><span class="s1">&#39; files.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1">#filepath_new = os.path.join(path,filename+&#39;_&#39;)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">index_label</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="find_and_replace"><a class="viewcode-back" href="../../wwdata.html#wwdata.data_reading_functions.find_and_replace">[docs]</a><span class="k">def</span> <span class="nf">find_and_replace</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">ext</span><span class="p">,</span><span class="n">replace</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Finds the files with a certain extension in a directory and applies a find-</span>
+<span class="sd">    replace action to those files. Removes the old files and produces files with</span>
+<span class="sd">    a prefix stating the replacing value.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        the path name of the directory to apply the function to</span>
+<span class="sd">    ext : str</span>
+<span class="sd">        the extension of the files to be searched (excel, text or csv)</span>
+<span class="sd">    replace : array of str</span>
+<span class="sd">        the first value of replace is the string to be replaced by the second</span>
+<span class="sd">        value of replace.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">list_files</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">ext</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">files</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Please provide a directory that contains &#39;</span><span class="o">+</span><span class="n">ext</span><span class="o">+</span><span class="s1">&#39; files.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
+        <span class="n">filedata</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span> <span class="p">:</span>
+            <span class="n">filedata</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+        <span class="c1"># Replace the target string</span>
+        <span class="n">filedata</span> <span class="o">=</span> <span class="n">filedata</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">replace</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">replace</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="c1"># Write the file out again</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">filedata</span><span class="p">)</span>
+
+        <span class="c1">#data = pd.read_csv(filepath,sep=&#39;\t&#39;)</span>
+        <span class="c1">#data.replace(to_replace=replace[0],value=replace[1],inplace=True)</span>
+        <span class="c1">#data.to_csv(filepath,sep=&#39;\t&#39;,index=False,index_label=False)</span>
+
+    <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="sort_data"><a class="viewcode-back" href="../../wwdata.html#wwdata.data_reading_functions.sort_data">[docs]</a><span class="k">def</span> <span class="nf">sort_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">based_on</span><span class="p">,</span><span class="n">reset_index</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span><span class="s1">&#39;new_index_name&#39;</span><span class="p">],</span>
+              <span class="n">convert_to_timestamp</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span><span class="s1">&#39;time_name&#39;</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">.%m.%Y %H:%M:%S&#39;</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sorts a dataset based on values in one of the columns and splits them in</span>
+<span class="sd">    different dataframes, returned in the form of one dictionary</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : pd.dataframe</span>
+<span class="sd">        the dataframe containing the data that needs to be sorted</span>
+<span class="sd">    based_on : str</span>
+<span class="sd">        the name of the column that contains the names or values the sorting</span>
+<span class="sd">        should be based on</span>
+<span class="sd">    reset_index : [bool,str]</span>
+<span class="sd">        array indicating if the index of the sorted datasets should be reset to</span>
+<span class="sd">        a new one; if first element is true, the second element is the title of</span>
+<span class="sd">        the column to use as new index; default: False</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict :</span>
+<span class="sd">        A dictionary of pandas dataframes with as labels those acquired from the</span>
+<span class="sd">        based_on column</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dictionary</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">measurement_codes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">based_on</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">measurement_codes</span><span class="p">:</span>
+        <span class="n">dictionary</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">based_on</span><span class="p">]</span><span class="o">==</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">based_on</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">convert_to_timestamp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span> <span class="o">&amp;</span> <span class="n">reset_index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">convert_to_timestamp</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> \
+            <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">convert_to_timestamp</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+                        <span class="nb">format</span><span class="o">=</span><span class="n">convert_to_timestamp</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">reset_index</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">convert_to_timestamp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span> <span class="o">&amp;</span> <span class="n">reset_index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">convert_to_timestamp</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> \
+            <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">dictionary</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">convert_to_timestamp</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+                        <span class="nb">format</span><span class="o">=</span><span class="n">convert_to_timestamp</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">reset_index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span> <span class="o">&amp;</span> <span class="n">convert_to_timestamp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">reset_index</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sorting&#39;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dictionary</span></div>
+
+<span class="k">def</span> <span class="nf">_get_header_length</span><span class="p">(</span><span class="n">read_file</span><span class="p">,</span><span class="n">ext</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span><span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determines the amount of rows that are part of the header in a file that is</span>
+<span class="sd">    already opened and readable</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    read_file : opened file</span>
+<span class="sd">        an opened file object that is readable</span>
+<span class="sd">    ext : str</span>
+<span class="sd">        the extension (in words) of the file the headerlength needs to be found</span>
+<span class="sd">        for</span>
+<span class="sd">    comment : str</span>
+<span class="sd">        comment symbol used in the files</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    headerlength : int</span>
+<span class="sd">        the amount of rows that are part of the header in the read file</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">headerlength</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">header_test</span> <span class="o">=</span> <span class="n">comment</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;excel&#39;</span> <span class="ow">or</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;zrx&#39;</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">header_test</span> <span class="o">==</span> <span class="n">comment</span><span class="p">:</span>
+            <span class="n">header_test</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">read_file</span><span class="o">.</span><span class="n">sheet_by_index</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cell_value</span><span class="p">(</span><span class="n">counter</span><span class="p">,</span><span class="mi">0</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">headerlength</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">counter</span> <span class="o">+=</span><span class="mi">1</span>
+
+    <span class="k">elif</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;text&#39;</span> <span class="ow">or</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;csv&#39;</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">header_test</span> <span class="o">==</span> <span class="n">comment</span><span class="p">:</span>
+            <span class="n">header_test</span> <span class="o">=</span> <span class="n">read_file</span><span class="o">.</span><span class="n">readline</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">headerlength</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">headerlength</span><span class="o">-</span><span class="mi">1</span>
+
+
+<div class="viewcode-block" id="read_mat"><a class="viewcode-back" href="../../wwdata.html#wwdata.data_reading_functions.read_mat">[docs]</a><span class="k">def</span> <span class="nf">read_mat</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reads in .mat datafiles and returns them as pd.DataFrame</span>
+<span class="sd">    http://stackoverflow.com/questions/24762122/read-matlab-data-file-into-python-need-to-export-to-csv</span>
+
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+    <span class="c1">#Also write separate script for converting all .mat files in one dir to .csv files</span>
+
+<span class="k">def</span> <span class="nf">_get_header_length</span><span class="p">(</span><span class="n">read_file</span><span class="p">,</span><span class="n">ext</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span><span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determines the amount of rows that are part of the header in a file that is</span>
+<span class="sd">    already opened and readable</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    read_file : opened file</span>
+<span class="sd">        an opened file object that is readable</span>
+<span class="sd">    ext : str</span>
+<span class="sd">        the extension (in words) of the file the headerlength needs to be found</span>
+<span class="sd">        for</span>
+<span class="sd">    comment : str</span>
+<span class="sd">        comment symbol used in the files</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    headerlength : int</span>
+<span class="sd">        the amount of rows that are part of the header in the read file</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">headerlength</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">header_test</span> <span class="o">=</span> <span class="n">comment</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;excel&#39;</span> <span class="ow">or</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;zrx&#39;</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">header_test</span> <span class="o">==</span> <span class="n">comment</span><span class="p">:</span>
+            <span class="n">header_test</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">read_file</span><span class="o">.</span><span class="n">sheet_by_index</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cell_value</span><span class="p">(</span><span class="n">counter</span><span class="p">,</span><span class="mi">0</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">headerlength</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">counter</span> <span class="o">+=</span><span class="mi">1</span>
+
+    <span class="k">elif</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;text&#39;</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">header_test</span> <span class="o">==</span> <span class="n">comment</span><span class="p">:</span>
+            <span class="n">header_test</span> <span class="o">=</span> <span class="n">read_file</span><span class="o">.</span><span class="n">readline</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">headerlength</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">headerlength</span><span class="o">-</span><span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">_open_file</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span><span class="n">ext</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Opens file of a given extension in readable mode</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filepath : str</span>
+<span class="sd">        the complete path to the file to be opened in read mode</span>
+<span class="sd">    ext : str</span>
+<span class="sd">        the extension (in words) of the file that needs to be opened in read</span>
+<span class="sd">        mode</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    The opened file in read mode</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;text&#39;</span> <span class="ow">or</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;zrx&#39;</span> <span class="ow">or</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;csv&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;excel&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">xlrd</span><span class="o">.</span><span class="n">open_workbook</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_read_file</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span><span class="n">ext</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">,</span><span class="n">decimal</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read a file of given extension and save it as a pandas dataframe</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filepath : str</span>
+<span class="sd">        the complete path to the file to be read and saved as dataframe</span>
+<span class="sd">    ext : str</span>
+<span class="sd">        the extension (in words) of the file that needs to be read and saved</span>
+<span class="sd">    skiprows : int</span>
+<span class="sd">        number of rows to skip when reading a file</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    A pandas dataframe containing the data from the given file</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;text&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="n">skiprows</span><span class="p">,</span><span class="n">decimal</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;excel&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="n">skiprows</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;csv&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span><span class="n">skiprows</span><span class="o">=</span><span class="n">skiprows</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+                           <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<div class="viewcode-block" id="join_files"><a class="viewcode-back" href="../../wwdata.html#wwdata.data_reading_functions.join_files">[docs]</a><span class="k">def</span> <span class="nf">join_files</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">files</span><span class="p">,</span><span class="n">ext</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">,</span><span class="n">decimal</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reads all files in a given directory, joins them and returns one pd.dataframe</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path : str</span>
+<span class="sd">	path to the folder that contains the files to be joined</span>
+<span class="sd">    files : list</span>
+<span class="sd">        list of files to be joined, must be the same extension</span>
+<span class="sd">    ext : str</span>
+<span class="sd">        extention of the files to read; possible: excel, text, csv</span>
+<span class="sd">    sep : str</span>
+<span class="sd">        the separating element (e.g. , or \t) necessary when reading csv-files</span>
+<span class="sd">    comment : str</span>
+<span class="sd">        comment symbol used in the files</span>
+<span class="sd">    sort : array of bool and str</span>
+<span class="sd">        if first element is true, apply the sort function to sort the data</span>
+<span class="sd">        based on the tags in the column mentioned in the second element of the</span>
+<span class="sd">        sort array</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.dataframe:</span>
+<span class="sd">        pandas dataframe containin concatenated files in the given directory</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#Initialisations</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+    <span class="c1">#Select files based on extension and sort files alphabetically to make sure</span>
+    <span class="c1">#they are added to each other in the correct order</span>
+    <span class="c1">#files = list_files(path,ext)</span>
+    <span class="n">files</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;joining&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">),</span><span class="s1">&#39;files...&#39;</span><span class="p">)</span>
+    <span class="c1">#Read files</span>
+    <span class="k">for</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">dir_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">file_name</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">_open_file</span><span class="p">(</span><span class="n">dir_file_path</span><span class="p">,</span><span class="n">ext</span><span class="p">)</span> <span class="k">as</span> <span class="n">read_file</span><span class="p">:</span>
+            <span class="n">headerlength</span> <span class="o">=</span> <span class="n">_get_header_length</span><span class="p">(</span><span class="n">read_file</span><span class="p">,</span><span class="n">ext</span><span class="p">,</span><span class="n">comment</span><span class="p">)</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_read_file</span><span class="p">(</span><span class="n">dir_file_path</span><span class="p">,</span><span class="n">ext</span><span class="o">=</span><span class="n">ext</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span>
+                                          <span class="n">skiprows</span><span class="o">=</span><span class="n">headerlength</span><span class="p">,</span>
+                                          <span class="n">decimal</span><span class="o">=</span><span class="n">decimal</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">),</span>
+                                <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Adding file&#39;</span><span class="p">,</span><span class="n">file_name</span><span class="p">,</span><span class="s1">&#39;to dataframe&#39;</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;joined_files&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data</span></div>
+
+<div class="viewcode-block" id="write_to_WEST"><a class="viewcode-back" href="../../wwdata.html#wwdata.data_reading_functions.write_to_WEST">[docs]</a><span class="k">def</span> <span class="nf">write_to_WEST</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="n">file_normal</span><span class="p">,</span><span class="n">file_west</span><span class="p">,</span><span class="n">units</span><span class="p">,</span><span class="n">filepath</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span><span class="n">fillna</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        writes a text-file that is compatible with WEST. Adds the units as</span>
+<span class="sd">        they are given in the &#39;units&#39; argument.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        df : pd.DataFrame</span>
+<span class="sd">            the dataframe to write to WEST</span>
+<span class="sd">        file_normal : str</span>
+<span class="sd">            name of the original file to write, not yet compatible with WEST</span>
+<span class="sd">        file_west : str</span>
+<span class="sd">            name of the file that needs to be WEST compatible</span>
+<span class="sd">        units : array of strings</span>
+<span class="sd">            array containing the units for the respective columns in df</span>
+<span class="sd">        filepath : str</span>
+<span class="sd">            directory to save the files in; defaults to the current one</span>
+<span class="sd">        fillna : bool</span>
+<span class="sd">            when True, replaces nan values with 0 values (this might avoid</span>
+<span class="sd">            WEST problems later one).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None; writes files</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">fillna</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span><span class="n">file_normal</span><span class="p">),</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span><span class="n">file_normal</span><span class="p">),</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">columns</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span><span class="n">file_west</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;#.t&#39;</span> <span class="o">+</span> <span class="n">columns</span><span class="p">)</span>
+        <span class="n">unit_line</span> <span class="o">=</span> <span class="s1">&#39;#d</span><span class="se">\t</span><span class="s1">&#39;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">units</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">unit_line</span> <span class="o">=</span> <span class="n">unit_line</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="se">\t</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">unit_line</span> <span class="o">=</span> <span class="n">unit_line</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">units</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">unit_line</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">wwdata 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Chaim De Mulder.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

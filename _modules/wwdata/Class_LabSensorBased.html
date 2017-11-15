@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>wwdata.Class_LabSensorBased &#8212; wwdata 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">wwdata 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for wwdata.Class_LabSensorBased</h1><div class="highlight"><pre>
+<span></span><span class="c1">#book# -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class_LabSensorBased provides functionalities for data handling of data obtained in lab experiments with online sensors in the field of (waste)water treatment.</span>
+<span class="sd">    Copyright (C) 2016 Chaim De Mulder</span>
+
+<span class="sd">    This program is free software: you can redistribute it and/or modify</span>
+<span class="sd">    it under the terms of the GNU Affero General Public License as published</span>
+<span class="sd">    by the Free Software Foundation, either version 3 of the License, or</span>
+<span class="sd">    (at your option) any later version.</span>
+
+<span class="sd">    This program is distributed in the hope that it will be useful,</span>
+<span class="sd">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="sd">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="sd">    GNU Affero General Public License for more details.</span>
+
+<span class="sd">    You should have received a copy of the GNU Affero General Public License</span>
+<span class="sd">    along with this program.  If not, see http://www.gnu.org/licenses/.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">listdir</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>   <span class="c1">#plotten in python</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+
+<span class="kn">from</span> <span class="nn">wwdata.Class_HydroData</span> <span class="k">import</span> <span class="n">HydroData</span>
+<span class="kn">from</span> <span class="nn">wwdata.data_reading_functions</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">wwdata.time_conversion_functions</span> <span class="k">import</span> <span class="o">*</span>
+
+<div class="viewcode-block" id="LabSensorBased"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_LabSensorBased.LabSensorBased">[docs]</a><span class="k">class</span> <span class="nc">LabSensorBased</span><span class="p">(</span><span class="n">HydroData</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Superclass for a HydroData object, expanding the functionalities with</span>
+<span class="sd">    specific functions for data gathered is lab experiments</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    (see HydroData docstring)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">experiment_tag</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        initialisation of a LabSensorBased object, based on a previously defined</span>
+<span class="sd">        HydroData object.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        (currently no additional data needed to the HydroData object creation)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">HydroData</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">timedata_column</span><span class="p">,</span><span class="n">experiment_tag</span><span class="o">=</span><span class="s1">&#39;No tag given&#39;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="LabSensorBased.drop_peaks"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_LabSensorBased.LabSensorBased.drop_peaks">[docs]</a>    <span class="k">def</span> <span class="nf">drop_peaks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data_name</span><span class="p">,</span><span class="n">cutoff</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">log_file</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Filters out the peaks larger than a cut-off value in a dataseries</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data_name : str</span>
+<span class="sd">            the name of the column to use for the removal of peak values</span>
+<span class="sd">        cutoff : int</span>
+<span class="sd">            cut off value to use for the removing of peaks; values with an</span>
+<span class="sd">            absolute value larger than this cut off will be removed from the data</span>
+<span class="sd">        inplace : bool</span>
+<span class="sd">            indicates whether a new dataframe is created and returned or whether</span>
+<span class="sd">            the operations are executed on the existing dataframe (nothing is</span>
+<span class="sd">            returned)</span>
+<span class="sd">        log_file : str</span>
+<span class="sd">            string containing the directory to a log file to be written out</span>
+<span class="sd">            when using this function</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        LabSensorBased object (if inplace=False)</span>
+<span class="sd">            the dataframe from which the double values of &#39;data&#39; are removed</span>
+<span class="sd">        None (if inplace=True)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">original</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">inplace</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data_name</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">cutoff</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">new</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">log_file</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">_print_removed_output</span><span class="p">(</span><span class="n">original</span><span class="p">,</span><span class="n">new</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">log_file</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+                <span class="n">_log_removed_output</span><span class="p">(</span><span class="n">log_file</span><span class="p">,</span><span class="n">original</span><span class="p">,</span><span class="n">new</span><span class="p">)</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Please provide the location of the log file as </span><span class="se">\</span>
+<span class="s1">                                a string type, or leave the argument if no log </span><span class="se">\</span>
+<span class="s1">                                file is needed.&#39;</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">inplace</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">data_name</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">cutoff</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+                                <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">new</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">log_file</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">_print_removed_ouiput</span><span class="p">(</span><span class="n">original</span><span class="p">,</span><span class="n">new</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">log_file</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
+                <span class="n">_log_removed_output</span><span class="p">(</span><span class="n">log_file</span><span class="p">,</span><span class="n">original</span><span class="p">,</span><span class="n">new</span><span class="p">)</span>
+            <span class="k">else</span> <span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Please provide the location of the log file as </span><span class="se">\</span>
+<span class="s1">                                a string type, or leave the argument if no log </span><span class="se">\</span>
+<span class="s1">                                file is needed.&#39;</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_select_slope</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ydata</span><span class="p">,</span><span class="n">down</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">limit</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span><span class="c1">#,based_on_max=True):#,bounds=[1,1]):</span>
+
+        <span class="c1">#TO BE ADJUSTED BASED ON ALL FUNCTIONS FILE!</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Selects down- or upward sloping data from a given dataseries, based on</span>
+<span class="sd">        the maximum in the dataseries. This requires only one maximum to be</span>
+<span class="sd">        present in the dataset.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ydata : str</span>
+<span class="sd">            name of the column containing the data for which slopes, either up</span>
+<span class="sd">            or down, need to be selected</span>
+<span class="sd">        down : bool</span>
+<span class="sd">            if True, the downwards slopes are selected, if False, the upward</span>
+<span class="sd">            slopes</span>
+<span class="sd">        based_on_max : bool</span>
+<span class="sd">            if True, the data is selected based on the maximum of the data, if</span>
+<span class="sd">            false it is based on the minimum</span>
+<span class="sd">        bounds : array</span>
+<span class="sd">            array containing two integer values, indicating the extra margin of</span>
+<span class="sd">            values that needs to be dropped from the dataset to avoid selecting</span>
+<span class="sd">            irregular data (e.g. not straightened out after reaching of maximum)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        LabSensorBased object:</span>
+<span class="sd">            a dataframe from which the non-down or -upward sloping data are dropped</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#if based_on_max == True:</span>
+        <span class="n">drop_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">ydata</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">down</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selecting downward slope:&#39;</span><span class="p">,</span><span class="n">drop_index</span><span class="p">,</span>\
+                <span class="s1">&#39;datapoints dropped,&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">-</span><span class="n">drop_index</span><span class="p">,</span>\
+                <span class="s1">&#39;datapoints left.&#39;</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">drop_index</span><span class="p">:]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span><span class="c1">#IndexError:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not enough datapoints left for selection&#39;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">down</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selecting upward slope:&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">-</span><span class="n">drop_index</span><span class="p">,</span>\
+                <span class="s1">&#39;datapoints dropped,&#39;</span><span class="p">,</span><span class="n">drop_index</span><span class="p">,</span><span class="s1">&#39;datapoints left.&#39;</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="n">drop_index</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span><span class="c1">#IndexError:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not enough datapoints left for selection&#39;</span><span class="p">)</span></div>
+
+    <span class="c1">#    elif based_on_max == False:</span>
+    <span class="c1">#        drop_index = dataframe[ydata].idxmin()</span>
+    <span class="c1">#        if down == True:</span>
+    <span class="c1">#            try:</span>
+    <span class="c1">#                print &#39;Selecting downward slope:&#39;,drop_index+sum(bounds),\</span>
+    <span class="c1">#                &#39;datapoints dropped,&#39;,len(dataframe)-drop_index-sum(bounds),\</span>
+    <span class="c1">#                &#39;datapoints left.&#39;</span>
+    <span class="c1">#</span>
+    <span class="c1">#                dataframe = dataframe[bounds[0]:drop_index-bounds[1]]</span>
+    <span class="c1">#                dataframe.reset_index(drop=True,inplace=True)</span>
+    <span class="c1">#                return dataframe</span>
+    <span class="c1">#            except IndexError:</span>
+    <span class="c1">#                print &#39;Not enough datapoints left for selection&#39;</span>
+    <span class="c1">#</span>
+    <span class="c1">#        elif down == False:</span>
+    <span class="c1">#            try:</span>
+    <span class="c1">#                print &#39;Selecting upward slope:&#39;,len(dataframe)-drop_index+sum(bounds),\</span>
+    <span class="c1">#                &#39;datapoints dropped,&#39;,drop_index-sum(bounds),&#39;datapoints left.&#39;</span>
+    <span class="c1">#</span>
+    <span class="c1">#                dataframe = dataframe[drop_index+bounds[0]:-bounds[1]]</span>
+    <span class="c1">#                dataframe.reset_index(drop=True,inplace=True)</span>
+    <span class="c1">#                return dataframe</span>
+    <span class="c1">#            except IndexError:</span>
+    <span class="c1">#                print &#39;Not enough datapoints left for selection&#39;</span>
+    <span class="c1">#</span>
+
+
+
+
+<span class="c1">##############################</span>
+<span class="c1">###   NON-CLASS FUNCTIONS  ###</span>
+<span class="c1">##############################</span>
+
+<span class="k">def</span> <span class="nf">_print_removed_output</span><span class="p">(</span><span class="n">original</span><span class="p">,</span><span class="n">new</span><span class="p">,</span><span class="n">type_</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    function printing the output of functions that remove datapoints.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    original : int</span>
+<span class="sd">        original length of the dataset</span>
+<span class="sd">    new : int</span>
+<span class="sd">        length of the new dataset</span>
+<span class="sd">    type_ : str</span>
+<span class="sd">        &#39;removed&#39; or &#39;dropped&#39;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Original dataset:&#39;</span><span class="p">,</span><span class="n">original</span><span class="p">,</span><span class="s1">&#39;datapoints&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;New dataset:&#39;</span><span class="p">,</span><span class="n">new</span><span class="p">,</span><span class="s1">&#39;datapoints&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">original</span><span class="o">-</span><span class="n">new</span><span class="p">,</span><span class="s1">&#39;datapoints &#39;</span><span class="p">,</span><span class="n">type_</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_log_removed_output</span><span class="p">(</span><span class="n">log_file</span><span class="p">,</span><span class="n">original</span><span class="p">,</span><span class="n">new</span><span class="p">,</span><span class="n">type_</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    function writing the output of functions that remove datapoints to a log file.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    log_file : str</span>
+<span class="sd">        string containing the directory to the log file to be written out</span>
+<span class="sd">    original : int</span>
+<span class="sd">        original length of the dataset</span>
+<span class="sd">    new : int</span>
+<span class="sd">        length of the new dataset</span>
+<span class="sd">    type_ : str</span>
+<span class="sd">        &#39;removed&#39; or &#39;dropped&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">log_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">log_file</span><span class="p">,</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+    <span class="n">log_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Original dataset: &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">original</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; datapoints; new dataset: &#39;</span><span class="o">+</span>
+                    <span class="nb">str</span><span class="p">(</span><span class="n">new</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; datapoints&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">original</span><span class="o">-</span><span class="n">new</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39; datapoints &#39;</span><span class="p">,</span><span class="n">type_</span><span class="p">))</span>
+    <span class="n">log_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">wwdata 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Chaim De Mulder.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

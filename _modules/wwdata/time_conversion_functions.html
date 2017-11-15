@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>wwdata.time_conversion_functions &#8212; wwdata 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">wwdata 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for wwdata.time_conversion_functions</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    time_conversion_functions provides functionalities for converting certain types of time data to other types, in the context of the wwdata package.</span>
+<span class="sd">    Copyright (C) 2016 Chaim De Mulder</span>
+
+<span class="sd">    This program is free software: you can redistribute it and/or modify</span>
+<span class="sd">    it under the terms of the GNU Affero General Public License as published</span>
+<span class="sd">    by the Free Software Foundation, either version 3 of the License, or</span>
+<span class="sd">    (at your option) any later version.</span>
+
+<span class="sd">    This program is distributed in the hope that it will be useful,</span>
+<span class="sd">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="sd">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="sd">    GNU Affero General Public License for more details.</span>
+
+<span class="sd">    You should have received a copy of the GNU Affero General Public License</span>
+<span class="sd">    along with this program.  If not, see http://www.gnu.org/licenses/.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
+
+
+<div class="viewcode-block" id="make_month_day_array"><a class="viewcode-back" href="../../wwdata.html#wwdata.time_conversion_functions.make_month_day_array">[docs]</a><span class="k">def</span> <span class="nf">make_month_day_array</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    makes a dataframe containing two columns, one with the number of the month,</span>
+<span class="sd">    one with the day of the month. Useful in creating datetime objects based on</span>
+<span class="sd">    e.g. date serial numbers from the Window Date System</span>
+<span class="sd">    (http://excelsemipro.com/2010/08/date-and-time-calculation-in-excel/)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame :</span>
+<span class="sd">        dataframe with number of the month and number of the day of the month</span>
+<span class="sd">        for a whole year</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">days_in_months</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">31</span><span class="p">]</span>
+    <span class="n">days</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">months</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">month</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">days_in_months</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">days</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+            <span class="n">months</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">month</span><span class="p">)</span>
+        <span class="n">month</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">month_day_array</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="n">month_day_array</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">months</span>
+    <span class="n">month_day_array</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">days</span>
+
+    <span class="k">return</span> <span class="n">month_day_array</span></div>
+
+<div class="viewcode-block" id="get_absolute_time"><a class="viewcode-back" href="../../wwdata.html#wwdata.time_conversion_functions.get_absolute_time">[docs]</a><span class="k">def</span> <span class="nf">get_absolute_time</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="n">date_type</span><span class="o">=</span><span class="s1">&#39;WindowsDateSystem&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a coded time to the absolute date at which the experiment was</span>
+<span class="sd">    conducted.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    value : int or float</span>
+<span class="sd">        a code for a certain point in time</span>
+<span class="sd">    date_type : str</span>
+<span class="sd">        type of coding used for the time point, probably depending on the</span>
+<span class="sd">        software which was used to acquire the data, e.g. the Windows Date</span>
+<span class="sd">        System (here as default, see also:</span>
+<span class="sd">        http://excelsemipro.com/2010/08/date-and-time-calculation-in-excel/)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    datetime.datetime</span>
+<span class="sd">        python datetime object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">date_type</span> <span class="o">==</span> <span class="s1">&#39;WindowsDateSystem&#39;</span><span class="p">:</span>
+        <span class="n">year_from_1900</span> <span class="o">=</span> <span class="n">value</span> <span class="o">/</span> <span class="mf">365.25</span>
+        <span class="n">year_current</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">1900</span> <span class="o">+</span> <span class="n">year_from_1900</span><span class="p">)</span>
+        <span class="n">decimals</span> <span class="o">=</span> <span class="n">year_from_1900</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">year_from_1900</span><span class="p">)</span>
+        <span class="n">day_in_year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">365.25</span><span class="o">*</span><span class="n">decimals</span><span class="p">)</span>
+        <span class="n">months_days</span> <span class="o">=</span> <span class="n">make_month_day_array</span><span class="p">()</span>
+        <span class="n">month</span> <span class="o">=</span> <span class="n">months_days</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">][</span><span class="n">day_in_year</span><span class="p">]</span>
+        <span class="n">day_in_month</span> <span class="o">=</span> <span class="n">months_days</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">][</span><span class="n">day_in_year</span><span class="p">]</span>
+        <span class="n">decimals</span> <span class="o">=</span> <span class="mf">365.25</span><span class="o">*</span><span class="n">decimals</span> <span class="o">-</span> <span class="n">day_in_year</span>
+        <span class="n">hour</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="n">decimals</span><span class="p">)</span>
+        <span class="n">decimals</span> <span class="o">=</span> <span class="mi">24</span><span class="o">*</span><span class="n">decimals</span> <span class="o">-</span> <span class="n">hour</span>
+        <span class="n">minutes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="n">decimals</span><span class="p">)</span>
+        <span class="n">decimals</span> <span class="o">=</span> <span class="mi">60</span><span class="o">*</span><span class="n">decimals</span> <span class="o">-</span> <span class="n">minutes</span>
+        <span class="n">seconds</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="n">decimals</span><span class="p">)</span>
+
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">year_current</span><span class="p">,</span><span class="n">month</span><span class="p">,</span><span class="n">day_in_month</span><span class="p">,</span><span class="n">hour</span><span class="p">,</span><span class="n">minutes</span><span class="p">,</span>
+                                <span class="n">seconds</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">timestamp</span></div>
+
+<div class="viewcode-block" id="to_days"><a class="viewcode-back" href="../../wwdata.html#wwdata.time_conversion_functions.to_days">[docs]</a><span class="k">def</span> <span class="nf">to_days</span><span class="p">(</span><span class="n">timedelta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    timedelta : timedelta value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">timedelta</span><span class="o">.</span><span class="n">days</span><span class="p">)</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">timedelta</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="to_hours"><a class="viewcode-back" href="../../wwdata.html#wwdata.time_conversion_functions.to_hours">[docs]</a><span class="k">def</span> <span class="nf">to_hours</span><span class="p">(</span><span class="n">timedelta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    timedelta : timedelta value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">timedelta</span><span class="o">.</span><span class="n">days</span><span class="p">)</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">timedelta</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="to_minutes"><a class="viewcode-back" href="../../wwdata.html#wwdata.time_conversion_functions.to_minutes">[docs]</a><span class="k">def</span> <span class="nf">to_minutes</span><span class="p">(</span><span class="n">timedelta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    timedelta : timedelta value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">timedelta</span><span class="o">.</span><span class="n">days</span><span class="p">)</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">timedelta</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span></div>
+
+<div class="viewcode-block" id="to_seconds"><a class="viewcode-back" href="../../wwdata.html#wwdata.time_conversion_functions.to_seconds">[docs]</a><span class="k">def</span> <span class="nf">to_seconds</span><span class="p">(</span><span class="n">timedelta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    timedelta : timedelta value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">timedelta</span><span class="o">.</span><span class="n">days</span><span class="p">)</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">timedelta</span><span class="o">.</span><span class="n">seconds</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="timedelta_to_abs"><a class="viewcode-back" href="../../wwdata.html#wwdata.time_conversion_functions.timedelta_to_abs">[docs]</a><span class="k">def</span> <span class="nf">timedelta_to_abs</span><span class="p">(</span><span class="n">timedelta</span><span class="p">,</span><span class="n">unit</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    timedelta : array of timedelta values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">unit</span> <span class="o">==</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">map</span><span class="p">(</span><span class="n">to_days</span><span class="p">,</span><span class="n">timedelta</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">unit</span> <span class="o">==</span> <span class="s1">&#39;hr&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">map</span><span class="p">(</span><span class="n">to_hours</span><span class="p">,</span><span class="n">timedelta</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">unit</span> <span class="o">==</span> <span class="s1">&#39;min&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">map</span><span class="p">(</span><span class="n">to_minutes</span><span class="p">,</span><span class="n">timedelta</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">unit</span> <span class="o">==</span> <span class="s1">&#39;sec&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">map</span><span class="p">(</span><span class="n">to_seconds</span><span class="p">,</span><span class="n">timedelta</span><span class="p">)</span></div>
+
+<span class="k">def</span> <span class="nf">_get_datetime_info</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    parameter</span>
+<span class="sd">    --------</span>
+<span class="sd">    string containing date and time info (format as received from EHV)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">array</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">date</span> <span class="o">+</span> <span class="n">time</span>
+
+<div class="viewcode-block" id="make_datetime"><a class="viewcode-back" href="../../wwdata.html#wwdata.time_conversion_functions.make_datetime">[docs]</a><span class="k">def</span> <span class="nf">make_datetime</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    parameter</span>
+<span class="sd">    --------</span>
+<span class="sd">    array with elements</span>
+<span class="sd">        0: year (yy)</span>
+<span class="sd">        1: month (mm)</span>
+<span class="sd">        2: day in month (dd)</span>
+<span class="sd">        3: hour (h or hh)</span>
+<span class="sd">        4: minutes (minmin)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;20&#39;</span> <span class="o">+</span> <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span><span class="nb">int</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="nb">int</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                       <span class="nb">int</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span><span class="nb">int</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">4</span><span class="p">]))</span></div>
+
+<div class="viewcode-block" id="to_datetime_singlevalue"><a class="viewcode-back" href="../../wwdata.html#wwdata.time_conversion_functions.to_datetime_singlevalue">[docs]</a><span class="k">def</span> <span class="nf">to_datetime_singlevalue</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    In case timedata is in a string format, to convert it to a datetime object,</span>
+<span class="sd">    it needs to be in the right format, e.g. dd-mm-yyyy hh:mm:ss (so two of each)</span>
+<span class="sd">    This function takes care of that, to a certain extent.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">time_info</span> <span class="o">=</span> <span class="n">_get_datetime_info</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">make_datetime</span><span class="p">(</span><span class="n">time_info</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">wwdata 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Chaim De Mulder.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

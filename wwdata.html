@@ -1,0 +1,2171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>wwdata package &#8212; wwdata 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="wwdata" href="modules.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="contributing.html" title="Contributing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="wwdata"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">wwdata 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U">wwdata</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="wwdata-package">
+<h1>wwdata package<a class="headerlink" href="#wwdata-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-wwdata.Class_HydroData">
+<span id="wwdata-class-hydrodata-module"></span><h2>wwdata.Class_HydroData module<a class="headerlink" href="#module-wwdata.Class_HydroData" title="Permalink to this headline">¶</a></h2>
+<p>Class_HydroData provides functionalities for handling data obtained in the context of (waste)water treatment.</p>
+<p>Copyright (C) 2016 Chaim De Mulder</p>
+<p>This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License
+along with this program.  If not, see <a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+<dl class="class">
+<dt id="wwdata.Class_HydroData.HydroData">
+<em class="property">class </em><code class="descclassname">wwdata.Class_HydroData.</code><code class="descname">HydroData</code><span class="sig-paren">(</span><em>data</em>, <em>timedata_column='index'</em>, <em>data_type='WWTP'</em>, <em>experiment_tag='No tag given'</em>, <em>time_unit=None</em>, <em>units=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.absolute_to_relative">
+<code class="descname">absolute_to_relative</code><span class="sig-paren">(</span><em>time_data='index'</em>, <em>unit='d'</em>, <em>inplace=True</em>, <em>save_abs=True</em>, <em>decimals=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.absolute_to_relative"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.absolute_to_relative" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts a pandas series with datetime timevalues to relative timevalues
+in the given unit, starting from 0</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>time_data</strong> : str</p>
+<blockquote>
+<div><p>name of the column containing the time data. If this is the index
+column, just give &#8216;index&#8217; (also default)</p>
+</div></blockquote>
+<p><strong>unit</strong> : str</p>
+<blockquote class="last">
+<div><p>unit to which to convert the time values (sec, min, hr or d)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.add_to_meta_valid">
+<code class="descname">add_to_meta_valid</code><span class="sig-paren">(</span><em>column_names</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.add_to_meta_valid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.add_to_meta_valid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds (a) column(s) with the given column_name(s) to the self.meta_filled
+DataFrame, where all tags are set to &#8216;original&#8217;. This makes sure that
+also data that already is very reliable can be used further down the
+process (e.g. filling etc.)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column_names</strong> : array</p>
+<blockquote class="last">
+<div><p>array containing the names of the columns to add to the meta_valied
+dataframe</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.calc_daily_profile">
+<code class="descname">calc_daily_profile</code><span class="sig-paren">(</span><em>column_name</em>, <em>arange</em>, <em>quantile=0.9</em>, <em>plot=False</em>, <em>plot_method='quantile'</em>, <em>clear=False</em>, <em>only_checked=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.calc_daily_profile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.calc_daily_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates a typical daily profile based on data from the indicated
+consecutive days. Also saves this average day, along with standard
+deviation and lower and upper percentiles as given in the arguments.
+Plotting is possible.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column_name</strong> : str</p>
+<blockquote>
+<div><p>name of the column containing the data to calculate an average day
+for</p>
+</div></blockquote>
+<p><strong>arange</strong> : 2-element array of ints</p>
+<blockquote>
+<div><p>contains the beginning and end day of the period to use for average
+day calculation</p>
+</div></blockquote>
+<p><strong>quantile</strong> : float between 0 and 1</p>
+<blockquote>
+<div><p>value to use for the calculation of the quantiles</p>
+</div></blockquote>
+<p><strong>plot</strong> : bool</p>
+<blockquote>
+<div><p>plot or not</p>
+</div></blockquote>
+<p><strong>plot_method</strong> : str</p>
+<blockquote>
+<div><p>method to use for plotting. Available: &#8220;quantile&#8221; or &#8220;stdev&#8221;</p>
+</div></blockquote>
+<p><strong>clear</strong> : bool</p>
+<blockquote>
+<div><p>wether or not to clear the key in the self.daily_profile dictionary
+that is already present</p>
+</div></blockquote>
+<p><strong>Returns</strong></p>
+<p><strong>&#8212;&#8212;</strong></p>
+<p><strong>None; creates a dictionary self.daily_profile containing information</strong></p>
+<p class="last"><strong>on the average day as calculated.</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.calc_ratio">
+<code class="descname">calc_ratio</code><span class="sig-paren">(</span><em>data_1</em>, <em>data_2</em>, <em>arange</em>, <em>only_checked=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.calc_ratio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.calc_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given two datasets or -columns, calculates the average ratio between
+the first and second dataset, within the given range. Also the standard
+deviation on this is calculated</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_1</strong> : str</p>
+<blockquote>
+<div><p>name of the data column containing the data to be in the numerator
+of the ratio calculation</p>
+</div></blockquote>
+<p><strong>data_2</strong> : str</p>
+<blockquote>
+<div><p>name of the data column containing the data to be in the denominator
+of the ratio calculation</p>
+</div></blockquote>
+<p><strong>arange</strong> : array of two values</p>
+<blockquote>
+<div><p>the range within which the ratio needs to be calculated</p>
+</div></blockquote>
+<p><strong>only_checked</strong> : bool</p>
+<blockquote>
+<div><p>if &#8216;True&#8217;, filtered values are excluded; default to &#8216;False&#8217;</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The average ratio of the first data column over the second one within</p>
+<p class="last">the given range and including the standard deviation</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.calc_slopes">
+<code class="descname">calc_slopes</code><span class="sig-paren">(</span><em>xdata</em>, <em>ydata</em>, <em>time_unit=None</em>, <em>slope_range=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.calc_slopes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.calc_slopes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates slopes for given xdata and data_name; if a time unit is given as
+an argument, the time values (xdata) will first be converted to this
+unit, which will then be used to calculate the slopes with.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>xdata</strong> : str</p>
+<blockquote>
+<div><p>name of the column containing the xdata for slope calculation
+(e.g. time). If &#8216;index&#8217;, the index is used as xdata. If datetime
+objects, a time_unit is expected to calculate the slopes.</p>
+</div></blockquote>
+<p><strong>data_name</strong> : str</p>
+<blockquote>
+<div><p>name of the column containing the data_name for slope calculation</p>
+</div></blockquote>
+<p><strong>time_unit</strong> : str</p>
+<blockquote>
+<div><p>time unit to be used for the slope calculation (in case this is
+based on time); if None, slopes are simply calculated based on the
+values given
+!! This value has no impact if the xdata column is the index and is
+not a datetime type. If that is the case, it is assumed that the
+user knows the unit of the xdata !!</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.Series</p>
+<blockquote class="last">
+<div><p>pandas Series object containing the slopes calculated for the
+chosen variable</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.compare_ratio">
+<code class="descname">compare_ratio</code><span class="sig-paren">(</span><em>data_1</em>, <em>data_2</em>, <em>arange</em>, <em>only_checked=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.compare_ratio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.compare_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compares the average ratios of two datasets in multiple different ranges
+and returns the most reliable one, based on the standard deviation on
+the ratio values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_1</strong> : str</p>
+<blockquote>
+<div><p>name of the data column containing the data to be in the numerator
+of the ratio calculation</p>
+</div></blockquote>
+<p><strong>data_2</strong> : str</p>
+<blockquote>
+<div><p>name of the data column containing the data to be in the denominator
+of the ratio calculation</p>
+</div></blockquote>
+<p><strong>arange</strong> : int</p>
+<blockquote>
+<div><p>the range (in days) for which the ratios need to be calculated and
+compared</p>
+</div></blockquote>
+<p><strong>only_checked</strong> : bool</p>
+<blockquote>
+<div><p>if &#8216;True&#8217;, filtered values are excluded; default to &#8216;False&#8217;</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The average ratio within the range that has been found to be the most</p>
+<p class="last">reliable one</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.drop_index_duplicates">
+<code class="descname">drop_index_duplicates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.drop_index_duplicates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.drop_index_duplicates" title="Permalink to this definition">¶</a></dt>
+<dd><p>drop rows with a duplicate index, ASSUMING THEY HAVE THE SAME DATA IN
+THEM!! Also updates the meta_valid dataframe</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.fill_index">
+<code class="descname">fill_index</code><span class="sig-paren">(</span><em>arange</em>, <em>index_type='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.fill_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.fill_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>function to fill in missing index values</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.get_avg">
+<code class="descname">get_avg</code><span class="sig-paren">(</span><em>name=None</em>, <em>only_checked=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.get_avg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.get_avg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the averages of all or certain columns in a dataframe</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>name</strong> : arary of str</p>
+<blockquote>
+<div><p>name(s) of the column(s) containing the data to be averaged;
+defaults to [&#8216;none&#8217;] and will calculate average for every column</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.DataFrame :</p>
+<blockquote class="last">
+<div><p>pandas dataframe, containing the average slopes of all or certain
+columns</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.get_correlation">
+<code class="descname">get_correlation</code><span class="sig-paren">(</span><em>data_1</em>, <em>data_2</em>, <em>arange</em>, <em>zero_intercept=False</em>, <em>only_checked=False</em>, <em>plot=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.get_correlation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.get_correlation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the linear regression coefficients that relate data_1 to
+data_2</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_1 and data_2</strong> : str</p>
+<blockquote>
+<div><p>names of the data columns containing the data between which the
+correlation will be calculated.</p>
+</div></blockquote>
+<p><strong>arange</strong> : array</p>
+<blockquote>
+<div><p>array containing the beginning and end value between which the
+correlation needs to be calculated</p>
+</div></blockquote>
+<p><strong>zero_intercept</strong> : bool</p>
+<blockquote>
+<div><p>indicates whether or not to assume a zero-intercept</p>
+</div></blockquote>
+<p><strong>only_checked: bool</strong></p>
+<blockquote>
+<div><p>if &#8216;True&#8217;, filtered values are excluded from calculation and plotting;
+default to &#8216;False&#8217;
+if a value in one column is filtered, the corresponding value in the second
+column also gets excluded!</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the linear regression coefficients of the correlation, as well as the</p>
+<p class="last">r-squared -value</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.get_highs">
+<code class="descname">get_highs</code><span class="sig-paren">(</span><em>data_name</em>, <em>bound_value</em>, <em>arange</em>, <em>method='percentile'</em>, <em>plot=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.get_highs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.get_highs" title="Permalink to this definition">¶</a></dt>
+<dd><p>creates a dataframe with tags indicating what indices have data-values
+higher than a certain value; example: the definition/tagging of rain
+events.</p>
+<dl class="docutils">
+<dt>data_name</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>name of the column to execute the function on</dd>
+<dt>bound_value</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float</span><dd>the boundary value above which points will be tagged</dd>
+<dt>arange</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">array of two values</span><dd>the range within which high values need to be tagged</dd>
+<dt>method: str (value or percentile)</dt>
+<dd>when percentile, the bound value is a given percentile above which
+data points will be tagged, when value, bound_values is used directly
+to tag data points.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.get_std">
+<code class="descname">get_std</code><span class="sig-paren">(</span><em>name=None</em>, <em>only_checked=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.get_std"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.get_std" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the standard deviations of all or certain columns in a dataframe</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>dataframe</strong> : pd.DataFrame</p>
+<blockquote>
+<div><p>dataframe containing the columns to calculate the standard deviation for</p>
+</div></blockquote>
+<p><strong>name</strong> : arary of str</p>
+<blockquote>
+<div><p>name(s) of the column(s) containing the data to calculate standard
+deviation for; defaults to [&#8216;none&#8217;] and will calculate standard
+deviation for every column</p>
+</div></blockquote>
+<p><strong>plot</strong> : bool</p>
+<blockquote>
+<div><p>if True, plots the calculated standard deviations, defaults to False</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.DataFrame :</p>
+<blockquote class="last">
+<div><p>pandas dataframe, containing the average slopes of all or certain
+columns</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.head">
+<code class="descname">head</code><span class="sig-paren">(</span><em>n=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.head"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.head" title="Permalink to this definition">¶</a></dt>
+<dd><p>CONFIRMED
+piping pandas head function</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.index">
+<code class="descname">index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>piping pandas index function</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.moving_average_filter">
+<code class="descname">moving_average_filter</code><span class="sig-paren">(</span><em>data_name</em>, <em>window</em>, <em>cutoff_frac</em>, <em>arange</em>, <em>clear=False</em>, <em>inplace=False</em>, <em>log_file=None</em>, <em>plot=False</em>, <em>final=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.moving_average_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.moving_average_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters out the peaks/outliers in a dataset by comparing its values to a
+smoothened representation of the dataset (Moving Average Filtering). The
+filtered values are replaced by NaN values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
+<blockquote>
+<div><p>name of the column containing the data that needs to be filtered</p>
+</div></blockquote>
+<p><strong>window</strong> : int</p>
+<blockquote>
+<div><p>the number of values from the dataset that are used to take the
+average at the current point.</p>
+</div></blockquote>
+<p><strong>cutoff_frac: float</strong></p>
+<blockquote>
+<div><p>the cutoff value (in fraction 0-1) to compare the data and smoothened
+data: a deviation higher than a certain percentage drops the data-
+point.</p>
+</div></blockquote>
+<p><strong>arange</strong> : array of two values</p>
+<blockquote>
+<div><p>the range within which the moving average filter needs to be applied</p>
+</div></blockquote>
+<p><strong>clear</strong> : bool</p>
+<blockquote>
+<div><p>if True, the tags added to datapoints before will be removed and put
+back to &#8216;original&#8217;.</p>
+</div></blockquote>
+<p><strong>inplace</strong> : bool</p>
+<blockquote>
+<div><p>indicates whether a new dataframe is created and returned or whether
+the operations are executed on the existing dataframe (nothing is
+returned)</p>
+</div></blockquote>
+<p><strong>log_file</strong> : str</p>
+<blockquote>
+<div><p>string containing the directory to a log file to be written out
+when using this function</p>
+</div></blockquote>
+<p><strong>plot</strong> : bool</p>
+<blockquote>
+<div><p>if true, a plot is made, comparing the original dataset with the
+new, filtered dataset</p>
+</div></blockquote>
+<p><strong>final</strong> : bool</p>
+<blockquote>
+<div><p>if true, the values are actually replaced with nan values (either
+inplace or in a new hp object)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">HydroData object (if inplace=False)</p>
+<blockquote>
+<div><p>the dataframe from which the double values of &#8216;data&#8217; are removed</p>
+</div></blockquote>
+<p class="last">None (if inplace=True)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.moving_slope_filter">
+<code class="descname">moving_slope_filter</code><span class="sig-paren">(</span><em>xdata</em>, <em>data_name</em>, <em>cutoff</em>, <em>arange</em>, <em>time_unit=None</em>, <em>clear=False</em>, <em>inplace=False</em>, <em>log_file=None</em>, <em>plot=False</em>, <em>final=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.moving_slope_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.moving_slope_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>CONFIRMED
+Filters out datapoints based on the difference between the slope in one
+point and the next (sudden changes like noise get filtered out), based
+on a given cut off value. Replaces the dropped values with NaN values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>xdata</strong> : str</p>
+<blockquote>
+<div><p>name of the column containing the xdata for slope calculation
+(e.g. time). If &#8216;index&#8217;, the index is used as xdata. If datetime
+objects, a time_unit is expected to calculate the slopes.</p>
+</div></blockquote>
+<p><strong>data_name</strong> : str</p>
+<blockquote>
+<div><p>name of the column containing the data that needs to be filtered</p>
+</div></blockquote>
+<p><strong>cutoff: int</strong></p>
+<blockquote>
+<div><p>the cutoff value to compare the slopes with to apply the filtering.</p>
+</div></blockquote>
+<p><strong>arange</strong> : array of two values</p>
+<blockquote>
+<div><p>the range within which the moving slope filter needs to be applied</p>
+</div></blockquote>
+<p><strong>time_unit</strong> : str</p>
+<blockquote>
+<div><p>time unit to be used for the slope calculation (in case this is
+based on time); if None, slopes are calculated based on the values
+given</p>
+</div></blockquote>
+<p><strong>clear</strong> : bool</p>
+<blockquote>
+<div><p>if True, the tags added to datapoints before will be removed and put
+back to &#8216;original&#8217;.</p>
+</div></blockquote>
+<p><strong>inplace</strong> : bool</p>
+<blockquote>
+<div><p>indicates whether a new dataframe is created and returned or whether
+the operations are executed on the existing dataframe (nothing is
+returned)</p>
+</div></blockquote>
+<p><strong>log_file</strong> : str</p>
+<blockquote>
+<div><p>string containing the directory to a log file to be written out
+when using this function</p>
+</div></blockquote>
+<p><strong>plot</strong> : bool</p>
+<blockquote>
+<div><p>if true, a plot is made, comparing the original dataset with the
+new, filtered dataset</p>
+</div></blockquote>
+<p><strong>final</strong> : bool</p>
+<blockquote>
+<div><p>if true, the values are actually replaced with nan values (either
+inplace or in a new hp object)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">HydroData object (if inplace=False)</p>
+<blockquote>
+<div><p>the dataframe from which the double values of &#8216;data&#8217; are removed</p>
+</div></blockquote>
+<p class="last">None (if inplace=True)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.plot_analysed">
+<code class="descname">plot_analysed</code><span class="sig-paren">(</span><em>data_name</em>, <em>time_range='default'</em>, <em>only_checked=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.plot_analysed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.plot_analysed" title="Permalink to this definition">¶</a></dt>
+<dd><p>plots the values and their types (original, filtered, filled)         of a given column in the given time range.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
+<blockquote>
+<div><p>name of the column containing the data to plot</p>
+</div></blockquote>
+<p><strong>time_range</strong> : array of two values</p>
+<blockquote>
+<div><p>the range within which the values are plotted; default is all</p>
+</div></blockquote>
+<p><strong>only_checked</strong> : bool</p>
+<blockquote>
+<div><p>if &#8216;True&#8217;, filtered values are excluded; default to &#8216;False&#8217;</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Plot</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.replace">
+<code class="descname">replace</code><span class="sig-paren">(</span><em>to_replace</em>, <em>value</em>, <em>inplace=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.replace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>CONFIRMED
+piping pandas replace function</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.savgol">
+<code class="descname">savgol</code><span class="sig-paren">(</span><em>data_name</em>, <em>window=55</em>, <em>polyorder=2</em>, <em>plot=False</em>, <em>inplace=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.savgol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.savgol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the scipy.signal Savitzky-Golay filter to smoothen the data of a column;
+The values are either replaced or a new dataframe is returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
+<blockquote>
+<div><p>name of the column containing the data that needs to be filtered</p>
+</div></blockquote>
+<p><strong>window</strong> : int</p>
+<blockquote>
+<div><p>the length of the filter window; default to 55</p>
+</div></blockquote>
+<p><strong>polyorder</strong> : int</p>
+<blockquote>
+<div><p>The order of the polynomial used to fit the samples.
+polyorder must be less than window. default to 1</p>
+</div></blockquote>
+<p><strong>plot</strong> : bool</p>
+<blockquote>
+<div><p>if true, a plot is made, comparing the original dataset with the
+new, filtered dataset</p>
+</div></blockquote>
+<p><strong>inplace</strong> : bool</p>
+<blockquote>
+<div><p>indicates whether a new dataframe is created and returned or whether
+the operations are executed on the existing dataframe (nothing is
+returned)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">HydroData object (if inplace=False)</p>
+<p class="last">None (if inplace=True)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.set_index">
+<code class="descname">set_index</code><span class="sig-paren">(</span><em>keys</em>, <em>key_is_time=False</em>, <em>drop=True</em>, <em>inplace=False</em>, <em>verify_integrity=False</em>, <em>save_prev_index=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.set_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.set_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>piping pandas set_index function, including the option to define the new index
+as being the time data
+key_is_time : bool</p>
+<blockquote>
+<div>when true, the new index will we known as the time data from here on</div></blockquote>
+<p>(other arguments cfr pd.set_index)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.set_tag">
+<code class="descname">set_tag</code><span class="sig-paren">(</span><em>tag</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.set_tag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.set_tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>CONFIRMED</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.set_time_unit">
+<code class="descname">set_time_unit</code><span class="sig-paren">(</span><em>unit</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.set_time_unit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.set_time_unit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.set_units">
+<code class="descname">set_units</code><span class="sig-paren">(</span><em>units</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.set_units"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.set_units" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.simple_moving_average">
+<code class="descname">simple_moving_average</code><span class="sig-paren">(</span><em>arange</em>, <em>window</em>, <em>data_name=None</em>, <em>inplace=False</em>, <em>plot=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.simple_moving_average"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.simple_moving_average" title="Permalink to this definition">¶</a></dt>
+<dd><p>CONFIRMED
+Calculate the Simple Moving Average of a dataseries from a dataframe,
+using a window within which the datavalues are averaged.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arange</strong> : array of two values</p>
+<blockquote>
+<div><p>the range within which the moving average needs to be calculated</p>
+</div></blockquote>
+<p><strong>window</strong> : int</p>
+<blockquote>
+<div><p>the number of values from the dataset that are used to take the
+average at the current point. Defaults to 10</p>
+</div></blockquote>
+<p><strong>data_name</strong> : str or array of str</p>
+<blockquote>
+<div><p>name of the column(s) containing the data that needs to be
+smoothened. If None, smoothened data is computed for the whole
+dataframe. Defaults to None</p>
+</div></blockquote>
+<p><strong>inplace</strong> : bool</p>
+<blockquote>
+<div><p>indicates whether a new dataframe is created and returned or whether
+the operations are executed on the existing dataframe (nothing is
+returned)</p>
+</div></blockquote>
+<p><strong>plot</strong> : bool</p>
+<blockquote>
+<div><p>if True, a plot is given for comparison between original and smooth
+data</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">HydroData (or subclass) object</p>
+<blockquote class="last">
+<div><p>either a new object (inplace=False) or an adjusted object, con-
+taining the smoothened data values</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.tag_doubles">
+<code class="descname">tag_doubles</code><span class="sig-paren">(</span><em>data_name</em>, <em>bound</em>, <em>arange=None</em>, <em>clear=False</em>, <em>inplace=False</em>, <em>log_file=None</em>, <em>plot=False</em>, <em>final=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.tag_doubles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.tag_doubles" title="Permalink to this definition">¶</a></dt>
+<dd><p>tags double values that subsequently occur in a measurement series.
+This is relevant in case a sensor has failed and produces a constant
+signal. A band is provided within which the signal can vary and still
+be filtered out</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
+<blockquote>
+<div><p>column name of the column from which double values will be sought</p>
+</div></blockquote>
+<p><strong>bound</strong> : float</p>
+<blockquote>
+<div><p>boundary value of the band to use. When the difference between a
+point and the next one is smaller then the bound value, the latter
+datapoint is tagged as &#8216;filtered&#8217;.</p>
+</div></blockquote>
+<p><strong>arange</strong> : array of two values</p>
+<blockquote>
+<div><p>the range within which double values need to be tagged</p>
+</div></blockquote>
+<p><strong>clear</strong> : bool</p>
+<blockquote>
+<div><p>if True, the tags added to datapoints before will be removed and put
+back to &#8216;original&#8217;.</p>
+</div></blockquote>
+<p><strong>inplace</strong> : bool</p>
+<blockquote>
+<div><p>indicates whether a new dataframe is created and returned or whether
+the operations are executed on the existing dataframe (nothing is
+returned). (This argument only comes into play when the &#8216;final&#8217;
+argument is True)</p>
+</div></blockquote>
+<p><strong>log_file</strong> : str</p>
+<blockquote>
+<div><p>string containing the directory to a log file to be written out
+when using this function</p>
+</div></blockquote>
+<p><strong>plot</strong> : bool</p>
+<blockquote>
+<div><p>whether or not to make a plot of the newly tagged data points</p>
+</div></blockquote>
+<p><strong>final</strong> : bool</p>
+<blockquote>
+<div><p>if true, the values are actually replaced with nan values (either
+inplace or in a new hp object)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">HydroData object (if inplace=False)</p>
+<blockquote>
+<div><p>the dataframe from which the double values of &#8216;data&#8217; are removed or
+replaced</p>
+</div></blockquote>
+<p class="last">None (if inplace=True)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.tag_extremes">
+<code class="descname">tag_extremes</code><span class="sig-paren">(</span><em>data_name</em>, <em>arange=None</em>, <em>limit=0</em>, <em>method='below'</em>, <em>clear=False</em>, <em>plot=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.tag_extremes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.tag_extremes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tags values above or below a given limit.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
+<blockquote>
+<div><p>name of the column containing the data to be tagged</p>
+</div></blockquote>
+<p><strong>arange</strong> : array of two values</p>
+<blockquote>
+<div><p>the range within which extreme values need to be tagged</p>
+</div></blockquote>
+<p><strong>limit</strong> : int/float</p>
+<blockquote>
+<div><p>limit below or above which values need to be tagged</p>
+</div></blockquote>
+<p><strong>method</strong> : &#8216;below&#8217; or &#8216;above&#8217;</p>
+<blockquote>
+<div><p>below tags all the values below the given limit, above tags
+the values above the limit</p>
+</div></blockquote>
+<p><strong>clear</strong> : bool</p>
+<blockquote>
+<div><p>if True, the tags added before will be removed and put
+back to &#8216;original&#8217;.</p>
+</div></blockquote>
+<p><strong>plot</strong> : bool</p>
+<blockquote>
+<div><p>whether or not to make a plot of the newly tagged data points</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None;</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.tag_nan">
+<code class="descname">tag_nan</code><span class="sig-paren">(</span><em>data_name</em>, <em>arange=None</em>, <em>clear=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.tag_nan"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.tag_nan" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds a tag &#8216;filtered&#8217; in self.meta_valid for every NaN value in the given
+column</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
+<blockquote>
+<div><p>column name of the column to apply the function to</p>
+</div></blockquote>
+<p><strong>arange</strong> : array of two values</p>
+<blockquote>
+<div><p>the range within which nan values need to be tagged</p>
+</div></blockquote>
+<p><strong>clear</strong> : bool</p>
+<blockquote>
+<div><p>when true, resets the tags in meta_valid for the data in column
+data_name</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.tail">
+<code class="descname">tail</code><span class="sig-paren">(</span><em>n=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.tail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.tail" title="Permalink to this definition">¶</a></dt>
+<dd><p>CONFIRMED
+piping pandas tail function</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.to_datetime">
+<code class="descname">to_datetime</code><span class="sig-paren">(</span><em>time_column='index'</em>, <em>time_format='%dd-%mm-%yy'</em>, <em>unit='D'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.to_datetime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.to_datetime" title="Permalink to this definition">¶</a></dt>
+<dd><p>CONFIRMED
+flexibly piping pandas to_datetime function</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.to_float">
+<code class="descname">to_float</code><span class="sig-paren">(</span><em>columns='all'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.to_float"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.to_float" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert values in given columns to float values</p>
+<dl class="docutils">
+<dt>columns</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">array of strings</span><dd>column names of the columns where values need to be converted to floats</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_HydroData.HydroData.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>filename</em>, <em>filepath='/Users/chaimdemulder/Documents/Work/github/wwdata/docs'</em>, <em>method='all'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.write" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>filepath</strong> : str</p>
+<blockquote>
+<div><p>the path the output file should be saved to</p>
+</div></blockquote>
+<p><strong>filename</strong> : str</p>
+<blockquote>
+<div><p>the name of the output file</p>
+</div></blockquote>
+<p><strong>method</strong> : str (all,filtered,filled)</p>
+<blockquote>
+<div><p>depending on the method choice, different values will be written out:
+all values, only the filtered values or the filled values</p>
+</div></blockquote>
+<p><strong>for_WEST</strong> : bool</p>
+<p><strong>include_units</strong> : bool</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None; write an output file</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.Class_HydroData.total_seconds">
+<code class="descclassname">wwdata.Class_HydroData.</code><code class="descname">total_seconds</code><span class="sig-paren">(</span><em>timedelta_value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#total_seconds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.total_seconds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-wwdata.Class_LabExperimBased">
+<span id="wwdata-class-labexperimbased-module"></span><h2>wwdata.Class_LabExperimBased module<a class="headerlink" href="#module-wwdata.Class_LabExperimBased" title="Permalink to this headline">¶</a></h2>
+<p>Class_LabExperimBased provides functionalities for data handling of data obtained in lab experiments in the field of (waste)water treatment.
+Copyright (C) 2016 Chaim De Mulder</p>
+<p>This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.</p>
+<p>You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+<dl class="class">
+<dt id="wwdata.Class_LabExperimBased.LabExperimBased">
+<em class="property">class </em><code class="descclassname">wwdata.Class_LabExperimBased.</code><code class="descname">LabExperimBased</code><span class="sig-paren">(</span><em>data</em>, <em>timedata_column='index'</em>, <em>data_type='NAT'</em>, <em>experiment_tag='No tag given'</em>, <em>time_unit=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_LabExperimBased.html#LabExperimBased"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_LabExperimBased.LabExperimBased" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wwdata.Class_HydroData.HydroData" title="wwdata.Class_HydroData.HydroData"><code class="xref py py-class docutils literal"><span class="pre">wwdata.Class_HydroData.HydroData</span></code></a></p>
+<p>Superclass for a HydroData object, expanding the functionalities with
+specific functions for data gathered is lab experiments.</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="71%" />
+<col width="29%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(see HydroData docstring)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="wwdata.Class_LabExperimBased.LabExperimBased.add_conc">
+<code class="descname">add_conc</code><span class="sig-paren">(</span><em>column_name</em>, <em>x</em>, <em>y</em>, <em>new_name='default'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_LabExperimBased.html#LabExperimBased.add_conc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_LabExperimBased.LabExperimBased.add_conc" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculates the concentration values of the given column and adds them as
+a new column to the DataFrame.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column_name</strong> : str</p>
+<blockquote>
+<div><p>column with values</p>
+</div></blockquote>
+<p><strong>x</strong> : int</p>
+<blockquote>
+<div><p>...</p>
+</div></blockquote>
+<p><strong>y</strong> : int</p>
+<blockquote>
+<div><p>...</p>
+</div></blockquote>
+<p><strong>new_name</strong> : str</p>
+<blockquote class="last">
+<div><p>name of the new column, default to &#8216;column_name + mg/L&#8217;</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_LabExperimBased.LabExperimBased.calc_slope">
+<code class="descname">calc_slope</code><span class="sig-paren">(</span><em>columns</em>, <em>time_column='h'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_LabExperimBased.html#LabExperimBased.calc_slope"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_LabExperimBased.LabExperimBased.calc_slope" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculates the slope of the selected columns</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>columns</strong> : array of strings</p>
+<blockquote>
+<div><p>columns to calculate the slope for</p>
+</div></blockquote>
+<p><strong>time_column</strong> : str</p>
+<blockquote class="last">
+<div><p>time used for calculation; default to &#8216;h&#8217;</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_LabExperimBased.LabExperimBased.check_ph">
+<code class="descname">check_ph</code><span class="sig-paren">(</span><em>ph_column='pH'</em>, <em>thresh=0.4</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_LabExperimBased.html#LabExperimBased.check_ph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_LabExperimBased.LabExperimBased.check_ph" title="Permalink to this definition">¶</a></dt>
+<dd><p>gives the maximal change in pH</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ph_column</strong> : str</p>
+<blockquote>
+<div><p>column with pH-values, default to &#8216;pH&#8217;</p>
+</div></blockquote>
+<p><strong>threshold</strong> : int</p>
+<blockquote class="last">
+<div><p>threshold value for warning, default to &#8216;0.4&#8217;</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_LabExperimBased.LabExperimBased.hours">
+<code class="descname">hours</code><span class="sig-paren">(</span><em>time_column='index'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_LabExperimBased.html#LabExperimBased.hours"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_LabExperimBased.LabExperimBased.hours" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculates the hours from the relative values</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>time_column</strong> : string</p>
+<blockquote class="last">
+<div><p>column containing the relative time values; default to index</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_LabExperimBased.LabExperimBased.in_out">
+<code class="descname">in_out</code><span class="sig-paren">(</span><em>columns</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_LabExperimBased.html#LabExperimBased.in_out"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_LabExperimBased.LabExperimBased.in_out" title="Permalink to this definition">¶</a></dt>
+<dd><p>(start_values-end_values)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>columns</strong> : array of strings</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_LabExperimBased.LabExperimBased.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><em>columns</em>, <em>time_column='index'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_LabExperimBased.html#LabExperimBased.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_LabExperimBased.LabExperimBased.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculates the slope of the selected columns</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>columns</strong> : array of strings</p>
+<blockquote>
+<div><p>columns to plot</p>
+</div></blockquote>
+<p><strong>time_column</strong> : str</p>
+<blockquote class="last">
+<div><p>time used for calculation; default to &#8216;h&#8217;</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_LabExperimBased.LabExperimBased.removal">
+<code class="descname">removal</code><span class="sig-paren">(</span><em>columns</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_LabExperimBased.html#LabExperimBased.removal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_LabExperimBased.LabExperimBased.removal" title="Permalink to this definition">¶</a></dt>
+<dd><p>total removal of nitrogen
+(1-(end_values/start_values))</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>columns</strong> : array of strings</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-wwdata.Class_LabSensorBased">
+<span id="wwdata-class-labsensorbased-module"></span><h2>wwdata.Class_LabSensorBased module<a class="headerlink" href="#module-wwdata.Class_LabSensorBased" title="Permalink to this headline">¶</a></h2>
+<p>Class_LabSensorBased provides functionalities for data handling of data obtained in lab experiments with online sensors in the field of (waste)water treatment.
+Copyright (C) 2016 Chaim De Mulder</p>
+<p>This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.</p>
+<p>You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+<dl class="class">
+<dt id="wwdata.Class_LabSensorBased.LabSensorBased">
+<em class="property">class </em><code class="descclassname">wwdata.Class_LabSensorBased.</code><code class="descname">LabSensorBased</code><span class="sig-paren">(</span><em>data</em>, <em>experiment_tag='None'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_LabSensorBased.html#LabSensorBased"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_LabSensorBased.LabSensorBased" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wwdata.Class_HydroData.HydroData" title="wwdata.Class_HydroData.HydroData"><code class="xref py py-class docutils literal"><span class="pre">wwdata.Class_HydroData.HydroData</span></code></a></p>
+<p>Superclass for a HydroData object, expanding the functionalities with
+specific functions for data gathered is lab experiments</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="71%" />
+<col width="29%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(see HydroData docstring)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="wwdata.Class_LabSensorBased.LabSensorBased.drop_peaks">
+<code class="descname">drop_peaks</code><span class="sig-paren">(</span><em>data_name</em>, <em>cutoff</em>, <em>inplace=True</em>, <em>log_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_LabSensorBased.html#LabSensorBased.drop_peaks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_LabSensorBased.LabSensorBased.drop_peaks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters out the peaks larger than a cut-off value in a dataseries</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
+<blockquote>
+<div><p>the name of the column to use for the removal of peak values</p>
+</div></blockquote>
+<p><strong>cutoff</strong> : int</p>
+<blockquote>
+<div><p>cut off value to use for the removing of peaks; values with an
+absolute value larger than this cut off will be removed from the data</p>
+</div></blockquote>
+<p><strong>inplace</strong> : bool</p>
+<blockquote>
+<div><p>indicates whether a new dataframe is created and returned or whether
+the operations are executed on the existing dataframe (nothing is
+returned)</p>
+</div></blockquote>
+<p><strong>log_file</strong> : str</p>
+<blockquote>
+<div><p>string containing the directory to a log file to be written out
+when using this function</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">LabSensorBased object (if inplace=False)</p>
+<blockquote>
+<div><p>the dataframe from which the double values of &#8216;data&#8217; are removed</p>
+</div></blockquote>
+<p class="last">None (if inplace=True)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-wwdata.Class_OnlineSensorBased">
+<span id="wwdata-class-onlinesensorbased-module"></span><h2>wwdata.Class_OnlineSensorBased module<a class="headerlink" href="#module-wwdata.Class_OnlineSensorBased" title="Permalink to this headline">¶</a></h2>
+<p>Class_OnlineSensorBased provides functionalities for data handling of data obtained with online sensors in the field of (waste)water treatment.
+Copyright (C) 2016 Chaim De Mulder</p>
+<p>This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.</p>
+<p>You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+<dl class="class">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased">
+<em class="property">class </em><code class="descclassname">wwdata.Class_OnlineSensorBased.</code><code class="descname">OnlineSensorBased</code><span class="sig-paren">(</span><em>data</em>, <em>timedata_column='index'</em>, <em>data_type='WWTP'</em>, <em>experiment_tag='No tag given'</em>, <em>time_unit=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#OnlineSensorBased"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wwdata.Class_HydroData.HydroData" title="wwdata.Class_HydroData.HydroData"><code class="xref py py-class docutils literal"><span class="pre">wwdata.Class_HydroData.HydroData</span></code></a></p>
+<p>Superclass for a HydroData object, expanding the functionalities with
+specific functions for data gathered at full scale by continous measurements</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="71%" />
+<col width="29%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>(see HydroData docstring)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.add_to_filled">
+<code class="descname">add_to_filled</code><span class="sig-paren">(</span><em>column_names</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#OnlineSensorBased.add_to_filled"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.add_to_filled" title="Permalink to this definition">¶</a></dt>
+<dd><p>column_names : array</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.calc_daily_average">
+<code class="descname">calc_daily_average</code><span class="sig-paren">(</span><em>column_name</em>, <em>arange</em>, <em>plot=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#OnlineSensorBased.calc_daily_average"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.calc_daily_average" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculates the daily average of values in the given column and returns them as a 2D-array,
+containing the days and the average values on the respective days. Plotting is possible.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column_name</strong> : str</p>
+<blockquote>
+<div><p>name of the column containing the data to calculate the average values for</p>
+</div></blockquote>
+<p><strong>arange</strong> : array of two values</p>
+<blockquote>
+<div><p>the range within which daily averages need to be calculated</p>
+</div></blockquote>
+<p><strong>plot</strong> : bool</p>
+<blockquote>
+<div><p>plot or not</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.Dataframe :</p>
+<blockquote class="last">
+<div><p>pandas dataframe, containing the daily means with standard deviations
+for the selected column</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.calc_total_proportional">
+<code class="descname">calc_total_proportional</code><span class="sig-paren">(</span><em>Q_tot</em>, <em>Q</em>, <em>conc</em>, <em>new_name='new'</em>, <em>unit='mg/l'</em>, <em>filled=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#OnlineSensorBased.calc_total_proportional"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.calc_total_proportional" title="Permalink to this definition">¶</a></dt>
+<dd><p>CONFIRMED
+Calculates the total concentration of an incoming flow, based on the
+given total flow and the separate incoming flows and concentrations</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Q_tot</strong> : str</p>
+<blockquote>
+<div><p>name of the column containing the total flow</p>
+</div></blockquote>
+<p><strong>Q</strong> : array of str</p>
+<blockquote>
+<div><p>names of the columns containing the separate flows</p>
+</div></blockquote>
+<p><strong>conc</strong> : array of str</p>
+<blockquote>
+<div><p>names of the columns containing the separate concentration values</p>
+</div></blockquote>
+<p><strong>new_name</strong> : str</p>
+<blockquote>
+<div><p>name of the column to be added</p>
+</div></blockquote>
+<p><strong>filled</strong> : bool</p>
+<blockquote>
+<div><p>if true, use self.filled to calculate proportions from</p>
+</div></blockquote>
+<p><strong>!!Order of columns in Q and conc must match!!</strong></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None;</p>
+<p class="last">creates a hydropy object with added column for the proportional concentration</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.check_filling_error">
+<code class="descname">check_filling_error</code><span class="sig-paren">(</span><em>nr_iterations</em>, <em>data_name</em>, <em>filling_function</em>, <em>test_data_range</em>, <em>nr_small_gaps=0</em>, <em>max_size_small_gaps=0</em>, <em>nr_large_gaps=0</em>, <em>max_size_large_gaps=0</em>, <em>**options</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#OnlineSensorBased.check_filling_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.check_filling_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the _calculate_filling_error function (refer to that docstring for
+more specific info) to calculate the error on the data points that are
+filled with a certain algorithm.
+Because _calculate_filling_error inserts random gaps, results differ
+every time it is used. Check_filling_error averages this out.</p>
+<p>!! Important !!
+When checking for the error on data filling, a period (arange argument)
+with mostly reliable data should be used. If for example large gaps are
+already present in the given data, this will heavily influence the
+returned error, as filled values will be compared with the values from
+the data gap.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>nr_iterations</strong> : int</p>
+<blockquote>
+<div><p>The number of iterations to run for the calculation of the imputation
+error</p>
+</div></blockquote>
+<p><strong>data_name</strong> : string</p>
+<blockquote>
+<div><p>name of the column containing the data the filling reliability needs
+to be checked for.</p>
+</div></blockquote>
+<p><strong>filling function</strong> : str, wdata filling function</p>
+<blockquote>
+<div><p>the name of the filling function to be tested for reliability</p>
+</div></blockquote>
+<p><strong>test_data_range</strong> : array of two values</p>
+<blockquote>
+<div><p>an array containing the start and end point of the test data to be used.
+IMPORTANT: for testing filling with correlation, this range needs to
+include the range for correlation calculation and the filling range.</p>
+</div></blockquote>
+<p><strong>nr_small_gaps / nr_large_gaps: int</strong></p>
+<blockquote>
+<div><p>the number of small/large gaps to create in the dataset for testing</p>
+</div></blockquote>
+<p><strong>max_size_small_gaps / max_size_large_gaps: int</strong></p>
+<blockquote>
+<div><p>the maximum size of the gaps inserted in the data, expressed in data
+points</p>
+</div></blockquote>
+<p><strong>**options:</strong></p>
+<blockquote>
+<div><p>Arguments for the filling function; refer to the relevant filling
+function to know what arguments to give</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None; adds the average filling error the self.filling_error dataframe</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.drop_index_duplicates">
+<code class="descname">drop_index_duplicates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#OnlineSensorBased.drop_index_duplicates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.drop_index_duplicates" title="Permalink to this definition">¶</a></dt>
+<dd><p>drop rows with a duplicate index, ASSUMING THEY HAVE THE SAME DATA IN
+THEM!! Also updates the meta_valid, meta_filled and filled dataframes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_correlation">
+<code class="descname">fill_missing_correlation</code><span class="sig-paren">(</span><em>to_fill</em>, <em>to_use</em>, <em>arange</em>, <em>corr_range</em>, <em>zero_intercept=False</em>, <em>filtered_only=True</em>, <em>plot=False</em>, <em>clear=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#OnlineSensorBased.fill_missing_correlation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_correlation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills the missing values in a dataset (to_fill), based on the correlation
+this data shows when comparing to other data (to_use). This happens within
+the range given by arange.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>to_fill</strong> : str</p>
+<blockquote>
+<div><p>name of the column with data to fill</p>
+</div></blockquote>
+<p><strong>to_use</strong> : str</p>
+<blockquote>
+<div><p>name of the column to use, in combination with the given ratio, to
+fill in some of the missing data</p>
+</div></blockquote>
+<p><strong>arange</strong> : array of two values</p>
+<blockquote>
+<div><p>the range within which missing/filtered values need to be replaced</p>
+</div></blockquote>
+<p><strong>corr_range</strong> : array of two values</p>
+<blockquote>
+<div><p>the range to use for the calculation of the correlation</p>
+</div></blockquote>
+<p><strong>filtered_only</strong> : boolean</p>
+<blockquote>
+<div><p>if True, fills only the datapoints labeled as filtered. If False,
+fills/replaces all datapoints in the given range</p>
+</div></blockquote>
+<p><strong>plot</strong> : bool</p>
+<blockquote>
+<div><p>whether or not to plot the new dataset</p>
+</div></blockquote>
+<p><strong>clear</strong> : bool</p>
+<blockquote>
+<div><p>whether or not to clear the previoulsy filled values and start from
+the self.meta_valid dataset again for this particular dataseries.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None;</p>
+<p>creates/updates self.filled, containing the adjusted dataset and updates</p>
+<p class="last">meta_filled with the correct labels.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_daybefore">
+<code class="descname">fill_missing_daybefore</code><span class="sig-paren">(</span><em>to_fill, arange, range_to_replace=[1, 4], filtered_only=True, plot=False, clear=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#OnlineSensorBased.fill_missing_daybefore"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_daybefore" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills the missing values in a dataset (to_fill), based on the data values
+from the day before the range starts. These data values are based on
+the self.filled dataset and therefor can contain filled datapoints as well.
+This happens within the range given by arange.
+!! IMPORTANT !!
+This function will not work on datasets with non-equidistant data points!</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>to_fill</strong> : str</p>
+<blockquote>
+<div><p>name of the column with data to fill</p>
+</div></blockquote>
+<p><strong>arange</strong> : array of two values</p>
+<blockquote>
+<div><p>the range within which missing/filtered values need to be replaced</p>
+</div></blockquote>
+<p><strong>range_to_replace</strong> : array of two int/float values</p>
+<blockquote>
+<div><p>the minimum and maximum amount of time (i.e. min and max size of
+gaps in data) where missing datapoints can be replaced using this
+function, i.e. using values of the last day before measurements
+went bad.</p>
+</div></blockquote>
+<p><strong>filtered_only</strong> : boolean</p>
+<blockquote>
+<div><p>if True, fills only the datapoints labeled as filtered. If False,
+fills/replaces all datapoints in the given range</p>
+</div></blockquote>
+<p><strong>plot</strong> : bool</p>
+<blockquote>
+<div><p>whether or not to plot the new dataset</p>
+</div></blockquote>
+<p><strong>clear</strong> : bool</p>
+<blockquote>
+<div><p>whether or not to clear the previoulsy filled values and start from
+the self.meta_valid dataset again for this particular dataseries.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None;</p>
+<p>creates/updates self.filled, containing the adjusted dataset and updates</p>
+<p class="last">meta_filled with the correct labels.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_interpolation">
+<code class="descname">fill_missing_interpolation</code><span class="sig-paren">(</span><em>to_fill</em>, <em>range_</em>, <em>arange</em>, <em>method='index'</em>, <em>plot=False</em>, <em>clear=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#OnlineSensorBased.fill_missing_interpolation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_interpolation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills the missing values in a dataset (to_fill), based specified
+interpolation algorithm (method). This happens only if the number of
+consecutive missing values is smaller than <a href="#id1"><span class="problematic" id="id2">range_</span></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>to_fill</strong> : str</p>
+<blockquote>
+<div><p>name of the column containing the data to be filled</p>
+</div></blockquote>
+<p><strong>range_</strong> : int</p>
+<blockquote>
+<div><p>the maximum range that the absence of values can be to still
+allow interpolation to fill in values</p>
+</div></blockquote>
+<p><strong>arange</strong> : array of two values</p>
+<blockquote>
+<div><p>the range within which missing/filtered values need to be replaced</p>
+</div></blockquote>
+<p><strong>method</strong> : str</p>
+<blockquote>
+<div><p>interpolation method to be used by the .interpolate function. See
+pandas docstrings for more info</p>
+</div></blockquote>
+<p><strong>plot</strong> : bool</p>
+<blockquote>
+<div><p>whether or not to plot the new dataset</p>
+</div></blockquote>
+<p><strong>clear</strong> : bool</p>
+<blockquote>
+<div><p>whether or not to clear the previoulsy filled values and start from
+the self.meta_valid dataset again for this particular dataseries.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None;</p>
+<p>creates/updates self.filled, containing the adjusted dataset and updates</p>
+<p class="last">meta_filled with the correct labels.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_model">
+<code class="descname">fill_missing_model</code><span class="sig-paren">(</span><em>to_fill</em>, <em>to_use</em>, <em>arange</em>, <em>filtered_only=True</em>, <em>unit='d'</em>, <em>plot=False</em>, <em>clear=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#OnlineSensorBased.fill_missing_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills the missing values in a dataset (to_fill), based on the modeled
+values given in to_use. This happens within the range given by arange.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>to_fill</strong> : str</p>
+<blockquote>
+<div><p>name of the column with data to fill</p>
+</div></blockquote>
+<p><strong>to_use</strong> : pd.Series</p>
+<blockquote>
+<div><p>pandas series containing the modeled data with which the filtered
+data can be replaced</p>
+</div></blockquote>
+<p><strong>arange</strong> : array of two values</p>
+<blockquote>
+<div><p>the range within which missing/filtered values need to be replaced</p>
+</div></blockquote>
+<p><strong>filtered_only</strong> : boolean</p>
+<blockquote>
+<div><p>if True, fills only the datapoints labeled as filtered. If False,
+fills/replaces all datapoints in the given range</p>
+</div></blockquote>
+<p><strong>unit</strong> : str</p>
+<blockquote>
+<div><p>the unit in which the modeled values are given; datetime values will
+be converted to values with that unit. Possible: sec, min, hr, d</p>
+</div></blockquote>
+<p><strong>plot</strong> : bool</p>
+<blockquote>
+<div><p>whether or not to plot the new dataset</p>
+</div></blockquote>
+<p><strong>clear</strong> : bool</p>
+<blockquote>
+<div><p>whether or not to clear the previoulsy filled values and start from
+the self.meta_valid dataset again for this particular dataseries.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None;</p>
+<p>creates/updates self.filled, containing the adjusted dataset and updates</p>
+<p class="last">meta_filled with the correct labels.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_ratio">
+<code class="descname">fill_missing_ratio</code><span class="sig-paren">(</span><em>to_fill</em>, <em>to_use</em>, <em>ratio</em>, <em>arange</em>, <em>filtered_only=True</em>, <em>plot=False</em>, <em>clear=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#OnlineSensorBased.fill_missing_ratio"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills the missing values in a dataset (to_fill), based on the ratio this
+data shows when comparing to other data (to_use). This happens within
+the range given by arange.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>to_fill</strong> : str</p>
+<blockquote>
+<div><p>name of the column with data to fill</p>
+</div></blockquote>
+<p><strong>to_use</strong> : str</p>
+<blockquote>
+<div><p>name of the column to use, in combination with the given ratio, to
+fill in some of the missing data</p>
+</div></blockquote>
+<p><strong>ratio</strong> : float</p>
+<blockquote>
+<div><p>ratio to multiply the to_use data with to obtain data for filling in
+in the to_fill data column</p>
+</div></blockquote>
+<p><strong>arange</strong> : array of two values</p>
+<blockquote>
+<div><p>the range within which missing/filtered values need to be replaced</p>
+</div></blockquote>
+<p><strong>filtered_only</strong> : boolean</p>
+<blockquote>
+<div><p>if True, fills only the datapoints labeled as filtered. If False,
+fills/replaces all datapoints in the given range</p>
+</div></blockquote>
+<p><strong>plot</strong> : bool</p>
+<blockquote>
+<div><p>whether or not to plot the new dataset</p>
+</div></blockquote>
+<p><strong>clear</strong> : bool</p>
+<blockquote>
+<div><p>whether or not to clear the previoulsy filled values and start from
+the self.meta_valid dataset again for this particular dataseries.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None;</p>
+<p>creates/updates self.filled, containing the adjusted dataset and updates</p>
+<p class="last">meta_filled with the correct labels.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_standard">
+<code class="descname">fill_missing_standard</code><span class="sig-paren">(</span><em>to_fill</em>, <em>arange</em>, <em>filtered_only=True</em>, <em>plot=False</em>, <em>clear=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#OnlineSensorBased.fill_missing_standard"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_standard" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills the missing values in a dataset (to_fill), based on the average
+daily profile calculated by calc_daily_profile(). This happens within
+the range given by arange.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>to_fill</strong> : str</p>
+<blockquote>
+<div><p>name of the column with data to fill</p>
+</div></blockquote>
+<p><strong>arange</strong> : array of two values</p>
+<blockquote>
+<div><p>the range within which missing/filtered values need to be replaced</p>
+</div></blockquote>
+<p><strong>filtered_only</strong> : boolean</p>
+<blockquote>
+<div><p>if True, fills only the datapoints labeled as filtered. If False,
+fills/replaces all datapoints in the given range</p>
+</div></blockquote>
+<p><strong>plot</strong> : bool</p>
+<blockquote>
+<div><p>whether or not to plot the new dataset</p>
+</div></blockquote>
+<p><strong>clear</strong> : bool</p>
+<blockquote>
+<div><p>whether or not to clear the previoulsy filled values and start from
+the self.meta_valid dataset again for this particular dataseries.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None;</p>
+<p>creates/updates self.filled, containing the adjusted dataset and updates</p>
+<p class="last">meta_filled with the correct labels.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.Class_OnlineSensorBased.absolute_to_relative">
+<code class="descclassname">wwdata.Class_OnlineSensorBased.</code><code class="descname">absolute_to_relative</code><span class="sig-paren">(</span><em>series</em>, <em>start_date</em>, <em>unit='d'</em>, <em>decimals=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#absolute_to_relative"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.absolute_to_relative" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts a pandas series with datetime timevalues to relative timevalues
+in the given unit, starting from start_date</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>series</strong> : pd.Series</p>
+<blockquote>
+<div><p>series of datetime of comparable values</p>
+</div></blockquote>
+<p><strong>unit</strong> : str</p>
+<blockquote class="last">
+<div><p>unit to which to convert the time values (sec, min, hr or d)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.Class_OnlineSensorBased.drop_peaks">
+<code class="descclassname">wwdata.Class_OnlineSensorBased.</code><code class="descname">drop_peaks</code><span class="sig-paren">(</span><em>self</em>, <em>data_name</em>, <em>cutoff</em>, <em>inplace=True</em>, <em>log_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#drop_peaks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.drop_peaks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters out the peaks larger than a cut-off value in a dataseries</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
+<blockquote>
+<div><p>the name of the column to use for the removal of peak values</p>
+</div></blockquote>
+<p><strong>cutoff</strong> : int</p>
+<blockquote>
+<div><p>cut off value to use for the removing of peaks; values with an
+absolute value larger than this cut off will be removed from the data</p>
+</div></blockquote>
+<p><strong>inplace</strong> : bool</p>
+<blockquote>
+<div><p>indicates whether a new dataframe is created and returned or whether
+the operations are executed on the existing dataframe (nothing is
+returned)</p>
+</div></blockquote>
+<p><strong>log_file</strong> : str</p>
+<blockquote>
+<div><p>string containing the directory to a log file to be written out
+when using this function</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">LabSensorBased object (if inplace=False)</p>
+<blockquote>
+<div><p>the dataframe from which the double values of &#8216;data&#8217; are removed</p>
+</div></blockquote>
+<p class="last">None (if inplace=True)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.Class_OnlineSensorBased.find_nearest_time">
+<code class="descclassname">wwdata.Class_OnlineSensorBased.</code><code class="descname">find_nearest_time</code><span class="sig-paren">(</span><em>value</em>, <em>df</em>, <em>column</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#find_nearest_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.find_nearest_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>value : float</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.Class_OnlineSensorBased.go_WEST">
+<code class="descclassname">wwdata.Class_OnlineSensorBased.</code><code class="descname">go_WEST</code><span class="sig-paren">(</span><em>raw_data</em>, <em>time_data</em>, <em>WEST_name_conversion</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#go_WEST"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.go_WEST" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves a WEST compatible file (influent or other inputs)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>raw_data: str or pd DataFrame</strong></p>
+<p><strong>time_data:</strong></p>
+<p><strong>WEST_name_conversion: pd DataFrame with column names: WEST, units and RAW</strong></p>
+<blockquote class="last">
+<div><p>dataframe containing three columns: the column names for the WEST-compatible file,
+the units to appear in the WEST-compatible file and the column names of the raw
+data file.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.Class_OnlineSensorBased.total_seconds">
+<code class="descclassname">wwdata.Class_OnlineSensorBased.</code><code class="descname">total_seconds</code><span class="sig-paren">(</span><em>timedelta_value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#total_seconds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.total_seconds" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="wwdata.Class_OnlineSensorBased.vlookup_day">
+<code class="descclassname">wwdata.Class_OnlineSensorBased.</code><code class="descname">vlookup_day</code><span class="sig-paren">(</span><em>value</em>, <em>df</em>, <em>column</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#vlookup_day"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.vlookup_day" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-wwdata.data_reading_functions">
+<span id="wwdata-data-reading-functions-module"></span><h2>wwdata.data_reading_functions module<a class="headerlink" href="#module-wwdata.data_reading_functions" title="Permalink to this headline">¶</a></h2>
+<p>data_reading_functions provides functionalities for data reading in the context of the wwdata package.
+Copyright (C) 2016 Chaim De Mulder</p>
+<p>This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.</p>
+<p>You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+<dl class="function">
+<dt id="wwdata.data_reading_functions.find_and_replace">
+<code class="descclassname">wwdata.data_reading_functions.</code><code class="descname">find_and_replace</code><span class="sig-paren">(</span><em>path</em>, <em>ext</em>, <em>replace</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/data_reading_functions.html#find_and_replace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.data_reading_functions.find_and_replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the files with a certain extension in a directory and applies a find-
+replace action to those files. Removes the old files and produces files with
+a prefix stating the replacing value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> : str</p>
+<blockquote>
+<div><p>the path name of the directory to apply the function to</p>
+</div></blockquote>
+<p><strong>ext</strong> : str</p>
+<blockquote>
+<div><p>the extension of the files to be searched (excel, text or csv)</p>
+</div></blockquote>
+<p><strong>replace</strong> : array of str</p>
+<blockquote class="last">
+<div><p>the first value of replace is the string to be replaced by the second
+value of replace.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.data_reading_functions.join_files">
+<code class="descclassname">wwdata.data_reading_functions.</code><code class="descname">join_files</code><span class="sig-paren">(</span><em>path</em>, <em>files</em>, <em>ext='text'</em>, <em>sep='</em>, <em>'</em>, <em>comment='#'</em>, <em>encoding='utf8'</em>, <em>decimal='.'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/data_reading_functions.html#join_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.data_reading_functions.join_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads all files in a given directory, joins them and returns one pd.dataframe</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> : str</p>
+<blockquote>
+<div><p>path to the folder that contains the files to be joined</p>
+</div></blockquote>
+<p><strong>files</strong> : list</p>
+<blockquote>
+<div><p>list of files to be joined, must be the same extension</p>
+</div></blockquote>
+<p><strong>ext</strong> : str</p>
+<blockquote>
+<div><p>extention of the files to read; possible: excel, text, csv</p>
+</div></blockquote>
+<p><strong>sep</strong> : str</p>
+<blockquote>
+<div><p>the separating element (e.g. , or       ) necessary when reading csv-files</p>
+</div></blockquote>
+<p><strong>comment</strong> : str</p>
+<blockquote>
+<div><p>comment symbol used in the files</p>
+</div></blockquote>
+<p><strong>sort</strong> : array of bool and str</p>
+<blockquote>
+<div><p>if first element is true, apply the sort function to sort the data
+based on the tags in the column mentioned in the second element of the
+sort array</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.dataframe:</p>
+<blockquote class="last">
+<div><p>pandas dataframe containin concatenated files in the given directory</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.data_reading_functions.list_files">
+<code class="descclassname">wwdata.data_reading_functions.</code><code class="descname">list_files</code><span class="sig-paren">(</span><em>path</em>, <em>ext</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/data_reading_functions.html#list_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.data_reading_functions.list_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="wwdata.data_reading_functions.read_mat">
+<code class="descclassname">wwdata.data_reading_functions.</code><code class="descname">read_mat</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/data_reading_functions.html#read_mat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.data_reading_functions.read_mat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads in .mat datafiles and returns them as pd.DataFrame
+<a class="reference external" href="http://stackoverflow.com/questions/24762122/read-matlab-data-file-into-python-need-to-export-to-csv">http://stackoverflow.com/questions/24762122/read-matlab-data-file-into-python-need-to-export-to-csv</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.data_reading_functions.remove_empty_lines">
+<code class="descclassname">wwdata.data_reading_functions.</code><code class="descname">remove_empty_lines</code><span class="sig-paren">(</span><em>path</em>, <em>ext</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/data_reading_functions.html#remove_empty_lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.data_reading_functions.remove_empty_lines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="wwdata.data_reading_functions.sort_data">
+<code class="descclassname">wwdata.data_reading_functions.</code><code class="descname">sort_data</code><span class="sig-paren">(</span><em>data, based_on, reset_index=[False, 'new_index_name'], convert_to_timestamp=[True, 'time_name', '%d.%m.%Y %H:%M:%S']</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/data_reading_functions.html#sort_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.data_reading_functions.sort_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sorts a dataset based on values in one of the columns and splits them in
+different dataframes, returned in the form of one dictionary</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : pd.dataframe</p>
+<blockquote>
+<div><p>the dataframe containing the data that needs to be sorted</p>
+</div></blockquote>
+<p><strong>based_on</strong> : str</p>
+<blockquote>
+<div><p>the name of the column that contains the names or values the sorting
+should be based on</p>
+</div></blockquote>
+<p><strong>reset_index</strong> : [bool,str]</p>
+<blockquote>
+<div><p>array indicating if the index of the sorted datasets should be reset to
+a new one; if first element is true, the second element is the title of
+the column to use as new index; default: False</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict :</p>
+<blockquote class="last">
+<div><p>A dictionary of pandas dataframes with as labels those acquired from the
+based_on column</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.data_reading_functions.write_to_WEST">
+<code class="descclassname">wwdata.data_reading_functions.</code><code class="descname">write_to_WEST</code><span class="sig-paren">(</span><em>df</em>, <em>file_normal</em>, <em>file_west</em>, <em>units</em>, <em>filepath='/Users/chaimdemulder/Documents/Work/github/wwdata/docs'</em>, <em>fillna=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/data_reading_functions.html#write_to_WEST"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.data_reading_functions.write_to_WEST" title="Permalink to this definition">¶</a></dt>
+<dd><p>writes a text-file that is compatible with WEST. Adds the units as
+they are given in the &#8216;units&#8217; argument.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>df</strong> : pd.DataFrame</p>
+<blockquote>
+<div><p>the dataframe to write to WEST</p>
+</div></blockquote>
+<p><strong>file_normal</strong> : str</p>
+<blockquote>
+<div><p>name of the original file to write, not yet compatible with WEST</p>
+</div></blockquote>
+<p><strong>file_west</strong> : str</p>
+<blockquote>
+<div><p>name of the file that needs to be WEST compatible</p>
+</div></blockquote>
+<p><strong>units</strong> : array of strings</p>
+<blockquote>
+<div><p>array containing the units for the respective columns in df</p>
+</div></blockquote>
+<p><strong>filepath</strong> : str</p>
+<blockquote>
+<div><p>directory to save the files in; defaults to the current one</p>
+</div></blockquote>
+<p><strong>fillna</strong> : bool</p>
+<blockquote>
+<div><p>when True, replaces nan values with 0 values (this might avoid
+WEST problems later one).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None; writes files</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-wwdata.time_conversion_functions">
+<span id="wwdata-time-conversion-functions-module"></span><h2>wwdata.time_conversion_functions module<a class="headerlink" href="#module-wwdata.time_conversion_functions" title="Permalink to this headline">¶</a></h2>
+<p>time_conversion_functions provides functionalities for converting certain types of time data to other types, in the context of the wwdata package.
+Copyright (C) 2016 Chaim De Mulder</p>
+<p>This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.</p>
+<p>You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+<dl class="function">
+<dt id="wwdata.time_conversion_functions.get_absolute_time">
+<code class="descclassname">wwdata.time_conversion_functions.</code><code class="descname">get_absolute_time</code><span class="sig-paren">(</span><em>value</em>, <em>date_type='WindowsDateSystem'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/time_conversion_functions.html#get_absolute_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.time_conversion_functions.get_absolute_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a coded time to the absolute date at which the experiment was
+conducted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>value</strong> : int or float</p>
+<blockquote>
+<div><p>a code for a certain point in time</p>
+</div></blockquote>
+<p><strong>date_type</strong> : str</p>
+<blockquote>
+<div><p>type of coding used for the time point, probably depending on the
+software which was used to acquire the data, e.g. the Windows Date
+System (here as default, see also:
+<a class="reference external" href="http://excelsemipro.com/2010/08/date-and-time-calculation-in-excel/">http://excelsemipro.com/2010/08/date-and-time-calculation-in-excel/</a>)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">datetime.datetime</p>
+<blockquote class="last">
+<div><p>python datetime object</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.time_conversion_functions.make_datetime">
+<code class="descclassname">wwdata.time_conversion_functions.</code><code class="descname">make_datetime</code><span class="sig-paren">(</span><em>array</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/time_conversion_functions.html#make_datetime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.time_conversion_functions.make_datetime" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>array with elements</dt>
+<dd>0: year (yy)
+1: month (mm)
+2: day in month (dd)
+3: hour (h or hh)
+4: minutes (minmin)</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.time_conversion_functions.make_month_day_array">
+<code class="descclassname">wwdata.time_conversion_functions.</code><code class="descname">make_month_day_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/time_conversion_functions.html#make_month_day_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.time_conversion_functions.make_month_day_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>makes a dataframe containing two columns, one with the number of the month,
+one with the day of the month. Useful in creating datetime objects based on
+e.g. date serial numbers from the Window Date System
+(<a class="reference external" href="http://excelsemipro.com/2010/08/date-and-time-calculation-in-excel/">http://excelsemipro.com/2010/08/date-and-time-calculation-in-excel/</a>)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.DataFrame :</p>
+<blockquote class="last">
+<div><p>dataframe with number of the month and number of the day of the month
+for a whole year</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.time_conversion_functions.timedelta_to_abs">
+<code class="descclassname">wwdata.time_conversion_functions.</code><code class="descname">timedelta_to_abs</code><span class="sig-paren">(</span><em>timedelta</em>, <em>unit='d'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/time_conversion_functions.html#timedelta_to_abs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.time_conversion_functions.timedelta_to_abs" title="Permalink to this definition">¶</a></dt>
+<dd><p>timedelta : array of timedelta values</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.time_conversion_functions.to_datetime_singlevalue">
+<code class="descclassname">wwdata.time_conversion_functions.</code><code class="descname">to_datetime_singlevalue</code><span class="sig-paren">(</span><em>time</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/time_conversion_functions.html#to_datetime_singlevalue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.time_conversion_functions.to_datetime_singlevalue" title="Permalink to this definition">¶</a></dt>
+<dd><p>In case timedata is in a string format, to convert it to a datetime object,
+it needs to be in the right format, e.g. dd-mm-yyyy hh:mm:ss (so two of each)
+This function takes care of that, to a certain extent.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.time_conversion_functions.to_days">
+<code class="descclassname">wwdata.time_conversion_functions.</code><code class="descname">to_days</code><span class="sig-paren">(</span><em>timedelta</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/time_conversion_functions.html#to_days"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.time_conversion_functions.to_days" title="Permalink to this definition">¶</a></dt>
+<dd><p>timedelta : timedelta value</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.time_conversion_functions.to_hours">
+<code class="descclassname">wwdata.time_conversion_functions.</code><code class="descname">to_hours</code><span class="sig-paren">(</span><em>timedelta</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/time_conversion_functions.html#to_hours"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.time_conversion_functions.to_hours" title="Permalink to this definition">¶</a></dt>
+<dd><p>timedelta : timedelta value</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.time_conversion_functions.to_minutes">
+<code class="descclassname">wwdata.time_conversion_functions.</code><code class="descname">to_minutes</code><span class="sig-paren">(</span><em>timedelta</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/time_conversion_functions.html#to_minutes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.time_conversion_functions.to_minutes" title="Permalink to this definition">¶</a></dt>
+<dd><p>timedelta : timedelta value</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="wwdata.time_conversion_functions.to_seconds">
+<code class="descclassname">wwdata.time_conversion_functions.</code><code class="descname">to_seconds</code><span class="sig-paren">(</span><em>timedelta</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/time_conversion_functions.html#to_seconds"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.time_conversion_functions.to_seconds" title="Permalink to this definition">¶</a></dt>
+<dd><p>timedelta : timedelta value</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-wwdata">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-wwdata" title="Permalink to this headline">¶</a></h2>
+<p>Top-level package for wwdata.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">wwdata package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-wwdata.Class_HydroData">wwdata.Class_HydroData module</a></li>
+<li><a class="reference internal" href="#module-wwdata.Class_LabExperimBased">wwdata.Class_LabExperimBased module</a></li>
+<li><a class="reference internal" href="#module-wwdata.Class_LabSensorBased">wwdata.Class_LabSensorBased module</a></li>
+<li><a class="reference internal" href="#module-wwdata.Class_OnlineSensorBased">wwdata.Class_OnlineSensorBased module</a></li>
+<li><a class="reference internal" href="#module-wwdata.data_reading_functions">wwdata.data_reading_functions module</a></li>
+<li><a class="reference internal" href="#module-wwdata.time_conversion_functions">wwdata.time_conversion_functions module</a></li>
+<li><a class="reference internal" href="#module-wwdata">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="modules.html"
+                        title="previous chapter">wwdata</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="contributing.html"
+                        title="next chapter">Contributing</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/wwdata.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="contributing.html" title="Contributing"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="wwdata"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">wwdata 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >wwdata</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Chaim De Mulder.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

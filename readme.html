@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>wwdata &#8212; wwdata 0.1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">wwdata 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="wwdata">
+<h1>wwdata<a class="headerlink" href="#wwdata" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://pypi.python.org/pypi/wwdata"><img alt="https://img.shields.io/pypi/v/wwdata.svg" src="https://img.shields.io/pypi/v/wwdata.svg" /></a>
+<a class="reference external image-reference" href="https://travis-ci.org/UGentBiomath/wwdata?branch=master"><img alt="https://img.shields.io/travis/cdemulde/wwdata.svg" src="https://img.shields.io/travis/cdemulde/wwdata.svg" /></a>
+<a class="reference external image-reference" href="https://wwdata.readthedocs.io/en/master/"><img alt="Documentation Status" src="https://readthedocs.org/projects/wwdata/badge/?version=master" /></a>
+<a class="reference external image-reference" href="https://pyup.io/repos/github/UGentBiomath/wwdata/"><img alt="Updates" src="https://pyup.io/repos/github/UGentBiomath/wwdata/shield.svg" /></a>
+<a class="reference external image-reference" href="https://doi.org/10.5281/zenodo.1035739"><img alt="https://zenodo.org/badge/DOI/10.5281/zenodo.1035739.svg" src="https://zenodo.org/badge/DOI/10.5281/zenodo.1035739.svg" /></a>
+<p>Data analysis package aimed at data obtained in the context of (waste)water</p>
+<ul class="simple">
+<li>Free software: GNU General Public License v3</li>
+<li>Documentation: <a class="reference external" href="https://wwdata.readthedocs.io">https://wwdata.readthedocs.io</a></li>
+<li>Funding: Waterboard De Dommel</li>
+<li>Context: PhD research at BIOMATH, Ghent University</li>
+</ul>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<p>The package contains one class and three subclasses, all in separate .py files. Division in subclasses is based on the type of data:</p>
+<ul class="simple">
+<li>online data from full scale installations (OnlineSensorBased)</li>
+<li>online data from lab experiments (LabSensorBased)</li>
+<li>offline data obtained from lab experiments (LabExperimentBased).</li>
+</ul>
+<p>Jupyter notbeook files (.ipynb) illustrate the use of the available functions. The most developed class is the OnlineSensorBased one. The workflow of this class is shown in below Figure, where OSB represents an OnlineSensorBased object. Main premises are to never delete data but to tag it and to be able to check the reliability when gaps in datasets are filled.</p>
+<img alt="_images/packagestructure_rel.png" class="align-center" src="_images/packagestructure_rel.png" />
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>For the workflow with code and more specific examples, check out the Showcase Jupyter Notebook(s) included as documentation of the package.</p>
+</div>
+<div class="section" id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<p>This package was created with <a class="reference external" href="https://github.com/audreyr/cookiecutter">Cookiecutter</a> and the <a class="reference external" href="https://github.com/audreyr/cookiecutter-pypackage">audreyr/cookiecutter-pypackage</a> project template.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">wwdata</a><ul>
+<li><a class="reference internal" href="#structure">Structure</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+<li><a class="reference internal" href="#credits">Credits</a></li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/readme.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">wwdata 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Chaim De Mulder.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>
