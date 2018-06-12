@@ -221,7 +221,7 @@
 <span class="sd">        Note</span>
 <span class="sd">        ----</span>
 <span class="sd">        It is assumed that the dropped rows containt the same data as their index-</span>
-<span class="sd">        based duplicate, i.e. that no data is lost using the function. </span>
+<span class="sd">        based duplicate, i.e. that no data is lost using the function.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1">#len_orig = len(self.data)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">())</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
@@ -375,9 +375,10 @@
 <span class="sd">        unit : str</span>
 <span class="sd">            unit to which to convert the time values (sec, min, hr or d)</span>
 
-<span class="sd">        output</span>
-<span class="sd">        ------</span>
-
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None if inplace is True</span>
+<span class="sd">        HydroData object if inplace it False</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">time_data</span> <span class="o">==</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span>
             <span class="n">timedata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">time</span>
