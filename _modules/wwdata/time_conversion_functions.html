@@ -50,21 +50,21 @@
   <h1>Source code for wwdata.time_conversion_functions</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    time_conversion_functions provides functionalities for converting certain types of time data to other types, in the context of the wwdata package.</span>
-<span class="sd">    Copyright (C) 2016 Chaim De Mulder</span>
+<span class="sd">time_conversion_functions provides functionalities for converting certain types of time data to other types, in the context of the wwdata package.</span>
+<span class="sd">Copyright (C) 2016 Chaim De Mulder</span>
 
-<span class="sd">    This program is free software: you can redistribute it and/or modify</span>
-<span class="sd">    it under the terms of the GNU Affero General Public License as published</span>
-<span class="sd">    by the Free Software Foundation, either version 3 of the License, or</span>
-<span class="sd">    (at your option) any later version.</span>
+<span class="sd">This program is free software: you can redistribute it and/or modify</span>
+<span class="sd">it under the terms of the GNU Affero General Public License as published</span>
+<span class="sd">by the Free Software Foundation, either version 3 of the License, or</span>
+<span class="sd">(at your option) any later version.</span>
 
-<span class="sd">    This program is distributed in the hope that it will be useful,</span>
-<span class="sd">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span class="sd">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<span class="sd">    GNU Affero General Public License for more details.</span>
+<span class="sd">This program is distributed in the hope that it will be useful,</span>
+<span class="sd">but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="sd">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="sd">GNU Affero General Public License for more details.</span>
 
-<span class="sd">    You should have received a copy of the GNU Affero General Public License</span>
-<span class="sd">    along with this program.  If not, see http://www.gnu.org/licenses/.</span>
+<span class="sd">You should have received a copy of the GNU Affero General Public License</span>
+<span class="sd">along with this program.  If not, see http://www.gnu.org/licenses/.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -73,7 +73,7 @@
 
 <div class="viewcode-block" id="make_month_day_array"><a class="viewcode-back" href="../../wwdata.html#wwdata.time_conversion_functions.make_month_day_array">[docs]</a><span class="k">def</span> <span class="nf">make_month_day_array</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    makes a dataframe containing two columns, one with the number of the month,</span>
+<span class="sd">    Returns a dataframe containing two columns, one with the number of the month,</span>
 <span class="sd">    one with the day of the month. Useful in creating datetime objects based on</span>
 <span class="sd">    e.g. date serial numbers from the Window Date System</span>
 <span class="sd">    (http://excelsemipro.com/2010/08/date-and-time-calculation-in-excel/)</span>
@@ -180,8 +180,8 @@
 <span class="k">def</span> <span class="nf">_get_datetime_info</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">    parameter</span>
-<span class="sd">    --------</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    string containing date and time info (format as received from EHV)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">array</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
@@ -191,8 +191,8 @@
 
 <div class="viewcode-block" id="make_datetime"><a class="viewcode-back" href="../../wwdata.html#wwdata.time_conversion_functions.make_datetime">[docs]</a><span class="k">def</span> <span class="nf">make_datetime</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    parameter</span>
-<span class="sd">    --------</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    array with elements</span>
 <span class="sd">        0: year (yy)</span>
 <span class="sd">        1: month (mm)</span>

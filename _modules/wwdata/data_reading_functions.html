@@ -50,21 +50,21 @@
   <h1>Source code for wwdata.data_reading_functions</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    data_reading_functions provides functionalities for data reading in the context of the wwdata package.</span>
-<span class="sd">    Copyright (C) 2016 Chaim De Mulder</span>
+<span class="sd">data_reading_functions provides functionalities for data reading in the context of the wwdata package.</span>
+<span class="sd">Copyright (C) 2016 Chaim De Mulder</span>
 
-<span class="sd">    This program is free software: you can redistribute it and/or modify</span>
-<span class="sd">    it under the terms of the GNU Affero General Public License as published</span>
-<span class="sd">    by the Free Software Foundation, either version 3 of the License, or</span>
-<span class="sd">    (at your option) any later version.</span>
+<span class="sd">This program is free software: you can redistribute it and/or modify</span>
+<span class="sd">it under the terms of the GNU Affero General Public License as published</span>
+<span class="sd">by the Free Software Foundation, either version 3 of the License, or</span>
+<span class="sd">(at your option) any later version.</span>
 
-<span class="sd">    This program is distributed in the hope that it will be useful,</span>
-<span class="sd">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span class="sd">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<span class="sd">    GNU Affero General Public License for more details.</span>
+<span class="sd">This program is distributed in the hope that it will be useful,</span>
+<span class="sd">but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="sd">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="sd">GNU Affero General Public License for more details.</span>
 
-<span class="sd">    You should have received a copy of the GNU Affero General Public License</span>
-<span class="sd">    along with this program.  If not, see http://www.gnu.org/licenses/.</span>
+<span class="sd">You should have received a copy of the GNU Affero General Public License</span>
+<span class="sd">along with this program.  If not, see http://www.gnu.org/licenses/.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -78,7 +78,16 @@
 
 <div class="viewcode-block" id="list_files"><a class="viewcode-back" href="../../wwdata.html#wwdata.data_reading_functions.list_files">[docs]</a><span class="k">def</span> <span class="nf">list_files</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">ext</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns a list of files in a certain folder (&#39;path&#39;) with a certain extension</span>
+<span class="sd">    (&#39;ext&#39;)</span>
 
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        path to the folder containing the files to be listed</span>
+<span class="sd">    ext : str</span>
+<span class="sd">        extension of the files to be listed; current options are &#39;excel&#39;,&#39;text&#39;</span>
+<span class="sd">        or &#39;csv&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;excel&#39;</span><span class="p">:</span>
         <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">if</span> <span class="s1">&#39;.xls&#39;</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
@@ -96,6 +105,17 @@
 
 <div class="viewcode-block" id="remove_empty_lines"><a class="viewcode-back" href="../../wwdata.html#wwdata.data_reading_functions.remove_empty_lines">[docs]</a><span class="k">def</span> <span class="nf">remove_empty_lines</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">ext</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Removes the empty lines from files in a certain folder (&#39;path&#39;) and with a</span>
+<span class="sd">    certain extension (&#39;ext&#39;)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    path : str</span>
+<span class="sd">        path to the folder containing the files in which empty lines need to be</span>
+<span class="sd">        removed</span>
+<span class="sd">    ext : str</span>
+<span class="sd">        extension of the files in which empty lines need to be removed; current</span>
+<span class="sd">        options are &#39;excel&#39;,&#39;text&#39; or &#39;csv&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">files</span> <span class="o">=</span> <span class="n">list_files</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">ext</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">files</span><span class="p">:</span>
@@ -232,6 +252,7 @@
 
 <div class="viewcode-block" id="read_mat"><a class="viewcode-back" href="../../wwdata.html#wwdata.data_reading_functions.read_mat">[docs]</a><span class="k">def</span> <span class="nf">read_mat</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    TO DO</span>
 <span class="sd">    Reads in .mat datafiles and returns them as pd.DataFrame</span>
 <span class="sd">    http://stackoverflow.com/questions/24762122/read-matlab-data-file-into-python-need-to-export-to-csv</span>
 

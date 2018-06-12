@@ -50,21 +50,21 @@
   <h1>Source code for wwdata.Class_LabExperimBased</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Class_LabExperimBased provides functionalities for data handling of data obtained in lab experiments in the field of (waste)water treatment.</span>
-<span class="sd">    Copyright (C) 2016 Chaim De Mulder</span>
+<span class="sd">Class_LabExperimBased provides functionalities for data handling of data obtained in lab experiments in the field of (waste)water treatment.</span>
+<span class="sd">Copyright (C) 2016 Chaim De Mulder</span>
 
-<span class="sd">    This program is free software: you can redistribute it and/or modify</span>
-<span class="sd">    it under the terms of the GNU Affero General Public License as published</span>
-<span class="sd">    by the Free Software Foundation, either version 3 of the License, or</span>
-<span class="sd">    (at your option) any later version.</span>
+<span class="sd">This program is free software: you can redistribute it and/or modify</span>
+<span class="sd">it under the terms of the GNU Affero General Public License as published</span>
+<span class="sd">by the Free Software Foundation, either version 3 of the License, or</span>
+<span class="sd">(at your option) any later version.</span>
 
-<span class="sd">    This program is distributed in the hope that it will be useful,</span>
-<span class="sd">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span class="sd">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<span class="sd">    GNU Affero General Public License for more details.</span>
+<span class="sd">This program is distributed in the hope that it will be useful,</span>
+<span class="sd">but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="sd">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="sd">GNU Affero General Public License for more details.</span>
 
-<span class="sd">    You should have received a copy of the GNU Affero General Public License</span>
-<span class="sd">    along with this program.  If not, see http://www.gnu.org/licenses/.</span>
+<span class="sd">You should have received a copy of the GNU Affero General Public License</span>
+<span class="sd">along with this program.  If not, see http://www.gnu.org/licenses/.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -86,8 +86,17 @@
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    (see HydroData docstring)</span>
-
+<span class="sd">    timedata_column : str</span>
+<span class="sd">        name of the column containing the time data</span>
+<span class="sd">    data_type : str</span>
+<span class="sd">        type of the data provided</span>
+<span class="sd">    experiment_tag : str</span>
+<span class="sd">        A tag identifying the experiment; can be a date or a code used by</span>
+<span class="sd">        the producer/owner of the data.</span>
+<span class="sd">    time_unit : str</span>
+<span class="sd">        The time unit in which the time data is given</span>
+<span class="sd">    units : array</span>
+<span class="sd">        The units of the variables in the columns</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">timedata_column</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span><span class="n">data_type</span><span class="o">=</span><span class="s1">&#39;NAT&#39;</span><span class="p">,</span>
@@ -95,10 +104,6 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        initialisation of a LabExperimBased object, based on a previously defined</span>
 <span class="sd">        HydroData object.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        (currently no additional data needed to the HydroData object creation)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">HydroData</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">timedata_column</span><span class="o">=</span><span class="n">timedata_column</span><span class="p">,</span><span class="n">data_type</span><span class="o">=</span><span class="n">data_type</span><span class="p">,</span>
                            <span class="n">experiment_tag</span><span class="o">=</span><span class="n">experiment_tag</span><span class="p">,</span><span class="n">time_unit</span><span class="o">=</span><span class="n">time_unit</span><span class="p">)</span>

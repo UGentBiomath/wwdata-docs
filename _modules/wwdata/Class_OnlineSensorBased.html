@@ -49,21 +49,21 @@
             
   <h1>Source code for wwdata.Class_OnlineSensorBased</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Class_OnlineSensorBased provides functionalities for data handling of data obtained with online sensors in the field of (waste)water treatment.</span>
-<span class="sd">    Copyright (C) 2016 Chaim De Mulder</span>
+<span class="sd">Class_OnlineSensorBased provides functionalities for data handling of data obtained with online sensors in the field of (waste)water treatment.</span>
+<span class="sd">Copyright (C) 2016 Chaim De Mulder</span>
 
-<span class="sd">    This program is free software: you can redistribute it and/or modify</span>
-<span class="sd">    it under the terms of the GNU Affero General Public License as published</span>
-<span class="sd">    by the Free Software Foundation, either version 3 of the License, or</span>
-<span class="sd">    (at your option) any later version.</span>
+<span class="sd">This program is free software: you can redistribute it and/or modify</span>
+<span class="sd">it under the terms of the GNU Affero General Public License as published</span>
+<span class="sd">by the Free Software Foundation, either version 3 of the License, or</span>
+<span class="sd">(at your option) any later version.</span>
 
-<span class="sd">    This program is distributed in the hope that it will be useful,</span>
-<span class="sd">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span class="sd">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<span class="sd">    GNU Affero General Public License for more details.</span>
+<span class="sd">This program is distributed in the hope that it will be useful,</span>
+<span class="sd">but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="sd">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="sd">GNU Affero General Public License for more details.</span>
 
-<span class="sd">    You should have received a copy of the GNU Affero General Public License</span>
-<span class="sd">    along with this program.  If not, see http://www.gnu.org/licenses/.</span>
+<span class="sd">You should have received a copy of the GNU Affero General Public License</span>
+<span class="sd">along with this program.  If not, see http://www.gnu.org/licenses/.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1">#import sys</span>
@@ -88,7 +88,17 @@
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    (see HydroData docstring)</span>
+<span class="sd">    timedata_column : str</span>
+<span class="sd">        name of the column containing the time data</span>
+<span class="sd">    data_type : str</span>
+<span class="sd">        type of data provided</span>
+<span class="sd">    experiment_tag : str</span>
+<span class="sd">        A tag identifying the experiment; can be a date or a code used by</span>
+<span class="sd">        the producer/owner of the data.</span>
+<span class="sd">    time_unit : str</span>
+<span class="sd">        The time unit in which the time data is given</span>
+<span class="sd">    units : array</span>
+<span class="sd">        The units of the variables in the columns</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">timedata_column</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span><span class="n">data_type</span><span class="o">=</span><span class="s1">&#39;WWTP&#39;</span><span class="p">,</span>
@@ -96,10 +106,6 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        initialisation of a FullScaleSensorBased object, based on a previously defined</span>
 <span class="sd">        HydroData object.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        (currently no additional data needed to the HydroData object creation)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">HydroData</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span><span class="n">timedata_column</span><span class="o">=</span><span class="n">timedata_column</span><span class="p">,</span>
                            <span class="n">data_type</span><span class="o">=</span><span class="n">data_type</span><span class="p">,</span><span class="n">experiment_tag</span><span class="o">=</span><span class="n">experiment_tag</span><span class="p">,</span>
@@ -137,8 +143,13 @@
 
 <div class="viewcode-block" id="OnlineSensorBased.drop_index_duplicates"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_OnlineSensorBased.OnlineSensorBased.drop_index_duplicates">[docs]</a>    <span class="k">def</span> <span class="nf">drop_index_duplicates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        drop rows with a duplicate index, ASSUMING THEY HAVE THE SAME DATA IN</span>
-<span class="sd">        THEM!! Also updates the meta_valid, meta_filled and filled dataframes</span>
+<span class="sd">        drop rows with a duplicate index. Also updates the meta_valid,</span>
+<span class="sd">        meta_filled and filled dataframes</span>
+
+<span class="sd">        Note</span>
+<span class="sd">        ----</span>
+<span class="sd">        This operation assumes the dropped rows have the same data in them and</span>
+<span class="sd">        therefor no data is lost.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1">#self.data = self.data.groupby(self.index()).first()</span>
         <span class="c1">#self.meta_valid = self.meta_valid.groupby(self.meta_valid.index).first()</span>
@@ -158,7 +169,7 @@
 
 <div class="viewcode-block" id="OnlineSensorBased.calc_total_proportional"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_OnlineSensorBased.OnlineSensorBased.calc_total_proportional">[docs]</a>    <span class="k">def</span> <span class="nf">calc_total_proportional</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">Q_tot</span><span class="p">,</span><span class="n">Q</span><span class="p">,</span><span class="n">conc</span><span class="p">,</span><span class="n">new_name</span><span class="o">=</span><span class="s1">&#39;new&#39;</span><span class="p">,</span><span class="n">unit</span><span class="o">=</span><span class="s1">&#39;mg/l&#39;</span><span class="p">,</span>
                                 <span class="n">filled</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;CONFIRMED</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculates the total concentration of an incoming flow, based on the</span>
 <span class="sd">        given total flow and the separate incoming flows and concentrations</span>
 
@@ -174,6 +185,9 @@
 <span class="sd">            name of the column to be added</span>
 <span class="sd">        filled : bool</span>
 <span class="sd">            if true, use self.filled to calculate proportions from</span>
+
+<span class="sd">        Note</span>
+<span class="sd">        ------</span>
 <span class="sd">        !!Order of columns in Q and conc must match!!</span>
 
 <span class="sd">        Returns</span>
@@ -1329,13 +1343,6 @@
 <span class="sd">        Because _calculate_filling_error inserts random gaps, results differ</span>
 <span class="sd">        every time it is used. Check_filling_error averages this out.</span>
 
-<span class="sd">        !! Important !!</span>
-<span class="sd">        When checking for the error on data filling, a period (arange argument)</span>
-<span class="sd">        with mostly reliable data should be used. If for example large gaps are</span>
-<span class="sd">        already present in the given data, this will heavily influence the</span>
-<span class="sd">        returned error, as filled values will be compared with the values from</span>
-<span class="sd">        the data gap.</span>
-
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        nr_iterations : int</span>
@@ -1359,9 +1366,18 @@
 <span class="sd">            Arguments for the filling function; refer to the relevant filling</span>
 <span class="sd">            function to know what arguments to give</span>
 
+<span class="sd">        Note</span>
+<span class="sd">        ------</span>
+<span class="sd">        When checking for the error on data filling, a period (arange argument)</span>
+<span class="sd">        with mostly reliable data should be used. If for example large gaps are</span>
+<span class="sd">        already present in the given data, this will heavily influence the</span>
+<span class="sd">        returned error, as filled values will be compared with the values from</span>
+<span class="sd">        the data gap.</span>
+
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        None; adds the average filling error the self.filling_error dataframe</span>
+<span class="sd">        None</span>
+<span class="sd">            adds the average filling error the self.filling_error dataframe</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># shut off warnings, to avoid e.g. warning about replacing datapoints</span>
@@ -1407,13 +1423,22 @@
 
 <div class="viewcode-block" id="find_nearest_time"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_OnlineSensorBased.find_nearest_time">[docs]</a><span class="k">def</span> <span class="nf">find_nearest_time</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="n">column</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the (time) value in a dataframe column nearest to a given value</span>
 
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
 <span class="sd">    value : float</span>
+<span class="sd">        time value to find the closest value for in &#39;df&#39;</span>
+<span class="sd">    df : pd.Dataframe</span>
+<span class="sd">        dataframe to use</span>
+<span class="sd">    column : str</span>
+<span class="sd">        column to check &#39;value&#39; against</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">-</span><span class="n">value</span><span class="p">))</span><span class="o">.</span><span class="n">argmin</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="vlookup_day"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_OnlineSensorBased.vlookup_day">[docs]</a><span class="k">def</span> <span class="nf">vlookup_day</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="n">column</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the dataframe index of a given value</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">value</span><span class="p">]</span></div>
 

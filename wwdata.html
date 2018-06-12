@@ -78,7 +78,37 @@ along with this program.  If not, see <a class="reference external" href="http:/
 <dt id="wwdata.Class_HydroData.HydroData">
 <em class="property">class </em><code class="descclassname">wwdata.Class_HydroData.</code><code class="descname">HydroData</code><span class="sig-paren">(</span><em>data</em>, <em>timedata_column='index'</em>, <em>data_type='WWTP'</em>, <em>experiment_tag='No tag given'</em>, <em>time_unit=None</em>, <em>units=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<p class="rubric">Methods</p>
+<dl class="attribute">
+<dt id="wwdata.Class_HydroData.HydroData.timedata_column">
+<code class="descname">timedata_column</code><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.timedata_column" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; name of the column containing the time data</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_HydroData.HydroData.data_type">
+<code class="descname">data_type</code><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.data_type" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; type of data provided</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_HydroData.HydroData.experiment_tag">
+<code class="descname">experiment_tag</code><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.experiment_tag" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; A tag identifying the experiment; can be a date or a code used by
+the producer/owner of the data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_HydroData.HydroData.time_unit">
+<code class="descname">time_unit</code><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.time_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; The time unit in which the time data is given</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_HydroData.HydroData.units">
+<code class="descname">units</code><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.units" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>array</em> &#8211; The units of the variables in the columns</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="wwdata.Class_HydroData.HydroData.absolute_to_relative">
 <code class="descname">absolute_to_relative</code><span class="sig-paren">(</span><em>time_data='index'</em>, <em>unit='d'</em>, <em>inplace=True</em>, <em>save_abs=True</em>, <em>decimals=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.absolute_to_relative"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.absolute_to_relative" title="Permalink to this definition">¶</a></dt>
@@ -88,15 +118,13 @@ in the given unit, starting from 0</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>time_data</strong> : str</p>
-<blockquote>
-<div><p>name of the column containing the time data. If this is the index
-column, just give &#8216;index&#8217; (also default)</p>
-</div></blockquote>
-<p><strong>unit</strong> : str</p>
-<blockquote class="last">
-<div><p>unit to which to convert the time values (sec, min, hr or d)</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>time_data</strong> (<em>str</em>) &#8211; name of the column containing the time data. If this is the index
+column, just give &#8216;index&#8217; (also default)</li>
+<li><strong>unit</strong> (<em>str</em>) &#8211; unit to which to convert the time values (sec, min, hr or d)</li>
+<li><strong>output</strong> &#8211; </li>
+<li><strong>------</strong> &#8211; </li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -114,12 +142,8 @@ process (e.g. filling etc.)</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column_names</strong> : array</p>
-<blockquote class="last">
-<div><p>array containing the names of the columns to add to the meta_valied
-dataframe</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>column_names</strong> (<em>array</em>) &#8211; array containing the names of the columns to add to the meta_valied
+dataframe</td>
 </tr>
 </tbody>
 </table>
@@ -136,37 +160,24 @@ Plotting is possible.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column_name</strong> : str</p>
-<blockquote>
-<div><p>name of the column containing the data to calculate an average day
-for</p>
-</div></blockquote>
-<p><strong>arange</strong> : 2-element array of ints</p>
-<blockquote>
-<div><p>contains the beginning and end day of the period to use for average
-day calculation</p>
-</div></blockquote>
-<p><strong>quantile</strong> : float between 0 and 1</p>
-<blockquote>
-<div><p>value to use for the calculation of the quantiles</p>
-</div></blockquote>
-<p><strong>plot</strong> : bool</p>
-<blockquote>
-<div><p>plot or not</p>
-</div></blockquote>
-<p><strong>plot_method</strong> : str</p>
-<blockquote>
-<div><p>method to use for plotting. Available: &#8220;quantile&#8221; or &#8220;stdev&#8221;</p>
-</div></blockquote>
-<p><strong>clear</strong> : bool</p>
-<blockquote>
-<div><p>wether or not to clear the key in the self.daily_profile dictionary
-that is already present</p>
-</div></blockquote>
-<p><strong>Returns</strong></p>
-<p><strong>&#8212;&#8212;</strong></p>
-<p><strong>None; creates a dictionary self.daily_profile containing information</strong></p>
-<p class="last"><strong>on the average day as calculated.</strong></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>column_name</strong> (<em>str</em>) &#8211; name of the column containing the data to calculate an average day
+for</li>
+<li><strong>arange</strong> (<em>2-element array of ints</em>) &#8211; contains the beginning and end day of the period to use for average
+day calculation</li>
+<li><strong>quantile</strong> (<em>float between 0 and 1</em>) &#8211; value to use for the calculation of the quantiles</li>
+<li><strong>plot</strong> (<em>bool</em>) &#8211; plot or not</li>
+<li><strong>plot_method</strong> (<em>str</em>) &#8211; method to use for plotting. Available: &#8220;quantile&#8221; or &#8220;stdev&#8221;</li>
+<li><strong>clear</strong> (<em>bool</em>) &#8211; wether or not to clear the key in the self.daily_profile dictionary
+that is already present</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">creates a dictionary self.daily_profile containing information
+on the average day as calculated.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
 </td>
 </tr>
 </tbody>
@@ -183,28 +194,21 @@ deviation on this is calculated</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_1</strong> : str</p>
-<blockquote>
-<div><p>name of the data column containing the data to be in the numerator
-of the ratio calculation</p>
-</div></blockquote>
-<p><strong>data_2</strong> : str</p>
-<blockquote>
-<div><p>name of the data column containing the data to be in the denominator
-of the ratio calculation</p>
-</div></blockquote>
-<p><strong>arange</strong> : array of two values</p>
-<blockquote>
-<div><p>the range within which the ratio needs to be calculated</p>
-</div></blockquote>
-<p><strong>only_checked</strong> : bool</p>
-<blockquote>
-<div><p>if &#8216;True&#8217;, filtered values are excluded; default to &#8216;False&#8217;</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_1</strong> (<em>str</em>) &#8211; name of the data column containing the data to be in the numerator
+of the ratio calculation</li>
+<li><strong>data_2</strong> (<em>str</em>) &#8211; name of the data column containing the data to be in the denominator
+of the ratio calculation</li>
+<li><strong>arange</strong> (<em>array of two values</em>) &#8211; the range within which the ratio needs to be calculated</li>
+<li><strong>only_checked</strong> (<em>bool</em>) &#8211; if &#8216;True&#8217;, filtered values are excluded; default to &#8216;False&#8217;</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The average ratio of the first data column over the second one within</p>
-<p class="last">the given range and including the standard deviation</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>The average ratio of the first data column over the second one within</em></li>
+<li><em>the given range and including the standard deviation</em></li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -221,32 +225,25 @@ unit, which will then be used to calculate the slopes with.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>xdata</strong> : str</p>
-<blockquote>
-<div><p>name of the column containing the xdata for slope calculation
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>xdata</strong> (<em>str</em>) &#8211; name of the column containing the xdata for slope calculation
 (e.g. time). If &#8216;index&#8217;, the index is used as xdata. If datetime
-objects, a time_unit is expected to calculate the slopes.</p>
-</div></blockquote>
-<p><strong>data_name</strong> : str</p>
-<blockquote>
-<div><p>name of the column containing the data_name for slope calculation</p>
-</div></blockquote>
-<p><strong>time_unit</strong> : str</p>
-<blockquote>
-<div><p>time unit to be used for the slope calculation (in case this is
+objects, a time_unit is expected to calculate the slopes.</li>
+<li><strong>data_name</strong> (<em>str</em>) &#8211; name of the column containing the data_name for slope calculation</li>
+<li><strong>time_unit</strong> (<em>str</em>) &#8211; time unit to be used for the slope calculation (in case this is
 based on time); if None, slopes are simply calculated based on the
 values given
 !! This value has no impact if the xdata column is the index and is
 not a datetime type. If that is the case, it is assumed that the
-user knows the unit of the xdata !!</p>
-</div></blockquote>
+user knows the unit of the xdata !!</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.Series</p>
-<blockquote class="last">
-<div><p>pandas Series object containing the slopes calculated for the
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pandas Series object containing the slopes calculated for the
 chosen variable</p>
-</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pd.Series</p>
 </td>
 </tr>
 </tbody>
@@ -263,29 +260,22 @@ the ratio values</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_1</strong> : str</p>
-<blockquote>
-<div><p>name of the data column containing the data to be in the numerator
-of the ratio calculation</p>
-</div></blockquote>
-<p><strong>data_2</strong> : str</p>
-<blockquote>
-<div><p>name of the data column containing the data to be in the denominator
-of the ratio calculation</p>
-</div></blockquote>
-<p><strong>arange</strong> : int</p>
-<blockquote>
-<div><p>the range (in days) for which the ratios need to be calculated and
-compared</p>
-</div></blockquote>
-<p><strong>only_checked</strong> : bool</p>
-<blockquote>
-<div><p>if &#8216;True&#8217;, filtered values are excluded; default to &#8216;False&#8217;</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_1</strong> (<em>str</em>) &#8211; name of the data column containing the data to be in the numerator
+of the ratio calculation</li>
+<li><strong>data_2</strong> (<em>str</em>) &#8211; name of the data column containing the data to be in the denominator
+of the ratio calculation</li>
+<li><strong>arange</strong> (<em>int</em>) &#8211; the range (in days) for which the ratios need to be calculated and
+compared</li>
+<li><strong>only_checked</strong> (<em>bool</em>) &#8211; if &#8216;True&#8217;, filtered values are excluded; default to &#8216;False&#8217;</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The average ratio within the range that has been found to be the most</p>
-<p class="last">reliable one</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>The average ratio within the range that has been found to be the most</em></li>
+<li><em>reliable one</em></li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -295,8 +285,12 @@ compared</p>
 <dl class="method">
 <dt id="wwdata.Class_HydroData.HydroData.drop_index_duplicates">
 <code class="descname">drop_index_duplicates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.drop_index_duplicates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.drop_index_duplicates" title="Permalink to this definition">¶</a></dt>
-<dd><p>drop rows with a duplicate index, ASSUMING THEY HAVE THE SAME DATA IN
-THEM!! Also updates the meta_valid dataframe</p>
+<dd><p>drop rows with a duplicate index. Also updates the meta_valid dataframe</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is assumed that the dropped rows containt the same data as their index-
+based duplicate, i.e. that no data is lost using the function.</p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -313,19 +307,13 @@ THEM!! Also updates the meta_valid dataframe</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>name</strong> : arary of str</p>
-<blockquote>
-<div><p>name(s) of the column(s) containing the data to be averaged;
-defaults to [&#8216;none&#8217;] and will calculate average for every column</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> (<em>arary of str</em>) &#8211; name(s) of the column(s) containing the data to be averaged;
+defaults to [&#8216;none&#8217;] and will calculate average for every column</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.DataFrame :</p>
-<blockquote class="last">
-<div><p>pandas dataframe, containing the average slopes of all or certain
-columns</p>
-</div></blockquote>
-</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">pandas dataframe, containing the average slopes of all or certain
+columns</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">pd.DataFrame</td>
 </tr>
 </tbody>
 </table>
@@ -340,31 +328,24 @@ data_2</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_1 and data_2</strong> : str</p>
-<blockquote>
-<div><p>names of the data columns containing the data between which the
-correlation will be calculated.</p>
-</div></blockquote>
-<p><strong>arange</strong> : array</p>
-<blockquote>
-<div><p>array containing the beginning and end value between which the
-correlation needs to be calculated</p>
-</div></blockquote>
-<p><strong>zero_intercept</strong> : bool</p>
-<blockquote>
-<div><p>indicates whether or not to assume a zero-intercept</p>
-</div></blockquote>
-<p><strong>only_checked: bool</strong></p>
-<blockquote>
-<div><p>if &#8216;True&#8217;, filtered values are excluded from calculation and plotting;
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>and data_2</strong> (<em>data_1</em>) &#8211; names of the data columns containing the data between which the
+correlation will be calculated.</li>
+<li><strong>arange</strong> (<em>array</em>) &#8211; array containing the beginning and end value between which the
+correlation needs to be calculated</li>
+<li><strong>zero_intercept</strong> (<em>bool</em>) &#8211; indicates whether or not to assume a zero-intercept</li>
+<li><strong>only_checked</strong> (<em>bool</em>) &#8211; if &#8216;True&#8217;, filtered values are excluded from calculation and plotting;
 default to &#8216;False&#8217;
 if a value in one column is filtered, the corresponding value in the second
-column also gets excluded!</p>
-</div></blockquote>
+column also gets excluded!</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the linear regression coefficients of the correlation, as well as the</p>
-<p class="last">r-squared -value</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>the linear regression coefficients of the correlation, as well as the</em></li>
+<li><em>r-squared -value</em></li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -377,18 +358,28 @@ column also gets excluded!</p>
 <dd><p>creates a dataframe with tags indicating what indices have data-values
 higher than a certain value; example: the definition/tagging of rain
 events.</p>
-<dl class="docutils">
-<dt>data_name</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd>name of the column to execute the function on</dd>
-<dt>bound_value</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">float</span><dd>the boundary value above which points will be tagged</dd>
-<dt>arange</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">array of two values</span><dd>the range within which high values need to be tagged</dd>
-<dt>method: str (value or percentile)</dt>
-<dd>when percentile, the bound value is a given percentile above which
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_name</strong> (<em>str</em>) &#8211; name of the column to execute the function on</li>
+<li><strong>bound_value</strong> (<em>float</em>) &#8211; the boundary value above which points will be tagged</li>
+<li><strong>arange</strong> (<em>array of two values</em>) &#8211; the range within which high values need to be tagged</li>
+<li><strong>method</strong> (<em>str</em><em> (</em><em>value</em><em> or </em><em>percentile</em><em>)</em><em></em>) &#8211; when percentile, the bound value is a given percentile above which
 data points will be tagged, when value, bound_values is used directly
-to tag data points.</dd>
-</dl>
+to tag data points.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -399,27 +390,20 @@ to tag data points.</dd>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>dataframe</strong> : pd.DataFrame</p>
-<blockquote>
-<div><p>dataframe containing the columns to calculate the standard deviation for</p>
-</div></blockquote>
-<p><strong>name</strong> : arary of str</p>
-<blockquote>
-<div><p>name(s) of the column(s) containing the data to calculate standard
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> (<em>pd.DataFrame</em>) &#8211; dataframe containing the columns to calculate the standard deviation for</li>
+<li><strong>name</strong> (<em>arary of str</em>) &#8211; name(s) of the column(s) containing the data to calculate standard
 deviation for; defaults to [&#8216;none&#8217;] and will calculate standard
-deviation for every column</p>
-</div></blockquote>
-<p><strong>plot</strong> : bool</p>
-<blockquote>
-<div><p>if True, plots the calculated standard deviations, defaults to False</p>
-</div></blockquote>
+deviation for every column</li>
+<li><strong>plot</strong> (<em>bool</em>) &#8211; if True, plots the calculated standard deviations, defaults to False</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.DataFrame :</p>
-<blockquote class="last">
-<div><p>pandas dataframe, containing the average slopes of all or certain
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pandas dataframe, containing the average slopes of all or certain
 columns</p>
-</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pd.DataFrame</p>
 </td>
 </tr>
 </tbody>
@@ -429,14 +413,13 @@ columns</p>
 <dl class="method">
 <dt id="wwdata.Class_HydroData.HydroData.head">
 <code class="descname">head</code><span class="sig-paren">(</span><em>n=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.head"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.head" title="Permalink to this definition">¶</a></dt>
-<dd><p>CONFIRMED
-piping pandas head function</p>
+<dd><p>piping pandas head function, see <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.head.html">https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.head.html</a> for documentation</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="wwdata.Class_HydroData.HydroData.index">
 <code class="descname">index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.index" title="Permalink to this definition">¶</a></dt>
-<dd><p>piping pandas index function</p>
+<dd><p>piping pandas index function, see <a class="reference external" href="http://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.Index.html">http://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.Index.html</a> for documentation</p>
 </dd></dl>
 
 <dl class="method">
@@ -449,58 +432,33 @@ filtered values are replaced by NaN values.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
-<blockquote>
-<div><p>name of the column containing the data that needs to be filtered</p>
-</div></blockquote>
-<p><strong>window</strong> : int</p>
-<blockquote>
-<div><p>the number of values from the dataset that are used to take the
-average at the current point.</p>
-</div></blockquote>
-<p><strong>cutoff_frac: float</strong></p>
-<blockquote>
-<div><p>the cutoff value (in fraction 0-1) to compare the data and smoothened
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_name</strong> (<em>str</em>) &#8211; name of the column containing the data that needs to be filtered</li>
+<li><strong>window</strong> (<em>int</em>) &#8211; the number of values from the dataset that are used to take the
+average at the current point.</li>
+<li><strong>cutoff_frac</strong> (<em>float</em>) &#8211; the cutoff value (in fraction 0-1) to compare the data and smoothened
 data: a deviation higher than a certain percentage drops the data-
-point.</p>
-</div></blockquote>
-<p><strong>arange</strong> : array of two values</p>
-<blockquote>
-<div><p>the range within which the moving average filter needs to be applied</p>
-</div></blockquote>
-<p><strong>clear</strong> : bool</p>
-<blockquote>
-<div><p>if True, the tags added to datapoints before will be removed and put
-back to &#8216;original&#8217;.</p>
-</div></blockquote>
-<p><strong>inplace</strong> : bool</p>
-<blockquote>
-<div><p>indicates whether a new dataframe is created and returned or whether
+point.</li>
+<li><strong>arange</strong> (<em>array of two values</em>) &#8211; the range within which the moving average filter needs to be applied</li>
+<li><strong>clear</strong> (<em>bool</em>) &#8211; if True, the tags added to datapoints before will be removed and put
+back to &#8216;original&#8217;.</li>
+<li><strong>inplace</strong> (<em>bool</em>) &#8211; indicates whether a new dataframe is created and returned or whether
 the operations are executed on the existing dataframe (nothing is
-returned)</p>
-</div></blockquote>
-<p><strong>log_file</strong> : str</p>
-<blockquote>
-<div><p>string containing the directory to a log file to be written out
-when using this function</p>
-</div></blockquote>
-<p><strong>plot</strong> : bool</p>
-<blockquote>
-<div><p>if true, a plot is made, comparing the original dataset with the
-new, filtered dataset</p>
-</div></blockquote>
-<p><strong>final</strong> : bool</p>
-<blockquote>
-<div><p>if true, the values are actually replaced with nan values (either
-inplace or in a new hp object)</p>
-</div></blockquote>
+returned)</li>
+<li><strong>log_file</strong> (<em>str</em>) &#8211; string containing the directory to a log file to be written out
+when using this function</li>
+<li><strong>plot</strong> (<em>bool</em>) &#8211; if true, a plot is made, comparing the original dataset with the
+new, filtered dataset</li>
+<li><strong>final</strong> (<em>bool</em>) &#8211; if true, the values are actually replaced with nan values (either
+inplace or in a new hp object)</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">HydroData object (if inplace=False)</p>
-<blockquote>
-<div><p>the dataframe from which the double values of &#8216;data&#8217; are removed</p>
-</div></blockquote>
-<p class="last">None (if inplace=True)</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>HydroData object (if inplace=False)</em> &#8211; the dataframe from which the double values of &#8216;data&#8217; are removed</li>
+<li><em>None (if inplace=True)</em></li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -510,71 +468,46 @@ inplace or in a new hp object)</p>
 <dl class="method">
 <dt id="wwdata.Class_HydroData.HydroData.moving_slope_filter">
 <code class="descname">moving_slope_filter</code><span class="sig-paren">(</span><em>xdata</em>, <em>data_name</em>, <em>cutoff</em>, <em>arange</em>, <em>time_unit=None</em>, <em>clear=False</em>, <em>inplace=False</em>, <em>log_file=None</em>, <em>plot=False</em>, <em>final=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.moving_slope_filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.moving_slope_filter" title="Permalink to this definition">¶</a></dt>
-<dd><p>CONFIRMED
-Filters out datapoints based on the difference between the slope in one
+<dd><p>Filters out datapoints based on the difference between the slope in one
 point and the next (sudden changes like noise get filtered out), based
 on a given cut off value. Replaces the dropped values with NaN values.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>xdata</strong> : str</p>
-<blockquote>
-<div><p>name of the column containing the xdata for slope calculation
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>xdata</strong> (<em>str</em>) &#8211; name of the column containing the xdata for slope calculation
 (e.g. time). If &#8216;index&#8217;, the index is used as xdata. If datetime
-objects, a time_unit is expected to calculate the slopes.</p>
-</div></blockquote>
-<p><strong>data_name</strong> : str</p>
-<blockquote>
-<div><p>name of the column containing the data that needs to be filtered</p>
-</div></blockquote>
-<p><strong>cutoff: int</strong></p>
-<blockquote>
-<div><p>the cutoff value to compare the slopes with to apply the filtering.</p>
-</div></blockquote>
-<p><strong>arange</strong> : array of two values</p>
-<blockquote>
-<div><p>the range within which the moving slope filter needs to be applied</p>
-</div></blockquote>
-<p><strong>time_unit</strong> : str</p>
-<blockquote>
-<div><p>time unit to be used for the slope calculation (in case this is
+objects, a time_unit is expected to calculate the slopes.</li>
+<li><strong>data_name</strong> (<em>str</em>) &#8211; name of the column containing the data that needs to be filtered</li>
+<li><strong>cutoff</strong> (<em>int</em>) &#8211; the cutoff value to compare the slopes with to apply the filtering.</li>
+<li><strong>arange</strong> (<em>array of two values</em>) &#8211; the range within which the moving slope filter needs to be applied</li>
+<li><strong>time_unit</strong> (<em>str</em>) &#8211; time unit to be used for the slope calculation (in case this is
 based on time); if None, slopes are calculated based on the values
-given</p>
-</div></blockquote>
-<p><strong>clear</strong> : bool</p>
-<blockquote>
-<div><p>if True, the tags added to datapoints before will be removed and put
-back to &#8216;original&#8217;.</p>
-</div></blockquote>
-<p><strong>inplace</strong> : bool</p>
-<blockquote>
-<div><p>indicates whether a new dataframe is created and returned or whether
+given</li>
+<li><strong>clear</strong> (<em>bool</em>) &#8211; if True, the tags added to datapoints before will be removed and put
+back to &#8216;original&#8217;.</li>
+<li><strong>inplace</strong> (<em>bool</em>) &#8211; indicates whether a new dataframe is created and returned or whether
 the operations are executed on the existing dataframe (nothing is
-returned)</p>
-</div></blockquote>
-<p><strong>log_file</strong> : str</p>
-<blockquote>
-<div><p>string containing the directory to a log file to be written out
-when using this function</p>
-</div></blockquote>
-<p><strong>plot</strong> : bool</p>
-<blockquote>
-<div><p>if true, a plot is made, comparing the original dataset with the
-new, filtered dataset</p>
-</div></blockquote>
-<p><strong>final</strong> : bool</p>
-<blockquote>
-<div><p>if true, the values are actually replaced with nan values (either
-inplace or in a new hp object)</p>
-</div></blockquote>
+returned)</li>
+<li><strong>log_file</strong> (<em>str</em>) &#8211; string containing the directory to a log file to be written out
+when using this function</li>
+<li><strong>plot</strong> (<em>bool</em>) &#8211; if true, a plot is made, comparing the original dataset with the
+new, filtered dataset</li>
+<li><strong>final</strong> (<em>bool</em>) &#8211; if true, the values are actually replaced with nan values (either
+inplace or in a new hp object)</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">HydroData object (if inplace=False)</p>
-<blockquote>
-<div><p>the dataframe from which the double values of &#8216;data&#8217; are removed</p>
-</div></blockquote>
-<p class="last">None (if inplace=True)</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>HydroData object (if inplace=False)</em> &#8211; the dataframe from which the double values of &#8216;data&#8217; are removed</li>
+<li><em>None (if inplace=True)</em></li>
+<li><em>Creates</em></li>
+<li><em>&#8212;&#8212;-</em></li>
+<li><em>A new column in the self.meta_valid dataframe, containing a mask indicating</em></li>
+<li><em>what values are filtered</em></li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -589,21 +522,17 @@ inplace or in a new hp object)</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
-<blockquote>
-<div><p>name of the column containing the data to plot</p>
-</div></blockquote>
-<p><strong>time_range</strong> : array of two values</p>
-<blockquote>
-<div><p>the range within which the values are plotted; default is all</p>
-</div></blockquote>
-<p><strong>only_checked</strong> : bool</p>
-<blockquote>
-<div><p>if &#8216;True&#8217;, filtered values are excluded; default to &#8216;False&#8217;</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_name</strong> (<em>str</em>) &#8211; name of the column containing the data to plot</li>
+<li><strong>time_range</strong> (<em>array of two values</em>) &#8211; the range within which the values are plotted; default is all</li>
+<li><strong>only_checked</strong> (<em>bool</em>) &#8211; if &#8216;True&#8217;, filtered values are excluded; default to &#8216;False&#8217;</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Plot</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">Plot</p>
 </td>
 </tr>
 </tbody>
@@ -613,8 +542,7 @@ inplace or in a new hp object)</p>
 <dl class="method">
 <dt id="wwdata.Class_HydroData.HydroData.replace">
 <code class="descname">replace</code><span class="sig-paren">(</span><em>to_replace</em>, <em>value</em>, <em>inplace=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.replace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.replace" title="Permalink to this definition">¶</a></dt>
-<dd><p>CONFIRMED
-piping pandas replace function</p>
+<dd><p>piping pandas replace function, see <a class="reference external" href="http://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.DataFrame.replace.html">http://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.DataFrame.replace.html</a> for documentation</p>
 </dd></dl>
 
 <dl class="method">
@@ -626,34 +554,24 @@ The values are either replaced or a new dataframe is returned.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
-<blockquote>
-<div><p>name of the column containing the data that needs to be filtered</p>
-</div></blockquote>
-<p><strong>window</strong> : int</p>
-<blockquote>
-<div><p>the length of the filter window; default to 55</p>
-</div></blockquote>
-<p><strong>polyorder</strong> : int</p>
-<blockquote>
-<div><p>The order of the polynomial used to fit the samples.
-polyorder must be less than window. default to 1</p>
-</div></blockquote>
-<p><strong>plot</strong> : bool</p>
-<blockquote>
-<div><p>if true, a plot is made, comparing the original dataset with the
-new, filtered dataset</p>
-</div></blockquote>
-<p><strong>inplace</strong> : bool</p>
-<blockquote>
-<div><p>indicates whether a new dataframe is created and returned or whether
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_name</strong> (<em>str</em>) &#8211; name of the column containing the data that needs to be filtered</li>
+<li><strong>window</strong> (<em>int</em>) &#8211; the length of the filter window; default to 55</li>
+<li><strong>polyorder</strong> (<em>int</em>) &#8211; The order of the polynomial used to fit the samples.
+polyorder must be less than window. default to 1</li>
+<li><strong>plot</strong> (<em>bool</em>) &#8211; if true, a plot is made, comparing the original dataset with the
+new, filtered dataset</li>
+<li><strong>inplace</strong> (<em>bool</em>) &#8211; indicates whether a new dataframe is created and returned or whether
 the operations are executed on the existing dataframe (nothing is
-returned)</p>
-</div></blockquote>
+returned)</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">HydroData object (if inplace=False)</p>
-<p class="last">None (if inplace=True)</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>HydroData object (if inplace=False)</em></li>
+<li><em>None (if inplace=True)</em></li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -663,73 +581,94 @@ returned)</p>
 <dl class="method">
 <dt id="wwdata.Class_HydroData.HydroData.set_index">
 <code class="descname">set_index</code><span class="sig-paren">(</span><em>keys</em>, <em>key_is_time=False</em>, <em>drop=True</em>, <em>inplace=False</em>, <em>verify_integrity=False</em>, <em>save_prev_index=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.set_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.set_index" title="Permalink to this definition">¶</a></dt>
-<dd><p>piping pandas set_index function, including the option to define the new index
-as being the time data
-key_is_time : bool</p>
-<blockquote>
-<div>when true, the new index will we known as the time data from here on</div></blockquote>
+<dd><p>piping and extending pandas set_index function, see <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.set_index.html">https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.set_index.html</a> for documentation</p>
+<p class="rubric">Notes</p>
+<dl class="docutils">
+<dt>key_is_time</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">bool</span><dd>when true, the new index will we known as the time data from here on</dd>
+</dl>
 <p>(other arguments cfr pd.set_index)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><em>HydroData object (if inplace=False)</em></li>
+<li><em>None (if inplace=True)</em></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="wwdata.Class_HydroData.HydroData.set_tag">
 <code class="descname">set_tag</code><span class="sig-paren">(</span><em>tag</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.set_tag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.set_tag" title="Permalink to this definition">¶</a></dt>
-<dd><p>CONFIRMED</p>
+<dd><p>Sets the tag element of the HydroData object to the given tag</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="wwdata.Class_HydroData.HydroData.set_time_unit">
 <code class="descname">set_time_unit</code><span class="sig-paren">(</span><em>unit</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.set_time_unit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.set_time_unit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the time_unit element of the HydroData object to a given unit</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="wwdata.Class_HydroData.HydroData.set_units">
 <code class="descname">set_units</code><span class="sig-paren">(</span><em>units</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.set_units"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.set_units" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set the units element of the HydroData object to a given dataframe</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="wwdata.Class_HydroData.HydroData.simple_moving_average">
 <code class="descname">simple_moving_average</code><span class="sig-paren">(</span><em>arange</em>, <em>window</em>, <em>data_name=None</em>, <em>inplace=False</em>, <em>plot=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.simple_moving_average"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.simple_moving_average" title="Permalink to this definition">¶</a></dt>
-<dd><p>CONFIRMED
-Calculate the Simple Moving Average of a dataseries from a dataframe,
+<dd><p>Calculate the Simple Moving Average of a dataseries from a dataframe,
 using a window within which the datavalues are averaged.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arange</strong> : array of two values</p>
-<blockquote>
-<div><p>the range within which the moving average needs to be calculated</p>
-</div></blockquote>
-<p><strong>window</strong> : int</p>
-<blockquote>
-<div><p>the number of values from the dataset that are used to take the
-average at the current point. Defaults to 10</p>
-</div></blockquote>
-<p><strong>data_name</strong> : str or array of str</p>
-<blockquote>
-<div><p>name of the column(s) containing the data that needs to be
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>arange</strong> (<em>array of two values</em>) &#8211; the range within which the moving average needs to be calculated</li>
+<li><strong>window</strong> (<em>int</em>) &#8211; the number of values from the dataset that are used to take the
+average at the current point. Defaults to 10</li>
+<li><strong>data_name</strong> (<em>str</em><em> or </em><em>array of str</em>) &#8211; name of the column(s) containing the data that needs to be
 smoothened. If None, smoothened data is computed for the whole
-dataframe. Defaults to None</p>
-</div></blockquote>
-<p><strong>inplace</strong> : bool</p>
-<blockquote>
-<div><p>indicates whether a new dataframe is created and returned or whether
+dataframe. Defaults to None</li>
+<li><strong>inplace</strong> (<em>bool</em>) &#8211; indicates whether a new dataframe is created and returned or whether
 the operations are executed on the existing dataframe (nothing is
-returned)</p>
-</div></blockquote>
-<p><strong>plot</strong> : bool</p>
-<blockquote>
-<div><p>if True, a plot is given for comparison between original and smooth
-data</p>
-</div></blockquote>
+returned)</li>
+<li><strong>plot</strong> (<em>bool</em>) &#8211; if True, a plot is given for comparison between original and smooth
+data</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">HydroData (or subclass) object</p>
-<blockquote class="last">
-<div><p>either a new object (inplace=False) or an adjusted object, con-
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">either a new object (inplace=False) or an adjusted object, con-
 taining the smoothened data values</p>
-</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#wwdata.Class_HydroData.HydroData" title="wwdata.Class_HydroData.HydroData">HydroData</a> (or subclass) object</p>
 </td>
 </tr>
 </tbody>
@@ -747,54 +686,32 @@ be filtered out</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
-<blockquote>
-<div><p>column name of the column from which double values will be sought</p>
-</div></blockquote>
-<p><strong>bound</strong> : float</p>
-<blockquote>
-<div><p>boundary value of the band to use. When the difference between a
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_name</strong> (<em>str</em>) &#8211; column name of the column from which double values will be sought</li>
+<li><strong>bound</strong> (<em>float</em>) &#8211; boundary value of the band to use. When the difference between a
 point and the next one is smaller then the bound value, the latter
-datapoint is tagged as &#8216;filtered&#8217;.</p>
-</div></blockquote>
-<p><strong>arange</strong> : array of two values</p>
-<blockquote>
-<div><p>the range within which double values need to be tagged</p>
-</div></blockquote>
-<p><strong>clear</strong> : bool</p>
-<blockquote>
-<div><p>if True, the tags added to datapoints before will be removed and put
-back to &#8216;original&#8217;.</p>
-</div></blockquote>
-<p><strong>inplace</strong> : bool</p>
-<blockquote>
-<div><p>indicates whether a new dataframe is created and returned or whether
+datapoint is tagged as &#8216;filtered&#8217;.</li>
+<li><strong>arange</strong> (<em>array of two values</em>) &#8211; the range within which double values need to be tagged</li>
+<li><strong>clear</strong> (<em>bool</em>) &#8211; if True, the tags added to datapoints before will be removed and put
+back to &#8216;original&#8217;.</li>
+<li><strong>inplace</strong> (<em>bool</em>) &#8211; indicates whether a new dataframe is created and returned or whether
 the operations are executed on the existing dataframe (nothing is
 returned). (This argument only comes into play when the &#8216;final&#8217;
-argument is True)</p>
-</div></blockquote>
-<p><strong>log_file</strong> : str</p>
-<blockquote>
-<div><p>string containing the directory to a log file to be written out
-when using this function</p>
-</div></blockquote>
-<p><strong>plot</strong> : bool</p>
-<blockquote>
-<div><p>whether or not to make a plot of the newly tagged data points</p>
-</div></blockquote>
-<p><strong>final</strong> : bool</p>
-<blockquote>
-<div><p>if true, the values are actually replaced with nan values (either
-inplace or in a new hp object)</p>
-</div></blockquote>
+argument is True)</li>
+<li><strong>log_file</strong> (<em>str</em>) &#8211; string containing the directory to a log file to be written out
+when using this function</li>
+<li><strong>plot</strong> (<em>bool</em>) &#8211; whether or not to make a plot of the newly tagged data points</li>
+<li><strong>final</strong> (<em>bool</em>) &#8211; if true, the values are actually replaced with nan values (either
+inplace or in a new hp object)</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">HydroData object (if inplace=False)</p>
-<blockquote>
-<div><p>the dataframe from which the double values of &#8216;data&#8217; are removed or
-replaced</p>
-</div></blockquote>
-<p class="last">None (if inplace=True)</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>HydroData object (if inplace=False)</em> &#8211; the dataframe from which the double values of &#8216;data&#8217; are removed or
+replaced</li>
+<li><em>None (if inplace=True)</em></li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -809,35 +726,22 @@ replaced</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
-<blockquote>
-<div><p>name of the column containing the data to be tagged</p>
-</div></blockquote>
-<p><strong>arange</strong> : array of two values</p>
-<blockquote>
-<div><p>the range within which extreme values need to be tagged</p>
-</div></blockquote>
-<p><strong>limit</strong> : int/float</p>
-<blockquote>
-<div><p>limit below or above which values need to be tagged</p>
-</div></blockquote>
-<p><strong>method</strong> : &#8216;below&#8217; or &#8216;above&#8217;</p>
-<blockquote>
-<div><p>below tags all the values below the given limit, above tags
-the values above the limit</p>
-</div></blockquote>
-<p><strong>clear</strong> : bool</p>
-<blockquote>
-<div><p>if True, the tags added before will be removed and put
-back to &#8216;original&#8217;.</p>
-</div></blockquote>
-<p><strong>plot</strong> : bool</p>
-<blockquote>
-<div><p>whether or not to make a plot of the newly tagged data points</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_name</strong> (<em>str</em>) &#8211; name of the column containing the data to be tagged</li>
+<li><strong>arange</strong> (<em>array of two values</em>) &#8211; the range within which extreme values need to be tagged</li>
+<li><strong>limit</strong> (<em>int/float</em>) &#8211; limit below or above which values need to be tagged</li>
+<li><strong>method</strong> (<em>'below'</em><em> or </em><em>'above'</em>) &#8211; below tags all the values below the given limit, above tags
+the values above the limit</li>
+<li><strong>clear</strong> (<em>bool</em>) &#8211; if True, the tags added before will be removed and put
+back to &#8216;original&#8217;.</li>
+<li><strong>plot</strong> (<em>bool</em>) &#8211; whether or not to make a plot of the newly tagged data points</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None;</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None;</p>
 </td>
 </tr>
 </tbody>
@@ -853,22 +757,18 @@ column</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
-<blockquote>
-<div><p>column name of the column to apply the function to</p>
-</div></blockquote>
-<p><strong>arange</strong> : array of two values</p>
-<blockquote>
-<div><p>the range within which nan values need to be tagged</p>
-</div></blockquote>
-<p><strong>clear</strong> : bool</p>
-<blockquote>
-<div><p>when true, resets the tags in meta_valid for the data in column
-data_name</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_name</strong> (<em>str</em>) &#8211; column name of the column to apply the function to</li>
+<li><strong>arange</strong> (<em>array of two values</em>) &#8211; the range within which nan values need to be tagged</li>
+<li><strong>clear</strong> (<em>bool</em>) &#8211; when true, resets the tags in meta_valid for the data in column
+data_name</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
 </td>
 </tr>
 </tbody>
@@ -878,25 +778,43 @@ data_name</p>
 <dl class="method">
 <dt id="wwdata.Class_HydroData.HydroData.tail">
 <code class="descname">tail</code><span class="sig-paren">(</span><em>n=5</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.tail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.tail" title="Permalink to this definition">¶</a></dt>
-<dd><p>CONFIRMED
-piping pandas tail function</p>
+<dd><p>piping pandas tail function, see <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.tail.html">https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.tail.html</a> for documentation</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="wwdata.Class_HydroData.HydroData.to_datetime">
 <code class="descname">to_datetime</code><span class="sig-paren">(</span><em>time_column='index'</em>, <em>time_format='%dd-%mm-%yy'</em>, <em>unit='D'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.to_datetime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.to_datetime" title="Permalink to this definition">¶</a></dt>
-<dd><p>CONFIRMED
-flexibly piping pandas to_datetime function</p>
+<dd><p>Piping and modifying pandas to_datetime function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>time_column</strong> (<em>str</em>) &#8211; column name of the column where values need to be converted to date-
+time values. Default &#8216;index&#8217; converts index values to datetime</li>
+<li><strong>time_format</strong> (<em>str</em>) &#8211; the format to use by to_datetime function to convert strings to
+datetime format</li>
+<li><strong>unit</strong> (<em>str</em>) &#8211; unit to use by to_datetime function to convert int or float values
+to datetime format</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="wwdata.Class_HydroData.HydroData.to_float">
 <code class="descname">to_float</code><span class="sig-paren">(</span><em>columns='all'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_HydroData.html#HydroData.to_float"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_HydroData.HydroData.to_float" title="Permalink to this definition">¶</a></dt>
 <dd><p>convert values in given columns to float values</p>
-<dl class="docutils">
-<dt>columns</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">array of strings</span><dd>column names of the columns where values need to be converted to floats</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>columns</strong> (<em>array of strings</em>) &#8211; column names of the columns where values need to be converted to floats</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -906,24 +824,20 @@ flexibly piping pandas to_datetime function</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>filepath</strong> : str</p>
-<blockquote>
-<div><p>the path the output file should be saved to</p>
-</div></blockquote>
-<p><strong>filename</strong> : str</p>
-<blockquote>
-<div><p>the name of the output file</p>
-</div></blockquote>
-<p><strong>method</strong> : str (all,filtered,filled)</p>
-<blockquote>
-<div><p>depending on the method choice, different values will be written out:
-all values, only the filtered values or the filled values</p>
-</div></blockquote>
-<p><strong>for_WEST</strong> : bool</p>
-<p><strong>include_units</strong> : bool</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filepath</strong> (<em>str</em>) &#8211; the path the output file should be saved to</li>
+<li><strong>filename</strong> (<em>str</em>) &#8211; the name of the output file</li>
+<li><strong>method</strong> (<em>str</em><em> (</em><em>all</em><em>,</em><em>filtered</em><em>,</em><em>filled</em><em>)</em><em></em>) &#8211; depending on the method choice, different values will be written out:
+all values, only the filtered values or the filled values</li>
+<li><strong>for_WEST</strong> (<em>bool</em>) &#8211; </li>
+<li><strong>include_units</strong> (<em>bool</em>) &#8211; </li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None; write an output file</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None; write an output file</p>
 </td>
 </tr>
 </tbody>
@@ -958,19 +872,37 @@ along with this program.  If not, see <a class="reference external" href="http:/
 <dd><p>Bases: <a class="reference internal" href="#wwdata.Class_HydroData.HydroData" title="wwdata.Class_HydroData.HydroData"><code class="xref py py-class docutils literal"><span class="pre">wwdata.Class_HydroData.HydroData</span></code></a></p>
 <p>Superclass for a HydroData object, expanding the functionalities with
 specific functions for data gathered is lab experiments.</p>
-<p class="rubric">Attributes</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="71%" />
-<col width="29%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>(see HydroData docstring)</td>
-<td>&nbsp;</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Methods</p>
+<dl class="attribute">
+<dt id="wwdata.Class_LabExperimBased.LabExperimBased.timedata_column">
+<code class="descname">timedata_column</code><a class="headerlink" href="#wwdata.Class_LabExperimBased.LabExperimBased.timedata_column" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; name of the column containing the time data</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_LabExperimBased.LabExperimBased.data_type">
+<code class="descname">data_type</code><a class="headerlink" href="#wwdata.Class_LabExperimBased.LabExperimBased.data_type" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; type of the data provided</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_LabExperimBased.LabExperimBased.experiment_tag">
+<code class="descname">experiment_tag</code><a class="headerlink" href="#wwdata.Class_LabExperimBased.LabExperimBased.experiment_tag" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; A tag identifying the experiment; can be a date or a code used by
+the producer/owner of the data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_LabExperimBased.LabExperimBased.time_unit">
+<code class="descname">time_unit</code><a class="headerlink" href="#wwdata.Class_LabExperimBased.LabExperimBased.time_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; The time unit in which the time data is given</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_LabExperimBased.LabExperimBased.units">
+<code class="descname">units</code><a class="headerlink" href="#wwdata.Class_LabExperimBased.LabExperimBased.units" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>array</em> &#8211; The units of the variables in the columns</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="wwdata.Class_LabExperimBased.LabExperimBased.add_conc">
 <code class="descname">add_conc</code><span class="sig-paren">(</span><em>column_name</em>, <em>x</em>, <em>y</em>, <em>new_name='default'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_LabExperimBased.html#LabExperimBased.add_conc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_LabExperimBased.LabExperimBased.add_conc" title="Permalink to this definition">¶</a></dt>
@@ -980,22 +912,14 @@ a new column to the DataFrame.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column_name</strong> : str</p>
-<blockquote>
-<div><p>column with values</p>
-</div></blockquote>
-<p><strong>x</strong> : int</p>
-<blockquote>
-<div><p>...</p>
-</div></blockquote>
-<p><strong>y</strong> : int</p>
-<blockquote>
-<div><p>...</p>
-</div></blockquote>
-<p><strong>new_name</strong> : str</p>
-<blockquote class="last">
-<div><p>name of the new column, default to &#8216;column_name + mg/L&#8217;</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>column_name</strong> (<em>str</em>) &#8211; column with values</li>
+<li><strong>x</strong> (<em>int</em>) &#8211; <p>...</p>
+</li>
+<li><strong>y</strong> (<em>int</em>) &#8211; <p>...</p>
+</li>
+<li><strong>new_name</strong> (<em>str</em>) &#8211; name of the new column, default to &#8216;column_name + mg/L&#8217;</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -1010,14 +934,10 @@ a new column to the DataFrame.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>columns</strong> : array of strings</p>
-<blockquote>
-<div><p>columns to calculate the slope for</p>
-</div></blockquote>
-<p><strong>time_column</strong> : str</p>
-<blockquote class="last">
-<div><p>time used for calculation; default to &#8216;h&#8217;</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>columns</strong> (<em>array of strings</em>) &#8211; columns to calculate the slope for</li>
+<li><strong>time_column</strong> (<em>str</em>) &#8211; time used for calculation; default to &#8216;h&#8217;</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -1032,14 +952,10 @@ a new column to the DataFrame.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ph_column</strong> : str</p>
-<blockquote>
-<div><p>column with pH-values, default to &#8216;pH&#8217;</p>
-</div></blockquote>
-<p><strong>threshold</strong> : int</p>
-<blockquote class="last">
-<div><p>threshold value for warning, default to &#8216;0.4&#8217;</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>ph_column</strong> (<em>str</em>) &#8211; column with pH-values, default to &#8216;pH&#8217;</li>
+<li><strong>threshold</strong> (<em>int</em>) &#8211; threshold value for warning, default to &#8216;0.4&#8217;</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -1054,11 +970,7 @@ a new column to the DataFrame.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>time_column</strong> : string</p>
-<blockquote class="last">
-<div><p>column containing the relative time values; default to index</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>time_column</strong> (<em>string</em>) &#8211; column containing the relative time values; default to index</td>
 </tr>
 </tbody>
 </table>
@@ -1072,7 +984,7 @@ a new column to the DataFrame.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>columns</strong> : array of strings</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>columns</strong> (<em>array of strings</em>) &#8211; </td>
 </tr>
 </tbody>
 </table>
@@ -1086,14 +998,10 @@ a new column to the DataFrame.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>columns</strong> : array of strings</p>
-<blockquote>
-<div><p>columns to plot</p>
-</div></blockquote>
-<p><strong>time_column</strong> : str</p>
-<blockquote class="last">
-<div><p>time used for calculation; default to &#8216;h&#8217;</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>columns</strong> (<em>array of strings</em>) &#8211; columns to plot</li>
+<li><strong>time_column</strong> (<em>str</em>) &#8211; time used for calculation; default to &#8216;h&#8217;</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -1109,7 +1017,7 @@ a new column to the DataFrame.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>columns</strong> : array of strings</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>columns</strong> (<em>array of strings</em>) &#8211; </td>
 </tr>
 </tbody>
 </table>
@@ -1138,19 +1046,37 @@ along with this program.  If not, see <a class="reference external" href="http:/
 <dd><p>Bases: <a class="reference internal" href="#wwdata.Class_HydroData.HydroData" title="wwdata.Class_HydroData.HydroData"><code class="xref py py-class docutils literal"><span class="pre">wwdata.Class_HydroData.HydroData</span></code></a></p>
 <p>Superclass for a HydroData object, expanding the functionalities with
 specific functions for data gathered is lab experiments</p>
-<p class="rubric">Attributes</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="71%" />
-<col width="29%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>(see HydroData docstring)</td>
-<td>&nbsp;</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Methods</p>
+<dl class="attribute">
+<dt id="wwdata.Class_LabSensorBased.LabSensorBased.timedata_column">
+<code class="descname">timedata_column</code><a class="headerlink" href="#wwdata.Class_LabSensorBased.LabSensorBased.timedata_column" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; name of the column containing the time data</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_LabSensorBased.LabSensorBased.data_type">
+<code class="descname">data_type</code><a class="headerlink" href="#wwdata.Class_LabSensorBased.LabSensorBased.data_type" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; type of data provided</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_LabSensorBased.LabSensorBased.experiment_tag">
+<code class="descname">experiment_tag</code><a class="headerlink" href="#wwdata.Class_LabSensorBased.LabSensorBased.experiment_tag" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; A tag identifying the experiment; can be a date or a code used by
+the producer/owner of the data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_LabSensorBased.LabSensorBased.time_unit">
+<code class="descname">time_unit</code><a class="headerlink" href="#wwdata.Class_LabSensorBased.LabSensorBased.time_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; The time unit in which the time data is given</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_LabSensorBased.LabSensorBased.units">
+<code class="descname">units</code><a class="headerlink" href="#wwdata.Class_LabSensorBased.LabSensorBased.units" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>array</em> &#8211; The units of the variables in the columns</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="wwdata.Class_LabSensorBased.LabSensorBased.drop_peaks">
 <code class="descname">drop_peaks</code><span class="sig-paren">(</span><em>data_name</em>, <em>cutoff</em>, <em>inplace=True</em>, <em>log_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_LabSensorBased.html#LabSensorBased.drop_peaks"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_LabSensorBased.LabSensorBased.drop_peaks" title="Permalink to this definition">¶</a></dt>
@@ -1159,33 +1085,23 @@ specific functions for data gathered is lab experiments</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
-<blockquote>
-<div><p>the name of the column to use for the removal of peak values</p>
-</div></blockquote>
-<p><strong>cutoff</strong> : int</p>
-<blockquote>
-<div><p>cut off value to use for the removing of peaks; values with an
-absolute value larger than this cut off will be removed from the data</p>
-</div></blockquote>
-<p><strong>inplace</strong> : bool</p>
-<blockquote>
-<div><p>indicates whether a new dataframe is created and returned or whether
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_name</strong> (<em>str</em>) &#8211; the name of the column to use for the removal of peak values</li>
+<li><strong>cutoff</strong> (<em>int</em>) &#8211; cut off value to use for the removing of peaks; values with an
+absolute value larger than this cut off will be removed from the data</li>
+<li><strong>inplace</strong> (<em>bool</em>) &#8211; indicates whether a new dataframe is created and returned or whether
 the operations are executed on the existing dataframe (nothing is
-returned)</p>
-</div></blockquote>
-<p><strong>log_file</strong> : str</p>
-<blockquote>
-<div><p>string containing the directory to a log file to be written out
-when using this function</p>
-</div></blockquote>
+returned)</li>
+<li><strong>log_file</strong> (<em>str</em>) &#8211; string containing the directory to a log file to be written out
+when using this function</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">LabSensorBased object (if inplace=False)</p>
-<blockquote>
-<div><p>the dataframe from which the double values of &#8216;data&#8217; are removed</p>
-</div></blockquote>
-<p class="last">None (if inplace=True)</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>LabSensorBased object (if inplace=False)</em> &#8211; the dataframe from which the double values of &#8216;data&#8217; are removed</li>
+<li><em>None (if inplace=True)</em></li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -1215,19 +1131,37 @@ along with this program.  If not, see <a class="reference external" href="http:/
 <dd><p>Bases: <a class="reference internal" href="#wwdata.Class_HydroData.HydroData" title="wwdata.Class_HydroData.HydroData"><code class="xref py py-class docutils literal"><span class="pre">wwdata.Class_HydroData.HydroData</span></code></a></p>
 <p>Superclass for a HydroData object, expanding the functionalities with
 specific functions for data gathered at full scale by continous measurements</p>
-<p class="rubric">Attributes</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="71%" />
-<col width="29%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>(see HydroData docstring)</td>
-<td>&nbsp;</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Methods</p>
+<dl class="attribute">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.timedata_column">
+<code class="descname">timedata_column</code><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.timedata_column" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; name of the column containing the time data</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.data_type">
+<code class="descname">data_type</code><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.data_type" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; type of data provided</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.experiment_tag">
+<code class="descname">experiment_tag</code><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.experiment_tag" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; A tag identifying the experiment; can be a date or a code used by
+the producer/owner of the data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.time_unit">
+<code class="descname">time_unit</code><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.time_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; The time unit in which the time data is given</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.units">
+<code class="descname">units</code><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.units" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>array</em> &#8211; The units of the variables in the columns</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.add_to_filled">
 <code class="descname">add_to_filled</code><span class="sig-paren">(</span><em>column_names</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#OnlineSensorBased.add_to_filled"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.add_to_filled" title="Permalink to this definition">¶</a></dt>
@@ -1243,25 +1177,18 @@ containing the days and the average values on the respective days. Plotting is p
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>column_name</strong> : str</p>
-<blockquote>
-<div><p>name of the column containing the data to calculate the average values for</p>
-</div></blockquote>
-<p><strong>arange</strong> : array of two values</p>
-<blockquote>
-<div><p>the range within which daily averages need to be calculated</p>
-</div></blockquote>
-<p><strong>plot</strong> : bool</p>
-<blockquote>
-<div><p>plot or not</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>column_name</strong> (<em>str</em>) &#8211; name of the column containing the data to calculate the average values for</li>
+<li><strong>arange</strong> (<em>array of two values</em>) &#8211; the range within which daily averages need to be calculated</li>
+<li><strong>plot</strong> (<em>bool</em>) &#8211; plot or not</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.Dataframe :</p>
-<blockquote class="last">
-<div><p>pandas dataframe, containing the daily means with standard deviations
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pandas dataframe, containing the daily means with standard deviations
 for the selected column</p>
-</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pd.Dataframe</p>
 </td>
 </tr>
 </tbody>
@@ -1271,38 +1198,35 @@ for the selected column</p>
 <dl class="method">
 <dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.calc_total_proportional">
 <code class="descname">calc_total_proportional</code><span class="sig-paren">(</span><em>Q_tot</em>, <em>Q</em>, <em>conc</em>, <em>new_name='new'</em>, <em>unit='mg/l'</em>, <em>filled=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#OnlineSensorBased.calc_total_proportional"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.calc_total_proportional" title="Permalink to this definition">¶</a></dt>
-<dd><p>CONFIRMED
-Calculates the total concentration of an incoming flow, based on the
+<dd><p>Calculates the total concentration of an incoming flow, based on the
 given total flow and the separate incoming flows and concentrations</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Q_tot</strong> : str</p>
-<blockquote>
-<div><p>name of the column containing the total flow</p>
-</div></blockquote>
-<p><strong>Q</strong> : array of str</p>
-<blockquote>
-<div><p>names of the columns containing the separate flows</p>
-</div></blockquote>
-<p><strong>conc</strong> : array of str</p>
-<blockquote>
-<div><p>names of the columns containing the separate concentration values</p>
-</div></blockquote>
-<p><strong>new_name</strong> : str</p>
-<blockquote>
-<div><p>name of the column to be added</p>
-</div></blockquote>
-<p><strong>filled</strong> : bool</p>
-<blockquote>
-<div><p>if true, use self.filled to calculate proportions from</p>
-</div></blockquote>
-<p><strong>!!Order of columns in Q and conc must match!!</strong></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Q_tot</strong> (<em>str</em>) &#8211; name of the column containing the total flow</li>
+<li><strong>Q</strong> (<em>array of str</em>) &#8211; names of the columns containing the separate flows</li>
+<li><strong>conc</strong> (<em>array of str</em>) &#8211; names of the columns containing the separate concentration values</li>
+<li><strong>new_name</strong> (<em>str</em>) &#8211; name of the column to be added</li>
+<li><strong>filled</strong> (<em>bool</em>) &#8211; if true, use self.filled to calculate proportions from</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None;</p>
-<p class="last">creates a hydropy object with added column for the proportional concentration</p>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">!!Order of columns in Q and conc must match!!</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><em>None;</em></li>
+<li><em>creates a hydropy object with added column for the proportional concentration</em></li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -1317,54 +1241,44 @@ more specific info) to calculate the error on the data points that are
 filled with a certain algorithm.
 Because _calculate_filling_error inserts random gaps, results differ
 every time it is used. Check_filling_error averages this out.</p>
-<p>!! Important !!
-When checking for the error on data filling, a period (arange argument)
-with mostly reliable data should be used. If for example large gaps are
-already present in the given data, this will heavily influence the
-returned error, as filled values will be compared with the values from
-the data gap.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>nr_iterations</strong> : int</p>
-<blockquote>
-<div><p>The number of iterations to run for the calculation of the imputation
-error</p>
-</div></blockquote>
-<p><strong>data_name</strong> : string</p>
-<blockquote>
-<div><p>name of the column containing the data the filling reliability needs
-to be checked for.</p>
-</div></blockquote>
-<p><strong>filling function</strong> : str, wdata filling function</p>
-<blockquote>
-<div><p>the name of the filling function to be tested for reliability</p>
-</div></blockquote>
-<p><strong>test_data_range</strong> : array of two values</p>
-<blockquote>
-<div><p>an array containing the start and end point of the test data to be used.
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nr_iterations</strong> (<em>int</em>) &#8211; The number of iterations to run for the calculation of the imputation
+error</li>
+<li><strong>data_name</strong> (<em>string</em>) &#8211; name of the column containing the data the filling reliability needs
+to be checked for.</li>
+<li><strong>function</strong> (<em>filling</em>) &#8211; the name of the filling function to be tested for reliability</li>
+<li><strong>test_data_range</strong> (<em>array of two values</em>) &#8211; an array containing the start and end point of the test data to be used.
 IMPORTANT: for testing filling with correlation, this range needs to
-include the range for correlation calculation and the filling range.</p>
-</div></blockquote>
-<p><strong>nr_small_gaps / nr_large_gaps: int</strong></p>
-<blockquote>
-<div><p>the number of small/large gaps to create in the dataset for testing</p>
-</div></blockquote>
-<p><strong>max_size_small_gaps / max_size_large_gaps: int</strong></p>
-<blockquote>
-<div><p>the maximum size of the gaps inserted in the data, expressed in data
-points</p>
-</div></blockquote>
-<p><strong>**options:</strong></p>
-<blockquote>
-<div><p>Arguments for the filling function; refer to the relevant filling
-function to know what arguments to give</p>
-</div></blockquote>
+include the range for correlation calculation and the filling range.</li>
+<li><strong>/ nr_large_gaps</strong> (<em>nr_small_gaps</em>) &#8211; the number of small/large gaps to create in the dataset for testing</li>
+<li><strong>/ max_size_large_gaps</strong> (<em>max_size_small_gaps</em>) &#8211; the maximum size of the gaps inserted in the data, expressed in data
+points</li>
+<li><strong>**options</strong> &#8211; Arguments for the filling function; refer to the relevant filling
+function to know what arguments to give</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None; adds the average filling error the self.filling_error dataframe</p>
-</td>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When checking for the error on data filling, a period (arange argument)
+with mostly reliable data should be used. If for example large gaps are
+already present in the given data, this will heavily influence the
+returned error, as filled values will be compared with the values from
+the data gap.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">adds the average filling error the self.filling_error dataframe</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">None</td>
 </tr>
 </tbody>
 </table>
@@ -1373,8 +1287,13 @@ function to know what arguments to give</p>
 <dl class="method">
 <dt id="wwdata.Class_OnlineSensorBased.OnlineSensorBased.drop_index_duplicates">
 <code class="descname">drop_index_duplicates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#OnlineSensorBased.drop_index_duplicates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.OnlineSensorBased.drop_index_duplicates" title="Permalink to this definition">¶</a></dt>
-<dd><p>drop rows with a duplicate index, ASSUMING THEY HAVE THE SAME DATA IN
-THEM!! Also updates the meta_valid, meta_filled and filled dataframes</p>
+<dd><p>drop rows with a duplicate index. Also updates the meta_valid,
+meta_filled and filled dataframes</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This operation assumes the dropped rows have the same data in them and
+therefor no data is lost.</p>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -1387,42 +1306,26 @@ the range given by arange.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>to_fill</strong> : str</p>
-<blockquote>
-<div><p>name of the column with data to fill</p>
-</div></blockquote>
-<p><strong>to_use</strong> : str</p>
-<blockquote>
-<div><p>name of the column to use, in combination with the given ratio, to
-fill in some of the missing data</p>
-</div></blockquote>
-<p><strong>arange</strong> : array of two values</p>
-<blockquote>
-<div><p>the range within which missing/filtered values need to be replaced</p>
-</div></blockquote>
-<p><strong>corr_range</strong> : array of two values</p>
-<blockquote>
-<div><p>the range to use for the calculation of the correlation</p>
-</div></blockquote>
-<p><strong>filtered_only</strong> : boolean</p>
-<blockquote>
-<div><p>if True, fills only the datapoints labeled as filtered. If False,
-fills/replaces all datapoints in the given range</p>
-</div></blockquote>
-<p><strong>plot</strong> : bool</p>
-<blockquote>
-<div><p>whether or not to plot the new dataset</p>
-</div></blockquote>
-<p><strong>clear</strong> : bool</p>
-<blockquote>
-<div><p>whether or not to clear the previoulsy filled values and start from
-the self.meta_valid dataset again for this particular dataseries.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>to_fill</strong> (<em>str</em>) &#8211; name of the column with data to fill</li>
+<li><strong>to_use</strong> (<em>str</em>) &#8211; name of the column to use, in combination with the given ratio, to
+fill in some of the missing data</li>
+<li><strong>arange</strong> (<em>array of two values</em>) &#8211; the range within which missing/filtered values need to be replaced</li>
+<li><strong>corr_range</strong> (<em>array of two values</em>) &#8211; the range to use for the calculation of the correlation</li>
+<li><strong>filtered_only</strong> (<em>boolean</em>) &#8211; if True, fills only the datapoints labeled as filtered. If False,
+fills/replaces all datapoints in the given range</li>
+<li><strong>plot</strong> (<em>bool</em>) &#8211; whether or not to plot the new dataset</li>
+<li><strong>clear</strong> (<em>bool</em>) &#8211; whether or not to clear the previoulsy filled values and start from
+the self.meta_valid dataset again for this particular dataseries.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None;</p>
-<p>creates/updates self.filled, containing the adjusted dataset and updates</p>
-<p class="last">meta_filled with the correct labels.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>None;</em></li>
+<li><em>creates/updates self.filled, containing the adjusted dataset and updates</em></li>
+<li><em>meta_filled with the correct labels.</em></li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -1442,40 +1345,27 @@ This function will not work on datasets with non-equidistant data points!</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>to_fill</strong> : str</p>
-<blockquote>
-<div><p>name of the column with data to fill</p>
-</div></blockquote>
-<p><strong>arange</strong> : array of two values</p>
-<blockquote>
-<div><p>the range within which missing/filtered values need to be replaced</p>
-</div></blockquote>
-<p><strong>range_to_replace</strong> : array of two int/float values</p>
-<blockquote>
-<div><p>the minimum and maximum amount of time (i.e. min and max size of
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>to_fill</strong> (<em>str</em>) &#8211; name of the column with data to fill</li>
+<li><strong>arange</strong> (<em>array of two values</em>) &#8211; the range within which missing/filtered values need to be replaced</li>
+<li><strong>range_to_replace</strong> (<em>array of two int/float values</em>) &#8211; the minimum and maximum amount of time (i.e. min and max size of
 gaps in data) where missing datapoints can be replaced using this
 function, i.e. using values of the last day before measurements
-went bad.</p>
-</div></blockquote>
-<p><strong>filtered_only</strong> : boolean</p>
-<blockquote>
-<div><p>if True, fills only the datapoints labeled as filtered. If False,
-fills/replaces all datapoints in the given range</p>
-</div></blockquote>
-<p><strong>plot</strong> : bool</p>
-<blockquote>
-<div><p>whether or not to plot the new dataset</p>
-</div></blockquote>
-<p><strong>clear</strong> : bool</p>
-<blockquote>
-<div><p>whether or not to clear the previoulsy filled values and start from
-the self.meta_valid dataset again for this particular dataseries.</p>
-</div></blockquote>
+went bad.</li>
+<li><strong>filtered_only</strong> (<em>boolean</em>) &#8211; if True, fills only the datapoints labeled as filtered. If False,
+fills/replaces all datapoints in the given range</li>
+<li><strong>plot</strong> (<em>bool</em>) &#8211; whether or not to plot the new dataset</li>
+<li><strong>clear</strong> (<em>bool</em>) &#8211; whether or not to clear the previoulsy filled values and start from
+the self.meta_valid dataset again for this particular dataseries.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None;</p>
-<p>creates/updates self.filled, containing the adjusted dataset and updates</p>
-<p class="last">meta_filled with the correct labels.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>None;</em></li>
+<li><em>creates/updates self.filled, containing the adjusted dataset and updates</em></li>
+<li><em>meta_filled with the correct labels.</em></li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -1492,38 +1382,25 @@ consecutive missing values is smaller than <a href="#id1"><span class="problemat
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>to_fill</strong> : str</p>
-<blockquote>
-<div><p>name of the column containing the data to be filled</p>
-</div></blockquote>
-<p><strong>range_</strong> : int</p>
-<blockquote>
-<div><p>the maximum range that the absence of values can be to still
-allow interpolation to fill in values</p>
-</div></blockquote>
-<p><strong>arange</strong> : array of two values</p>
-<blockquote>
-<div><p>the range within which missing/filtered values need to be replaced</p>
-</div></blockquote>
-<p><strong>method</strong> : str</p>
-<blockquote>
-<div><p>interpolation method to be used by the .interpolate function. See
-pandas docstrings for more info</p>
-</div></blockquote>
-<p><strong>plot</strong> : bool</p>
-<blockquote>
-<div><p>whether or not to plot the new dataset</p>
-</div></blockquote>
-<p><strong>clear</strong> : bool</p>
-<blockquote>
-<div><p>whether or not to clear the previoulsy filled values and start from
-the self.meta_valid dataset again for this particular dataseries.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>to_fill</strong> (<em>str</em>) &#8211; name of the column containing the data to be filled</li>
+<li><strong>range</strong> (<em>int</em>) &#8211; the maximum range that the absence of values can be to still
+allow interpolation to fill in values</li>
+<li><strong>arange</strong> (<em>array of two values</em>) &#8211; the range within which missing/filtered values need to be replaced</li>
+<li><strong>method</strong> (<em>str</em>) &#8211; interpolation method to be used by the .interpolate function. See
+pandas docstrings for more info</li>
+<li><strong>plot</strong> (<em>bool</em>) &#8211; whether or not to plot the new dataset</li>
+<li><strong>clear</strong> (<em>bool</em>) &#8211; whether or not to clear the previoulsy filled values and start from
+the self.meta_valid dataset again for this particular dataseries.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None;</p>
-<p>creates/updates self.filled, containing the adjusted dataset and updates</p>
-<p class="last">meta_filled with the correct labels.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>None;</em></li>
+<li><em>creates/updates self.filled, containing the adjusted dataset and updates</em></li>
+<li><em>meta_filled with the correct labels.</em></li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -1539,43 +1416,27 @@ values given in to_use. This happens within the range given by arange.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>to_fill</strong> : str</p>
-<blockquote>
-<div><p>name of the column with data to fill</p>
-</div></blockquote>
-<p><strong>to_use</strong> : pd.Series</p>
-<blockquote>
-<div><p>pandas series containing the modeled data with which the filtered
-data can be replaced</p>
-</div></blockquote>
-<p><strong>arange</strong> : array of two values</p>
-<blockquote>
-<div><p>the range within which missing/filtered values need to be replaced</p>
-</div></blockquote>
-<p><strong>filtered_only</strong> : boolean</p>
-<blockquote>
-<div><p>if True, fills only the datapoints labeled as filtered. If False,
-fills/replaces all datapoints in the given range</p>
-</div></blockquote>
-<p><strong>unit</strong> : str</p>
-<blockquote>
-<div><p>the unit in which the modeled values are given; datetime values will
-be converted to values with that unit. Possible: sec, min, hr, d</p>
-</div></blockquote>
-<p><strong>plot</strong> : bool</p>
-<blockquote>
-<div><p>whether or not to plot the new dataset</p>
-</div></blockquote>
-<p><strong>clear</strong> : bool</p>
-<blockquote>
-<div><p>whether or not to clear the previoulsy filled values and start from
-the self.meta_valid dataset again for this particular dataseries.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>to_fill</strong> (<em>str</em>) &#8211; name of the column with data to fill</li>
+<li><strong>to_use</strong> (<em>pd.Series</em>) &#8211; pandas series containing the modeled data with which the filtered
+data can be replaced</li>
+<li><strong>arange</strong> (<em>array of two values</em>) &#8211; the range within which missing/filtered values need to be replaced</li>
+<li><strong>filtered_only</strong> (<em>boolean</em>) &#8211; if True, fills only the datapoints labeled as filtered. If False,
+fills/replaces all datapoints in the given range</li>
+<li><strong>unit</strong> (<em>str</em>) &#8211; the unit in which the modeled values are given; datetime values will
+be converted to values with that unit. Possible: sec, min, hr, d</li>
+<li><strong>plot</strong> (<em>bool</em>) &#8211; whether or not to plot the new dataset</li>
+<li><strong>clear</strong> (<em>bool</em>) &#8211; whether or not to clear the previoulsy filled values and start from
+the self.meta_valid dataset again for this particular dataseries.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None;</p>
-<p>creates/updates self.filled, containing the adjusted dataset and updates</p>
-<p class="last">meta_filled with the correct labels.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>None;</em></li>
+<li><em>creates/updates self.filled, containing the adjusted dataset and updates</em></li>
+<li><em>meta_filled with the correct labels.</em></li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -1592,43 +1453,27 @@ the range given by arange.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>to_fill</strong> : str</p>
-<blockquote>
-<div><p>name of the column with data to fill</p>
-</div></blockquote>
-<p><strong>to_use</strong> : str</p>
-<blockquote>
-<div><p>name of the column to use, in combination with the given ratio, to
-fill in some of the missing data</p>
-</div></blockquote>
-<p><strong>ratio</strong> : float</p>
-<blockquote>
-<div><p>ratio to multiply the to_use data with to obtain data for filling in
-in the to_fill data column</p>
-</div></blockquote>
-<p><strong>arange</strong> : array of two values</p>
-<blockquote>
-<div><p>the range within which missing/filtered values need to be replaced</p>
-</div></blockquote>
-<p><strong>filtered_only</strong> : boolean</p>
-<blockquote>
-<div><p>if True, fills only the datapoints labeled as filtered. If False,
-fills/replaces all datapoints in the given range</p>
-</div></blockquote>
-<p><strong>plot</strong> : bool</p>
-<blockquote>
-<div><p>whether or not to plot the new dataset</p>
-</div></blockquote>
-<p><strong>clear</strong> : bool</p>
-<blockquote>
-<div><p>whether or not to clear the previoulsy filled values and start from
-the self.meta_valid dataset again for this particular dataseries.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>to_fill</strong> (<em>str</em>) &#8211; name of the column with data to fill</li>
+<li><strong>to_use</strong> (<em>str</em>) &#8211; name of the column to use, in combination with the given ratio, to
+fill in some of the missing data</li>
+<li><strong>ratio</strong> (<em>float</em>) &#8211; ratio to multiply the to_use data with to obtain data for filling in
+in the to_fill data column</li>
+<li><strong>arange</strong> (<em>array of two values</em>) &#8211; the range within which missing/filtered values need to be replaced</li>
+<li><strong>filtered_only</strong> (<em>boolean</em>) &#8211; if True, fills only the datapoints labeled as filtered. If False,
+fills/replaces all datapoints in the given range</li>
+<li><strong>plot</strong> (<em>bool</em>) &#8211; whether or not to plot the new dataset</li>
+<li><strong>clear</strong> (<em>bool</em>) &#8211; whether or not to clear the previoulsy filled values and start from
+the self.meta_valid dataset again for this particular dataseries.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None;</p>
-<p>creates/updates self.filled, containing the adjusted dataset and updates</p>
-<p class="last">meta_filled with the correct labels.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>None;</em></li>
+<li><em>creates/updates self.filled, containing the adjusted dataset and updates</em></li>
+<li><em>meta_filled with the correct labels.</em></li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -1645,33 +1490,23 @@ the range given by arange.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>to_fill</strong> : str</p>
-<blockquote>
-<div><p>name of the column with data to fill</p>
-</div></blockquote>
-<p><strong>arange</strong> : array of two values</p>
-<blockquote>
-<div><p>the range within which missing/filtered values need to be replaced</p>
-</div></blockquote>
-<p><strong>filtered_only</strong> : boolean</p>
-<blockquote>
-<div><p>if True, fills only the datapoints labeled as filtered. If False,
-fills/replaces all datapoints in the given range</p>
-</div></blockquote>
-<p><strong>plot</strong> : bool</p>
-<blockquote>
-<div><p>whether or not to plot the new dataset</p>
-</div></blockquote>
-<p><strong>clear</strong> : bool</p>
-<blockquote>
-<div><p>whether or not to clear the previoulsy filled values and start from
-the self.meta_valid dataset again for this particular dataseries.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>to_fill</strong> (<em>str</em>) &#8211; name of the column with data to fill</li>
+<li><strong>arange</strong> (<em>array of two values</em>) &#8211; the range within which missing/filtered values need to be replaced</li>
+<li><strong>filtered_only</strong> (<em>boolean</em>) &#8211; if True, fills only the datapoints labeled as filtered. If False,
+fills/replaces all datapoints in the given range</li>
+<li><strong>plot</strong> (<em>bool</em>) &#8211; whether or not to plot the new dataset</li>
+<li><strong>clear</strong> (<em>bool</em>) &#8211; whether or not to clear the previoulsy filled values and start from
+the self.meta_valid dataset again for this particular dataseries.</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">None;</p>
-<p>creates/updates self.filled, containing the adjusted dataset and updates</p>
-<p class="last">meta_filled with the correct labels.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>None;</em></li>
+<li><em>creates/updates self.filled, containing the adjusted dataset and updates</em></li>
+<li><em>meta_filled with the correct labels.</em></li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -1689,14 +1524,12 @@ in the given unit, starting from start_date</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>series</strong> : pd.Series</p>
-<blockquote>
-<div><p>series of datetime of comparable values</p>
-</div></blockquote>
-<p><strong>unit</strong> : str</p>
-<blockquote class="last">
-<div><p>unit to which to convert the time values (sec, min, hr or d)</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>series</strong> (<em>pd.Series</em>) &#8211; series of datetime of comparable values</li>
+<li><strong>unit</strong> (<em>str</em>) &#8211; unit to which to convert the time values (sec, min, hr or d)</li>
+<li><strong>output</strong> &#8211; </li>
+<li><strong>------</strong> &#8211; </li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -1711,33 +1544,23 @@ in the given unit, starting from start_date</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data_name</strong> : str</p>
-<blockquote>
-<div><p>the name of the column to use for the removal of peak values</p>
-</div></blockquote>
-<p><strong>cutoff</strong> : int</p>
-<blockquote>
-<div><p>cut off value to use for the removing of peaks; values with an
-absolute value larger than this cut off will be removed from the data</p>
-</div></blockquote>
-<p><strong>inplace</strong> : bool</p>
-<blockquote>
-<div><p>indicates whether a new dataframe is created and returned or whether
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data_name</strong> (<em>str</em>) &#8211; the name of the column to use for the removal of peak values</li>
+<li><strong>cutoff</strong> (<em>int</em>) &#8211; cut off value to use for the removing of peaks; values with an
+absolute value larger than this cut off will be removed from the data</li>
+<li><strong>inplace</strong> (<em>bool</em>) &#8211; indicates whether a new dataframe is created and returned or whether
 the operations are executed on the existing dataframe (nothing is
-returned)</p>
-</div></blockquote>
-<p><strong>log_file</strong> : str</p>
-<blockquote>
-<div><p>string containing the directory to a log file to be written out
-when using this function</p>
-</div></blockquote>
+returned)</li>
+<li><strong>log_file</strong> (<em>str</em>) &#8211; string containing the directory to a log file to be written out
+when using this function</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">LabSensorBased object (if inplace=False)</p>
-<blockquote>
-<div><p>the dataframe from which the double values of &#8216;data&#8217; are removed</p>
-</div></blockquote>
-<p class="last">None (if inplace=True)</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>LabSensorBased object (if inplace=False)</em> &#8211; the dataframe from which the double values of &#8216;data&#8217; are removed</li>
+<li><em>None (if inplace=True)</em></li>
+</ul>
+</p>
 </td>
 </tr>
 </tbody>
@@ -1747,7 +1570,20 @@ when using this function</p>
 <dl class="function">
 <dt id="wwdata.Class_OnlineSensorBased.find_nearest_time">
 <code class="descclassname">wwdata.Class_OnlineSensorBased.</code><code class="descname">find_nearest_time</code><span class="sig-paren">(</span><em>value</em>, <em>df</em>, <em>column</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#find_nearest_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.find_nearest_time" title="Permalink to this definition">¶</a></dt>
-<dd><p>value : float</p>
+<dd><p>Returns the (time) value in a dataframe column nearest to a given value</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>value</strong> (<em>float</em>) &#8211; time value to find the closest value for in &#8216;df&#8217;</li>
+<li><strong>df</strong> (<em>pd.Dataframe</em>) &#8211; dataframe to use</li>
+<li><strong>column</strong> (<em>str</em>) &#8211; column to check &#8216;value&#8217; against</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -1758,14 +1594,16 @@ when using this function</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>raw_data: str or pd DataFrame</strong></p>
-<p><strong>time_data:</strong></p>
-<p><strong>WEST_name_conversion: pd DataFrame with column names: WEST, units and RAW</strong></p>
-<blockquote class="last">
-<div><p>dataframe containing three columns: the column names for the WEST-compatible file,
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>raw_data</strong> (<em>str</em><em> or </em><em>pd DataFrame</em>) &#8211; </li>
+<li><strong>time_data</strong> &#8211; </li>
+<li><strong>WEST_name_conversion</strong> (<em>pd DataFrame with column names: WEST</em><em>, </em><em>units and RAW</em>) &#8211; dataframe containing three columns: the column names for the WEST-compatible file,
 the units to appear in the WEST-compatible file and the column names of the raw
-data file.</p>
-</div></blockquote>
+data file.</li>
+<li><strong>output</strong> &#8211; </li>
+<li><strong>------</strong> &#8211; </li>
+<li><strong>None</strong> &#8211; </li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -1780,7 +1618,8 @@ data file.</p>
 <dl class="function">
 <dt id="wwdata.Class_OnlineSensorBased.vlookup_day">
 <code class="descclassname">wwdata.Class_OnlineSensorBased.</code><code class="descname">vlookup_day</code><span class="sig-paren">(</span><em>value</em>, <em>df</em>, <em>column</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/Class_OnlineSensorBased.html#vlookup_day"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.Class_OnlineSensorBased.vlookup_day" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the dataframe index of a given value</p>
+</dd></dl>
 
 </div>
 <div class="section" id="module-wwdata.data_reading_functions">
@@ -1807,19 +1646,12 @@ a prefix stating the replacing value.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> : str</p>
-<blockquote>
-<div><p>the path name of the directory to apply the function to</p>
-</div></blockquote>
-<p><strong>ext</strong> : str</p>
-<blockquote>
-<div><p>the extension of the files to be searched (excel, text or csv)</p>
-</div></blockquote>
-<p><strong>replace</strong> : array of str</p>
-<blockquote class="last">
-<div><p>the first value of replace is the string to be replaced by the second
-value of replace.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> (<em>str</em>) &#8211; the path name of the directory to apply the function to</li>
+<li><strong>ext</strong> (<em>str</em>) &#8211; the extension of the files to be searched (excel, text or csv)</li>
+<li><strong>replace</strong> (<em>array of str</em>) &#8211; the first value of replace is the string to be replaced by the second
+value of replace.</li>
+</ul>
 </td>
 </tr>
 </tbody>
@@ -1834,38 +1666,22 @@ value of replace.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>path</strong> : str</p>
-<blockquote>
-<div><p>path to the folder that contains the files to be joined</p>
-</div></blockquote>
-<p><strong>files</strong> : list</p>
-<blockquote>
-<div><p>list of files to be joined, must be the same extension</p>
-</div></blockquote>
-<p><strong>ext</strong> : str</p>
-<blockquote>
-<div><p>extention of the files to read; possible: excel, text, csv</p>
-</div></blockquote>
-<p><strong>sep</strong> : str</p>
-<blockquote>
-<div><p>the separating element (e.g. , or       ) necessary when reading csv-files</p>
-</div></blockquote>
-<p><strong>comment</strong> : str</p>
-<blockquote>
-<div><p>comment symbol used in the files</p>
-</div></blockquote>
-<p><strong>sort</strong> : array of bool and str</p>
-<blockquote>
-<div><p>if first element is true, apply the sort function to sort the data
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<em>str</em>) &#8211; path to the folder that contains the files to be joined</li>
+<li><strong>files</strong> (<em>list</em>) &#8211; list of files to be joined, must be the same extension</li>
+<li><strong>ext</strong> (<em>str</em>) &#8211; extention of the files to read; possible: excel, text, csv</li>
+<li><strong>sep</strong> (<em>str</em>) &#8211; the separating element (e.g. , or       ) necessary when reading csv-files</li>
+<li><strong>comment</strong> (<em>str</em>) &#8211; comment symbol used in the files</li>
+<li><strong>sort</strong> (<em>array of bool and str</em>) &#8211; if first element is true, apply the sort function to sort the data
 based on the tags in the column mentioned in the second element of the
-sort array</p>
-</div></blockquote>
+sort array</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.dataframe:</p>
-<blockquote class="last">
-<div><p>pandas dataframe containin concatenated files in the given directory</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pandas dataframe containin concatenated files in the given directory</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">pd.dataframe</p>
 </td>
 </tr>
 </tbody>
@@ -1875,19 +1691,51 @@ sort array</p>
 <dl class="function">
 <dt id="wwdata.data_reading_functions.list_files">
 <code class="descclassname">wwdata.data_reading_functions.</code><code class="descname">list_files</code><span class="sig-paren">(</span><em>path</em>, <em>ext</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/data_reading_functions.html#list_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.data_reading_functions.list_files" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Returns a list of files in a certain folder (&#8216;path&#8217;) with a certain extension
+(&#8216;ext&#8217;)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> (<em>str</em>) &#8211; path to the folder containing the files to be listed</li>
+<li><strong>ext</strong> (<em>str</em>) &#8211; extension of the files to be listed; current options are &#8216;excel&#8217;,&#8217;text&#8217;
+or &#8216;csv&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="wwdata.data_reading_functions.read_mat">
 <code class="descclassname">wwdata.data_reading_functions.</code><code class="descname">read_mat</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/data_reading_functions.html#read_mat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.data_reading_functions.read_mat" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reads in .mat datafiles and returns them as pd.DataFrame
+<dd><p>TO DO
+Reads in .mat datafiles and returns them as pd.DataFrame
 <a class="reference external" href="http://stackoverflow.com/questions/24762122/read-matlab-data-file-into-python-need-to-export-to-csv">http://stackoverflow.com/questions/24762122/read-matlab-data-file-into-python-need-to-export-to-csv</a></p>
 </dd></dl>
 
 <dl class="function">
 <dt id="wwdata.data_reading_functions.remove_empty_lines">
 <code class="descclassname">wwdata.data_reading_functions.</code><code class="descname">remove_empty_lines</code><span class="sig-paren">(</span><em>path</em>, <em>ext</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/data_reading_functions.html#remove_empty_lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.data_reading_functions.remove_empty_lines" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Removes the empty lines from files in a certain folder (&#8216;path&#8217;) and with a
+certain extension (&#8216;ext&#8217;)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> (<em>str</em>) &#8211; path to the folder containing the files in which empty lines need to be
+removed</li>
+<li><strong>ext</strong> (<em>str</em>) &#8211; extension of the files in which empty lines need to be removed; current
+options are &#8216;excel&#8217;,&#8217;text&#8217; or &#8216;csv&#8217;</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="wwdata.data_reading_functions.sort_data">
@@ -1898,28 +1746,21 @@ different dataframes, returned in the form of one dictionary</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : pd.dataframe</p>
-<blockquote>
-<div><p>the dataframe containing the data that needs to be sorted</p>
-</div></blockquote>
-<p><strong>based_on</strong> : str</p>
-<blockquote>
-<div><p>the name of the column that contains the names or values the sorting
-should be based on</p>
-</div></blockquote>
-<p><strong>reset_index</strong> : [bool,str]</p>
-<blockquote>
-<div><p>array indicating if the index of the sorted datasets should be reset to
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>pd.dataframe</em>) &#8211; the dataframe containing the data that needs to be sorted</li>
+<li><strong>based_on</strong> (<em>str</em>) &#8211; the name of the column that contains the names or values the sorting
+should be based on</li>
+<li><strong>reset_index</strong> (<em></em><em>[</em><em>bool</em><em>,</em><em>str</em><em>]</em><em></em>) &#8211; array indicating if the index of the sorted datasets should be reset to
 a new one; if first element is true, the second element is the title of
-the column to use as new index; default: False</p>
-</div></blockquote>
+the column to use as new index; default: False</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict :</p>
-<blockquote class="last">
-<div><p>A dictionary of pandas dataframes with as labels those acquired from the
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A dictionary of pandas dataframes with as labels those acquired from the
 based_on column</p>
-</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
 </td>
 </tr>
 </tbody>
@@ -1935,34 +1776,21 @@ they are given in the &#8216;units&#8217; argument.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>df</strong> : pd.DataFrame</p>
-<blockquote>
-<div><p>the dataframe to write to WEST</p>
-</div></blockquote>
-<p><strong>file_normal</strong> : str</p>
-<blockquote>
-<div><p>name of the original file to write, not yet compatible with WEST</p>
-</div></blockquote>
-<p><strong>file_west</strong> : str</p>
-<blockquote>
-<div><p>name of the file that needs to be WEST compatible</p>
-</div></blockquote>
-<p><strong>units</strong> : array of strings</p>
-<blockquote>
-<div><p>array containing the units for the respective columns in df</p>
-</div></blockquote>
-<p><strong>filepath</strong> : str</p>
-<blockquote>
-<div><p>directory to save the files in; defaults to the current one</p>
-</div></blockquote>
-<p><strong>fillna</strong> : bool</p>
-<blockquote>
-<div><p>when True, replaces nan values with 0 values (this might avoid
-WEST problems later one).</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>df</strong> (<em>pd.DataFrame</em>) &#8211; the dataframe to write to WEST</li>
+<li><strong>file_normal</strong> (<em>str</em>) &#8211; name of the original file to write, not yet compatible with WEST</li>
+<li><strong>file_west</strong> (<em>str</em>) &#8211; name of the file that needs to be WEST compatible</li>
+<li><strong>units</strong> (<em>array of strings</em>) &#8211; array containing the units for the respective columns in df</li>
+<li><strong>filepath</strong> (<em>str</em>) &#8211; directory to save the files in; defaults to the current one</li>
+<li><strong>fillna</strong> (<em>bool</em>) &#8211; when True, replaces nan values with 0 values (this might avoid
+WEST problems later one).</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None; writes files</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None; writes files</p>
 </td>
 </tr>
 </tbody>
@@ -1993,23 +1821,19 @@ conducted.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>value</strong> : int or float</p>
-<blockquote>
-<div><p>a code for a certain point in time</p>
-</div></blockquote>
-<p><strong>date_type</strong> : str</p>
-<blockquote>
-<div><p>type of coding used for the time point, probably depending on the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>value</strong> (<em>int</em><em> or </em><em>float</em>) &#8211; a code for a certain point in time</li>
+<li><strong>date_type</strong> (<em>str</em>) &#8211; type of coding used for the time point, probably depending on the
 software which was used to acquire the data, e.g. the Windows Date
 System (here as default, see also:
-<a class="reference external" href="http://excelsemipro.com/2010/08/date-and-time-calculation-in-excel/">http://excelsemipro.com/2010/08/date-and-time-calculation-in-excel/</a>)</p>
-</div></blockquote>
+<a class="reference external" href="http://excelsemipro.com/2010/08/date-and-time-calculation-in-excel/">http://excelsemipro.com/2010/08/date-and-time-calculation-in-excel/</a>)</li>
+</ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">datetime.datetime</p>
-<blockquote class="last">
-<div><p>python datetime object</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">python datetime object</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">datetime.datetime</p>
 </td>
 </tr>
 </tbody>
@@ -2019,20 +1843,24 @@ System (here as default, see also:
 <dl class="function">
 <dt id="wwdata.time_conversion_functions.make_datetime">
 <code class="descclassname">wwdata.time_conversion_functions.</code><code class="descname">make_datetime</code><span class="sig-paren">(</span><em>array</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/time_conversion_functions.html#make_datetime"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.time_conversion_functions.make_datetime" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>array with elements</dt>
-<dd>0: year (yy)
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>with elements</strong> (<em>array</em>) &#8211; 0: year (yy)
 1: month (mm)
 2: day in month (dd)
 3: hour (h or hh)
-4: minutes (minmin)</dd>
-</dl>
+4: minutes (minmin)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="wwdata.time_conversion_functions.make_month_day_array">
 <code class="descclassname">wwdata.time_conversion_functions.</code><code class="descname">make_month_day_array</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wwdata/time_conversion_functions.html#make_month_day_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wwdata.time_conversion_functions.make_month_day_array" title="Permalink to this definition">¶</a></dt>
-<dd><p>makes a dataframe containing two columns, one with the number of the month,
+<dd><p>Returns a dataframe containing two columns, one with the number of the month,
 one with the day of the month. Useful in creating datetime objects based on
 e.g. date serial numbers from the Window Date System
 (<a class="reference external" href="http://excelsemipro.com/2010/08/date-and-time-calculation-in-excel/">http://excelsemipro.com/2010/08/date-and-time-calculation-in-excel/</a>)</p>
@@ -2040,12 +1868,10 @@ e.g. date serial numbers from the Window Date System
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pd.DataFrame :</p>
-<blockquote class="last">
-<div><p>dataframe with number of the month and number of the day of the month
-for a whole year</p>
-</div></blockquote>
-</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">dataframe with number of the month and number of the day of the month
+for a whole year</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">pd.DataFrame</td>
 </tr>
 </tbody>
 </table>

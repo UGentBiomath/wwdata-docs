@@ -50,22 +50,22 @@
   <h1>Source code for wwdata.Class_HydroData</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Class_HydroData provides functionalities for handling data obtained in the context of (waste)water treatment.</span>
+<span class="sd">Class_HydroData provides functionalities for handling data obtained in the context of (waste)water treatment.</span>
 
-<span class="sd">    Copyright (C) 2016 Chaim De Mulder</span>
+<span class="sd">Copyright (C) 2016 Chaim De Mulder</span>
 
-<span class="sd">    This program is free software: you can redistribute it and/or modify</span>
-<span class="sd">    it under the terms of the GNU General Public License as published by</span>
-<span class="sd">    the Free Software Foundation, either version 3 of the License, or</span>
-<span class="sd">    (at your option) any later version.</span>
+<span class="sd">This program is free software: you can redistribute it and/or modify</span>
+<span class="sd">it under the terms of the GNU General Public License as published by</span>
+<span class="sd">the Free Software Foundation, either version 3 of the License, or</span>
+<span class="sd">(at your option) any later version.</span>
 
-<span class="sd">    This program is distributed in the hope that it will be useful,</span>
-<span class="sd">    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span class="sd">    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<span class="sd">    GNU General Public License for more details.</span>
+<span class="sd">This program is distributed in the hope that it will be useful,</span>
+<span class="sd">but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="sd">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="sd">GNU General Public License for more details.</span>
 
-<span class="sd">    You should have received a copy of the GNU General Public License</span>
-<span class="sd">    along with this program.  If not, see http://www.gnu.org/licenses/.</span>
+<span class="sd">You should have received a copy of the GNU General Public License</span>
+<span class="sd">along with this program.  If not, see http://www.gnu.org/licenses/.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1">#import sys</span>
@@ -84,24 +84,26 @@
 
 <div class="viewcode-block" id="HydroData"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData">[docs]</a><span class="k">class</span> <span class="nc">HydroData</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    timedata_column : str</span>
+<span class="sd">        name of the column containing the time data</span>
+<span class="sd">    data_type : str</span>
+<span class="sd">        type of data provided</span>
+<span class="sd">    experiment_tag : str</span>
+<span class="sd">        A tag identifying the experiment; can be a date or a code used by</span>
+<span class="sd">        the producer/owner of the data.</span>
+<span class="sd">    time_unit : str</span>
+<span class="sd">        The time unit in which the time data is given</span>
+<span class="sd">    units : array</span>
+<span class="sd">        The units of the variables in the columns</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">timedata_column</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span><span class="n">data_type</span><span class="o">=</span><span class="s1">&#39;WWTP&#39;</span><span class="p">,</span>
                  <span class="n">experiment_tag</span><span class="o">=</span><span class="s1">&#39;No tag given&#39;</span><span class="p">,</span><span class="n">time_unit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                  <span class="n">units</span><span class="o">=</span><span class="p">[]):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        initialisation of a HydroData object.</span>
-
-<span class="sd">        Attributes</span>
-<span class="sd">        ----------</span>
-<span class="sd">        timedata_column : str</span>
-<span class="sd">            name of the column containing the time data</span>
-<span class="sd">        experiment_tag : str</span>
-<span class="sd">            A tag identifying the experiment; can be a date or a code used by</span>
-<span class="sd">            the producer/owner of the data.</span>
-<span class="sd">        time_unit : str</span>
-<span class="sd">            The time unit in which the time data is given</span>
-<span class="sd">        units : array</span>
-<span class="sd">            The units of the variables in the columns</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -128,12 +130,18 @@
         <span class="c1">#&#39;missing!&#39;)</span>
 
 <div class="viewcode-block" id="HydroData.set_tag"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.set_tag">[docs]</a>    <span class="k">def</span> <span class="nf">set_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">tag</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;CONFIRMED</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the tag element of the HydroData object to the given tag</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span></div>
 
 <div class="viewcode-block" id="HydroData.set_units"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.set_units">[docs]</a>    <span class="k">def</span> <span class="nf">set_units</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">units</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the units element of the HydroData object to a given dataframe</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">units</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="n">units</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -145,24 +153,24 @@
 
 <div class="viewcode-block" id="HydroData.set_time_unit"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.set_time_unit">[docs]</a>    <span class="k">def</span> <span class="nf">set_time_unit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">unit</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="sd">        Sets the time_unit element of the HydroData object to a given unit</span>
 
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">time_unit</span> <span class="o">=</span> <span class="n">unit</span></div>
 
 <div class="viewcode-block" id="HydroData.head"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.head">[docs]</a>    <span class="k">def</span> <span class="nf">head</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;CONFIRMED</span>
-<span class="sd">        piping pandas head function&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;piping pandas head function, see https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.head.html for documentation&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="HydroData.tail"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.tail">[docs]</a>    <span class="k">def</span> <span class="nf">tail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;CONFIRMED</span>
-<span class="sd">        piping pandas tail function&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;piping pandas tail function, see https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.tail.html for documentation&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="HydroData.index"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.index">[docs]</a>    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        piping pandas index function</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;piping pandas index function, see http://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.Index.html for documentation&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span></div>
 
     <span class="c1">#####################</span>
@@ -208,8 +216,12 @@
 
 <div class="viewcode-block" id="HydroData.drop_index_duplicates"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.drop_index_duplicates">[docs]</a>    <span class="k">def</span> <span class="nf">drop_index_duplicates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        drop rows with a duplicate index, ASSUMING THEY HAVE THE SAME DATA IN</span>
-<span class="sd">        THEM!! Also updates the meta_valid dataframe</span>
+<span class="sd">        drop rows with a duplicate index. Also updates the meta_valid dataframe</span>
+
+<span class="sd">        Note</span>
+<span class="sd">        ----</span>
+<span class="sd">        It is assumed that the dropped rows containt the same data as their index-</span>
+<span class="sd">        based duplicate, i.e. that no data is lost using the function. </span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1">#len_orig = len(self.data)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">())</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
@@ -221,8 +233,7 @@
             <span class="s1">&#39;.sort_index() or .sort_value() to avoid. (see also hp.to_datetime())&#39;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="HydroData.replace"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.replace">[docs]</a>    <span class="k">def</span> <span class="nf">replace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">to_replace</span><span class="p">,</span><span class="n">value</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;CONFIRMED</span>
-<span class="sd">        piping pandas replace function&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;piping pandas replace function, see http://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.DataFrame.replace.html for documentation&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">inplace</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="p">,</span><span class="n">value</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
                                   <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">timename</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">data_type</span><span class="p">,</span>
@@ -233,11 +244,19 @@
 <div class="viewcode-block" id="HydroData.set_index"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.set_index">[docs]</a>    <span class="k">def</span> <span class="nf">set_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">keys</span><span class="p">,</span><span class="n">key_is_time</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                   <span class="n">verify_integrity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">save_prev_index</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        piping pandas set_index function, including the option to define the new index</span>
-<span class="sd">        as being the time data</span>
+<span class="sd">        piping and extending pandas set_index function, see https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.set_index.html for documentation</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        ----------</span>
 <span class="sd">        key_is_time : bool</span>
 <span class="sd">            when true, the new index will we known as the time data from here on</span>
+
 <span class="sd">        (other arguments cfr pd.set_index)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        HydroData object (if inplace=False)</span>
+<span class="sd">        None (if inplace=True)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">save_prev_index</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">prev_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span>
@@ -310,10 +329,10 @@
 
 <div class="viewcode-block" id="HydroData.to_datetime"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.to_datetime">[docs]</a>    <span class="k">def</span> <span class="nf">to_datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">time_column</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span><span class="n">time_format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">d-%mm-%yy&#39;</span><span class="p">,</span>
                     <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;CONFIRMED</span>
-<span class="sd">        flexibly piping pandas to_datetime function</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Piping and modifying pandas to_datetime function</span>
 
-<span class="sd">        Parameter</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        ---------</span>
 <span class="sd">        time_column : str</span>
 <span class="sd">            column name of the column where values need to be converted to date-</span>
@@ -348,7 +367,7 @@
 <span class="sd">        converts a pandas series with datetime timevalues to relative timevalues</span>
 <span class="sd">        in the given unit, starting from 0</span>
 
-<span class="sd">        parameters</span>
+<span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        time_data : str</span>
 <span class="sd">            name of the column containing the time data. If this is the index</span>
@@ -520,6 +539,8 @@
 <span class="sd">        higher than a certain value; example: the definition/tagging of rain</span>
 <span class="sd">        events.</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
 <span class="sd">        data_name : str</span>
 <span class="sd">            name of the column to execute the function on</span>
 <span class="sd">        bound_value : float</span>
@@ -530,6 +551,10 @@
 <span class="sd">            when percentile, the bound value is a given percentile above which</span>
 <span class="sd">            data points will be tagged, when value, bound_values is used directly</span>
 <span class="sd">            to tag data points.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_reset_highs</span><span class="p">()</span>
         <span class="k">try</span><span class="p">:</span>
@@ -920,7 +945,7 @@
 <div class="viewcode-block" id="HydroData.moving_slope_filter"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.moving_slope_filter">[docs]</a>    <span class="k">def</span> <span class="nf">moving_slope_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">xdata</span><span class="p">,</span><span class="n">data_name</span><span class="p">,</span><span class="n">cutoff</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span><span class="n">time_unit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                             <span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">log_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                             <span class="n">final</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;CONFIRMED</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Filters out datapoints based on the difference between the slope in one</span>
 <span class="sd">        point and the next (sudden changes like noise get filtered out), based</span>
 <span class="sd">        on a given cut off value. Replaces the dropped values with NaN values.</span>
@@ -1041,7 +1066,7 @@
 
 <div class="viewcode-block" id="HydroData.simple_moving_average"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.simple_moving_average">[docs]</a>    <span class="k">def</span> <span class="nf">simple_moving_average</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span><span class="n">window</span><span class="p">,</span><span class="n">data_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                               <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;CONFIRMED</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculate the Simple Moving Average of a dataseries from a dataframe,</span>
 <span class="sd">        using a window within which the datavalues are averaged.</span>
 
@@ -1542,9 +1567,10 @@
 <span class="sd">            that is already present</span>
 
 <span class="sd">        Returns</span>
-<span class="sd">        ------</span>
-<span class="sd">        None; creates a dictionary self.daily_profile containing information</span>
-<span class="sd">        on the average day as calculated.</span>
+<span class="sd">        -------</span>
+<span class="sd">        None</span>
+<span class="sd">            creates a dictionary self.daily_profile containing information</span>
+<span class="sd">            on the average day as calculated.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># several checks to make sure the right types, columns... are used</span>
         <span class="k">try</span><span class="p">:</span>

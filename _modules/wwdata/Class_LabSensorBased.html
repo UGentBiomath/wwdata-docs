@@ -86,18 +86,25 @@
 
 <span class="sd">    Attributes</span>
 <span class="sd">    ----------</span>
-<span class="sd">    (see HydroData docstring)</span>
-
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    timedata_column : str</span>
+<span class="sd">        name of the column containing the time data</span>
+<span class="sd">    data_type : str</span>
+<span class="sd">        type of data provided</span>
+<span class="sd">    experiment_tag : str</span>
+<span class="sd">        A tag identifying the experiment; can be a date or a code used by</span>
+<span class="sd">        the producer/owner of the data.</span>
+<span class="sd">    time_unit : str</span>
+<span class="sd">        The time unit in which the time data is given</span>
+<span class="sd">    units : array</span>
+<span class="sd">        The units of the variables in the columns</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">experiment_tag</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        initialisation of a LabSensorBased object, based on a previously defined</span>
 <span class="sd">        HydroData object.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        (currently no additional data needed to the HydroData object creation)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">HydroData</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="n">timedata_column</span><span class="p">,</span><span class="n">experiment_tag</span><span class="o">=</span><span class="s1">&#39;No tag given&#39;</span><span class="p">)</span>
 
