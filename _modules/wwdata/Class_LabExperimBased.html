@@ -1,33 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>wwdata.Class_LabExperimBased &#8212; wwdata 0.1.0 documentation</title>
-    
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '0.1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -125,8 +113,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span><span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">time_column</span><span class="p">])</span><span class="o">*</span><span class="mi">24</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">time_column</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
-
+            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</div>
 
 <div class="viewcode-block" id="LabExperimBased.add_conc"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_LabExperimBased.LabExperimBased.add_conc">[docs]</a>    <span class="k">def</span> <span class="nf">add_conc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">column_name</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">new_name</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -147,8 +135,8 @@
         <span class="k">if</span> <span class="n">new_name</span> <span class="o">==</span> <span class="s1">&#39;default&#39;</span><span class="p">:</span>
             <span class="n">new_name</span> <span class="o">=</span> <span class="n">column_name</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="s1">&#39;mg/L&#39;</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">new_name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span></div>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">new_name</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span>
+</div>
     <span class="c1">## Instead of this function: define a dataframe/dict with conversion or</span>
     <span class="c1">## concentration factors, so that you can have a function that automatically</span>
     <span class="c1">## converts all parameters in the frame to concentrations</span>
@@ -168,8 +156,8 @@
         <span class="k">if</span> <span class="n">dph</span> <span class="o">&gt;</span> <span class="n">thresh</span><span class="p">:</span>
             <span class="n">wn</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Strong change in pH during experiment!&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">delta_ph</span> <span class="o">=</span> <span class="n">dph</span></div>
-
+            <span class="bp">self</span><span class="o">.</span><span class="n">delta_ph</span> <span class="o">=</span> <span class="n">dph</span>
+</div>
 <div class="viewcode-block" id="LabExperimBased.in_out"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_LabExperimBased.LabExperimBased.in_out">[docs]</a>    <span class="k">def</span> <span class="nf">in_out</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">columns</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        (start_values-end_values)</span>
@@ -187,8 +175,8 @@
             <span class="n">outv</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">][</span><span class="n">indexes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
         <span class="n">in_out</span> <span class="o">=</span> <span class="n">inv</span><span class="o">-</span><span class="n">outv</span>
 
-        <span class="k">return</span> <span class="n">in_out</span></div>
-
+        <span class="k">return</span> <span class="n">in_out</span>
+</div>
 
 <div class="viewcode-block" id="LabExperimBased.removal"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_LabExperimBased.LabExperimBased.removal">[docs]</a>    <span class="k">def</span> <span class="nf">removal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">columns</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -208,8 +196,8 @@
             <span class="n">outv</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">][</span><span class="n">indexes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
         <span class="n">removal</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">outv</span><span class="o">/</span><span class="n">inv</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">removal</span></div>
-
+        <span class="k">return</span> <span class="n">removal</span>
+</div>
 <div class="viewcode-block" id="LabExperimBased.calc_slope"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_LabExperimBased.LabExperimBased.calc_slope">[docs]</a>    <span class="k">def</span> <span class="nf">calc_slope</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">columns</span><span class="p">,</span><span class="n">time_column</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        calculates the slope of the selected columns</span>
@@ -224,8 +212,8 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">column</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span><span class="s1">&#39;slope&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">])</span>\
-            <span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">time_column</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">time_column</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span></div>
-
+            <span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">time_column</span><span class="p">]</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">time_column</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</div>
 <div class="viewcode-block" id="LabExperimBased.plot"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_LabExperimBased.LabExperimBased.plot">[docs]</a>    <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">columns</span><span class="p">,</span><span class="n">time_column</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        calculates the slope of the selected columns</span>
@@ -247,8 +235,8 @@
                 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">time_column</span><span class="p">],</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
-        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span><span class="n">ax</span></div></div>
-
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span><span class="n">ax</span>
+</div></div>
 <span class="c1">#######################################</span>
 
 <span class="k">def</span> <span class="nf">_print_removed_output</span><span class="p">(</span><span class="n">original</span><span class="p">,</span><span class="n">new</span><span class="p">,</span><span class="n">type_</span><span class="p">):</span>
@@ -297,12 +285,14 @@
         <div class="sphinxsidebarwrapper">
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -324,7 +314,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Chaim De Mulder.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
   </body>
 </html>

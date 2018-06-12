@@ -1,33 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>wwdata.Class_HydroData &#8212; wwdata 0.1.0 documentation</title>
-    
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '0.1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -137,8 +125,8 @@
 <span class="sd">        -------</span>
 <span class="sd">        None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span></div>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span>
+</div>
 <div class="viewcode-block" id="HydroData.set_units"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.set_units">[docs]</a>    <span class="k">def</span> <span class="nf">set_units</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">units</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the units element of the HydroData object to a given dataframe</span>
@@ -149,8 +137,8 @@
             <span class="k">try</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">units</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
             <span class="k">except</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unit data not convertable to DataFrame type.&quot;</span><span class="p">)</span></div>
-
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unit data not convertable to DataFrame type.&quot;</span><span class="p">)</span>
+</div>
 <div class="viewcode-block" id="HydroData.set_time_unit"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.set_time_unit">[docs]</a>    <span class="k">def</span> <span class="nf">set_time_unit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">unit</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Sets the time_unit element of the HydroData object to a given unit</span>
@@ -159,20 +147,20 @@
 <span class="sd">        -------</span>
 <span class="sd">        None</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">time_unit</span> <span class="o">=</span> <span class="n">unit</span></div>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_unit</span> <span class="o">=</span> <span class="n">unit</span>
+</div>
 <div class="viewcode-block" id="HydroData.head"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.head">[docs]</a>    <span class="k">def</span> <span class="nf">head</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;piping pandas head function, see https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.head.html for documentation&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></div>
-
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</div>
 <div class="viewcode-block" id="HydroData.tail"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.tail">[docs]</a>    <span class="k">def</span> <span class="nf">tail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;piping pandas tail function, see https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.tail.html for documentation&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="n">n</span><span class="p">)</span></div>
-
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</div>
 <div class="viewcode-block" id="HydroData.index"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.index">[docs]</a>    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;piping pandas index function, see http://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.Index.html for documentation&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span></div>
-
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span>
+</div>
     <span class="c1">#####################</span>
     <span class="c1">###   FORMATTING</span>
     <span class="c1">#####################</span>
@@ -196,8 +184,8 @@
 
         <span class="n">last_part</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">&gt;</span> <span class="n">arange</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">first_part</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fill_part</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">last_part</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_update_time</span><span class="p">()</span></div>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_time</span><span class="p">()</span>
+</div>
     <span class="k">def</span> <span class="nf">_reset_meta_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        reset the meta dataframe, possibly for only a certain data series,</span>
@@ -230,8 +218,8 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span><span class="nb">str</span><span class="p">):</span>
             <span class="n">wn</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Rows may change order using this function based on &#39;</span><span class="o">+</span> \
             <span class="s1">&#39;string values. Convert to datetime, int or float and use &#39;</span><span class="o">+</span> \
-            <span class="s1">&#39;.sort_index() or .sort_value() to avoid. (see also hp.to_datetime())&#39;</span><span class="p">)</span></div>
-
+            <span class="s1">&#39;.sort_index() or .sort_value() to avoid. (see also hp.to_datetime())&#39;</span><span class="p">)</span>
+</div>
 <div class="viewcode-block" id="HydroData.replace"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.replace">[docs]</a>    <span class="k">def</span> <span class="nf">replace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">to_replace</span><span class="p">,</span><span class="n">value</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;piping pandas replace function, see http://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.DataFrame.replace.html for documentation&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">inplace</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
@@ -239,8 +227,8 @@
                                   <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">timename</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">data_type</span><span class="p">,</span>
                                   <span class="bp">self</span><span class="o">.</span><span class="n">tag</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">time_unit</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">inplace</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="p">,</span><span class="n">value</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="n">inplace</span><span class="p">)</span></div>
-
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="p">,</span><span class="n">value</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="n">inplace</span><span class="p">)</span>
+</div>
 <div class="viewcode-block" id="HydroData.set_index"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.set_index">[docs]</a>    <span class="k">def</span> <span class="nf">set_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">keys</span><span class="p">,</span><span class="n">key_is_time</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                   <span class="n">verify_integrity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">save_prev_index</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -290,8 +278,8 @@
 
             <span class="k">if</span> <span class="n">key_is_time</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">timename</span> <span class="o">=</span> <span class="s1">&#39;index&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span></div>
-
+                <span class="bp">self</span><span class="o">.</span><span class="n">time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">index</span>
+</div>
     <span class="k">def</span> <span class="nf">_update_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        adjust the value of self.time, needed in some functions</span>
@@ -325,8 +313,8 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Data type of column &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">column</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; not convertible to float&#39;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_update_time</span><span class="p">()</span></div>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_time</span><span class="p">()</span>
+</div>
 <div class="viewcode-block" id="HydroData.to_datetime"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.to_datetime">[docs]</a>    <span class="k">def</span> <span class="nf">to_datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">time_column</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span><span class="n">time_format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">d-%mm-%yy&#39;</span><span class="p">,</span>
                     <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -359,8 +347,8 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">time_column</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">time_column</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span>
                                                         <span class="nb">format</span><span class="o">=</span><span class="n">time_format</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">time_column</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_update_time</span><span class="p">()</span></div>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_time</span><span class="p">()</span>
+</div>
 <div class="viewcode-block" id="HydroData.absolute_to_relative"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.absolute_to_relative">[docs]</a>    <span class="k">def</span> <span class="nf">absolute_to_relative</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">time_data</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span><span class="n">unit</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                              <span class="n">save_abs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">decimals</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -412,8 +400,8 @@
                 <span class="k">return</span> <span class="kc">None</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">time_data</span><span class="p">]</span> <span class="o">=</span> <span class="n">relative</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="p">)</span>
-                <span class="k">return</span> <span class="kc">None</span></div>
-
+                <span class="k">return</span> <span class="kc">None</span>
+</div>
 <div class="viewcode-block" id="HydroData.write"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.write">[docs]</a>    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">filename</span><span class="p">,</span><span class="n">filepath</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 
@@ -443,8 +431,8 @@
                 <span class="n">to_write</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">meta_valid</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;original&#39;</span><span class="p">]</span>
             <span class="n">to_write</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span><span class="n">filename</span><span class="p">),</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;filled&#39;</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">filled</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span><span class="n">filename</span><span class="p">),</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span></div>
-
+            <span class="bp">self</span><span class="o">.</span><span class="n">filled</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span><span class="n">filename</span><span class="p">),</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+</div>
     <span class="c1">#######################</span>
     <span class="c1">### DATA EXPLORATION</span>
     <span class="c1">#######################</span>
@@ -487,8 +475,8 @@
                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
                     <span class="n">mean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 
-        <span class="k">return</span> <span class="n">mean</span></div>
-
+        <span class="k">return</span> <span class="n">mean</span>
+</div>
 <div class="viewcode-block" id="HydroData.get_std"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.get_std">[docs]</a>    <span class="k">def</span> <span class="nf">get_std</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">only_checked</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Gets the standard deviations of all or certain columns in a dataframe</span>
@@ -532,8 +520,8 @@
                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
                     <span class="n">std</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
 
-        <span class="k">return</span> <span class="n">std</span></div>
-
+        <span class="k">return</span> <span class="n">std</span>
+</div>
 <div class="viewcode-block" id="HydroData.get_highs"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.get_highs">[docs]</a>    <span class="k">def</span> <span class="nf">get_highs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data_name</span><span class="p">,</span><span class="n">bound_value</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;percentile&#39;</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        creates a dataframe with tags indicating what indices have data-values</span>
@@ -588,8 +576,8 @@
             <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">data_name</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span></div>
-
+            <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+</div>
     <span class="k">def</span> <span class="nf">_reset_highs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -621,8 +609,8 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">pass</span>
                 <span class="n">wn</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;self.meta_valid already contains a column named &#39;</span> <span class="o">+</span>
-                    <span class="n">column</span> <span class="o">+</span> <span class="s1">&#39;. The original column was kept.&#39;</span><span class="p">)</span></div>
-
+                    <span class="n">column</span> <span class="o">+</span> <span class="s1">&#39;. The original column was kept.&#39;</span><span class="p">)</span>
+</div>
 
 <div class="viewcode-block" id="HydroData.tag_nan"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.tag_nan">[docs]</a>    <span class="k">def</span> <span class="nf">tag_nan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data_name</span><span class="p">,</span><span class="n">arange</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -677,8 +665,8 @@
                                                                        <span class="s1">&#39;filtered&#39;</span><span class="p">,</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
             <span class="n">len_new</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">data_name</span><span class="p">][</span><span class="n">arange</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">arange</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 
-        <span class="n">_print_removed_output</span><span class="p">(</span><span class="n">len_orig</span><span class="p">,</span><span class="n">len_new</span><span class="p">,</span><span class="s1">&#39;NaN tagging&#39;</span><span class="p">)</span></div>
-
+        <span class="n">_print_removed_output</span><span class="p">(</span><span class="n">len_orig</span><span class="p">,</span><span class="n">len_new</span><span class="p">,</span><span class="s1">&#39;NaN tagging&#39;</span><span class="p">)</span>
+</div>
 <div class="viewcode-block" id="HydroData.tag_doubles"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.tag_doubles">[docs]</a>    <span class="k">def</span> <span class="nf">tag_doubles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data_name</span><span class="p">,</span><span class="n">bound</span><span class="p">,</span><span class="n">arange</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">log_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                        <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">final</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;</span>
@@ -796,8 +784,8 @@
                 <span class="k">return</span> <span class="n">df_temp</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">final</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span></div>
-
+            <span class="k">return</span> <span class="kc">None</span>
+</div>
 
 <div class="viewcode-block" id="HydroData.tag_extremes"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.tag_extremes">[docs]</a>    <span class="k">def</span> <span class="nf">tag_extremes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data_name</span><span class="p">,</span><span class="n">arange</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">limit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;below&#39;</span><span class="p">,</span>
                      <span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -872,8 +860,8 @@
         <span class="n">_print_removed_output</span><span class="p">(</span><span class="n">len_orig</span><span class="p">,</span><span class="n">len_new</span><span class="p">,</span><span class="s1">&#39;tagging of extremes (&#39;</span><span class="o">+</span><span class="n">method</span><span class="o">+</span><span class="s1">&#39;)&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">plot</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">plot_analysed</span><span class="p">(</span><span class="n">data_name</span><span class="p">)</span></div>
-
+            <span class="bp">self</span><span class="o">.</span><span class="n">plot_analysed</span><span class="p">(</span><span class="n">data_name</span><span class="p">)</span>
+</div>
 <div class="viewcode-block" id="HydroData.calc_slopes"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.calc_slopes">[docs]</a>    <span class="k">def</span> <span class="nf">calc_slopes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">xdata</span><span class="p">,</span><span class="n">ydata</span><span class="p">,</span><span class="n">time_unit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">slope_range</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculates slopes for given xdata and data_name; if a time unit is given as</span>
@@ -941,8 +929,8 @@
         <span class="k">if</span> <span class="n">xdata</span> <span class="o">==</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">slopes</span></div>
-
+        <span class="k">return</span> <span class="n">slopes</span>
+</div>
 <div class="viewcode-block" id="HydroData.moving_slope_filter"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.moving_slope_filter">[docs]</a>    <span class="k">def</span> <span class="nf">moving_slope_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">xdata</span><span class="p">,</span><span class="n">data_name</span><span class="p">,</span><span class="n">cutoff</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span><span class="n">time_unit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                             <span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">log_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                             <span class="n">final</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -1063,8 +1051,8 @@
                 <span class="k">return</span> <span class="n">df_temp_2</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">final</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span></div>
-
+            <span class="k">return</span> <span class="kc">None</span>
+</div>
 <div class="viewcode-block" id="HydroData.simple_moving_average"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.simple_moving_average">[docs]</a>    <span class="k">def</span> <span class="nf">simple_moving_average</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span><span class="n">window</span><span class="p">,</span><span class="n">data_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                               <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1151,8 +1139,8 @@
             <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">inplace</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">df_temp</span></div>
-
+            <span class="k">return</span> <span class="n">df_temp</span>
+</div>
 <div class="viewcode-block" id="HydroData.moving_average_filter"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.moving_average_filter">[docs]</a>    <span class="k">def</span> <span class="nf">moving_average_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data_name</span><span class="p">,</span><span class="n">window</span><span class="p">,</span><span class="n">cutoff_frac</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span><span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                               <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">log_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">final</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1265,8 +1253,8 @@
                 <span class="k">return</span> <span class="n">df_temp_2</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">final</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">None</span></div>
-
+            <span class="k">return</span> <span class="kc">None</span>
+</div>
 <div class="viewcode-block" id="HydroData.savgol"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.savgol">[docs]</a>    <span class="k">def</span> <span class="nf">savgol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data_name</span><span class="p">,</span><span class="n">window</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span><span class="n">polyorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Uses the scipy.signal Savitzky-Golay filter to smoothen the data of a column;</span>
@@ -1315,8 +1303,8 @@
         <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">data_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_temp</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">data_name</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">df_temp</span></div>
-
+            <span class="k">return</span> <span class="n">df_temp</span>
+</div>
 <span class="c1">#==============================================================================</span>
 <span class="c1"># DATA (COR)RELATION</span>
 <span class="c1">#==============================================================================</span>
@@ -1387,8 +1375,8 @@
                                                 <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 
         <span class="c1">#print(&#39;mean : &#39;+str(mean)+ &#39;\n&#39; +&#39;standard deviation : &#39;+str(std))</span>
-        <span class="k">return</span> <span class="n">mean</span><span class="p">,</span><span class="n">std</span></div>
-
+        <span class="k">return</span> <span class="n">mean</span><span class="p">,</span><span class="n">std</span>
+</div>
 <div class="viewcode-block" id="HydroData.compare_ratio"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.compare_ratio">[docs]</a>    <span class="k">def</span> <span class="nf">compare_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data_1</span><span class="p">,</span><span class="n">data_2</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span><span class="n">only_checked</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compares the average ratios of two datasets in multiple different ranges</span>
@@ -1446,8 +1434,8 @@
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Best ratio (&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">avg</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; ± &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">std</span><span class="p">)</span> <span class="o">+</span> \
         <span class="s1">&#39;) was found in the range: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ranges</span><span class="p">[</span><span class="n">index</span><span class="p">]))</span>
 
-        <span class="k">return</span> <span class="n">avg</span><span class="p">,</span><span class="n">std</span></div>
-
+        <span class="k">return</span> <span class="n">avg</span><span class="p">,</span><span class="n">std</span>
+</div>
 <div class="viewcode-block" id="HydroData.get_correlation"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.HydroData.get_correlation">[docs]</a>    <span class="k">def</span> <span class="nf">get_correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">data_1</span><span class="p">,</span><span class="n">data_2</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span><span class="n">zero_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                         <span class="n">only_checked</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1535,8 +1523,8 @@
             <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;slope: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; intercept: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">intercept</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; R2: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">r_sq</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="n">slope</span><span class="p">,</span><span class="n">intercept</span><span class="p">,</span><span class="n">r_sq</span></div>
-
+        <span class="k">return</span> <span class="n">slope</span><span class="p">,</span><span class="n">intercept</span><span class="p">,</span><span class="n">r_sq</span>
+</div>
 <span class="c1">#==============================================================================</span>
 <span class="c1"># DAILY PROFILE CALCULATION</span>
 <span class="c1">#==============================================================================</span>
@@ -1701,8 +1689,8 @@
             <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">mean_day</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">mean_day</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">column_name</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">fig</span><span class="p">,</span><span class="n">ax</span></div>
-
+            <span class="k">return</span> <span class="n">fig</span><span class="p">,</span><span class="n">ax</span>
+</div>
     <span class="c1">##############</span>
     <span class="c1">### PLOTTING</span>
     <span class="c1">##############</span>
@@ -1815,8 +1803,8 @@
         <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 
 
-        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span></div></div>
-
+        <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
+</div></div>
 <span class="c1">#    def plot_analysed(self,data_name):</span>
 <span class="c1">#        &quot;&quot;&quot;</span>
 <span class="c1">#</span>
@@ -1888,8 +1876,8 @@
 <span class="c1">##############################</span>
 
 <div class="viewcode-block" id="total_seconds"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_HydroData.total_seconds">[docs]</a><span class="k">def</span> <span class="nf">total_seconds</span><span class="p">(</span><span class="n">timedelta_value</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">timedelta_value</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span></div>
-
+    <span class="k">return</span> <span class="n">timedelta_value</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+</div>
 <span class="k">def</span> <span class="nf">_print_removed_output</span><span class="p">(</span><span class="n">original</span><span class="p">,</span><span class="n">new</span><span class="p">,</span><span class="n">function</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    function printing the output of functions that tag datapoints.</span>
@@ -1953,12 +1941,14 @@
         <div class="sphinxsidebarwrapper">
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -1980,7 +1970,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Chaim De Mulder.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
   </body>
 </html>

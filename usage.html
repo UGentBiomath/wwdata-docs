@@ -1,26 +1,15 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Usage &#8212; wwdata 0.1.0 documentation</title>
-    
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -28,8 +17,7 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="wwdata" href="modules.html" />
     <link rel="prev" title="Installation" href="installation.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -57,7 +45,7 @@
   <div class="section" id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
 <p>To use wwdata in a project:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wwdata</span> <span class="k">as</span> <span class="nn">ww</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wwdata</span> <span class="k">as</span> <span class="nn">ww</span>
 </pre></div>
 </div>
 <p>As the package was developed with the help of Jupyter Notebook (version 4.4.1) and visualisation is an important part of it, it is highly recommended to make use of a Jupyter Notebook when using the package.</p>
@@ -66,18 +54,18 @@
 <li><p class="first">Read data and convert it to a pandas DataFrame (see [the pandas documentation](<a class="reference external" href="https://pandas.pydata.org">https://pandas.pydata.org</a>) for more information); format it in the way you like.</p>
 </li>
 <li><p class="first">Create an object of any of the three classes in the wwdata package, e.g. the OnlineSensorBased class:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">ww</span><span class="o">.</span><span class="n">OnlineSensorBased</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span><span class="n">timedata_column</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="n">data_type</span><span class="o">=</span><span class="s2">&quot;WWTP&quot;</span><span class="p">,</span><span class="n">experiment_tag</span><span class="o">=</span><span class="s2">&quot;Data 2017&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">ww</span><span class="o">.</span><span class="n">OnlineSensorBased</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span><span class="n">timedata_column</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="n">data_type</span><span class="o">=</span><span class="s2">&quot;WWTP&quot;</span><span class="p">,</span><span class="n">experiment_tag</span><span class="o">=</span><span class="s2">&quot;Data 2017&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Explore and format the data (convert to datetime, make absolute time index, make some plots...), e.g.:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">time_column</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="n">time_format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">d-%mm-%yy&quot;</span><span class="p">)</span>
+<li><p class="first">Explore and format the data (convert to datetime, make absolute time index, make some plots…), e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">time_column</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="n">time_format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">d-%mm-%yy&quot;</span><span class="p">)</span>
 <span class="n">data</span><span class="o">.</span><span class="n">get_avg</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Tag non-valid data points. The way to do this depends on the data you are working with, but the general approach would be:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">tag_nan</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">tag_nan</span><span class="p">()</span>
 <span class="n">data</span><span class="o">.</span><span class="n">moving_slope_filter</span><span class="p">(</span><span class="n">xdata</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="n">data_name</span><span class="o">=</span><span class="s2">&quot;series1&quot;</span><span class="p">,</span><span class="n">cutoff</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">arange</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1/1/2017&#39;</span><span class="p">,</span><span class="s1">&#39;1/2/2017&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -86,7 +74,7 @@
 <p>i.e. to simply apply any of the filtering functions to the class object.</p>
 <ol class="arabic" start="5">
 <li><p class="first">Apply any other functionalities to the object. In the below example, this is the filling of the gaps introduced by filtering data in the previous step (for details on the meaning of the arguments, please refer to the documentation provided within the source code):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">fill_missing_interpolation</span><span class="p">(</span><span class="s2">&quot;series1&quot;</span><span class="p">,</span><span class="n">range_</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">arange</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1/1/2017&#39;</span><span class="p">,</span><span class="s1">&#39;1/2/2017&#39;</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">fill_missing_interpolation</span><span class="p">(</span><span class="s2">&quot;series1&quot;</span><span class="p">,</span><span class="n">range_</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">arange</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1/1/2017&#39;</span><span class="p">,</span><span class="s1">&#39;1/2/2017&#39;</span><span class="p">])</span>
 <span class="n">data</span><span class="o">.</span><span class="n">fill_missing_model</span><span class="p">(</span><span class="s2">&quot;series1&quot;</span><span class="p">,</span><span class="s2">&quot;model_data_series&quot;</span><span class="p">,</span><span class="n">arange</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1/1/2017&#39;</span><span class="p">,</span><span class="s1">&#39;1/2/2017&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -115,12 +103,14 @@
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -147,7 +137,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Chaim De Mulder.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
   </body>
 </html>

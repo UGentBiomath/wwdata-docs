@@ -1,33 +1,21 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>wwdata.Class_OnlineSensorBased &#8212; wwdata 0.1.0 documentation</title>
-    
     <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '0.1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -165,8 +153,8 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span><span class="nb">str</span><span class="p">):</span>
             <span class="n">wn</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Rows may change order using this function based on &#39;</span><span class="o">+</span> \
             <span class="s1">&#39;string values. Convert to datetime, int or float and use &#39;</span><span class="o">+</span> \
-            <span class="s1">&#39;.sort_index() or .sort_value() to avoid. (see also hp.to_datetime())&#39;</span><span class="p">)</span></div>
-
+            <span class="s1">&#39;.sort_index() or .sort_value() to avoid. (see also hp.to_datetime())&#39;</span><span class="p">)</span>
+</div>
 <div class="viewcode-block" id="OnlineSensorBased.calc_total_proportional"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_OnlineSensorBased.OnlineSensorBased.calc_total_proportional">[docs]</a>    <span class="k">def</span> <span class="nf">calc_total_proportional</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">Q_tot</span><span class="p">,</span><span class="n">Q</span><span class="p">,</span><span class="n">conc</span><span class="p">,</span><span class="n">new_name</span><span class="o">=</span><span class="s1">&#39;new&#39;</span><span class="p">,</span><span class="n">unit</span><span class="o">=</span><span class="s1">&#39;mg/l&#39;</span><span class="p">,</span>
                                 <span class="n">filled</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -218,8 +206,8 @@
         <span class="k">except</span><span class="p">:</span>
             <span class="n">wn</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s1">&#39;Something might have gone wrong with the updating of the units. &#39;</span><span class="o">+</span> \
                     <span class="s1">&#39;Check self.units to make sure everything is still okay.&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">None</span></div>
-
+        <span class="k">return</span> <span class="kc">None</span>
+</div>
 <div class="viewcode-block" id="OnlineSensorBased.calc_daily_average"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_OnlineSensorBased.OnlineSensorBased.calc_daily_average">[docs]</a>    <span class="k">def</span> <span class="nf">calc_daily_average</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">column_name</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        calculates the daily average of values in the given column and returns them as a 2D-array,</span>
@@ -284,8 +272,8 @@
             <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">column_name</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
             <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">daily_average</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_return</span></div>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">daily_average</span><span class="p">[</span><span class="n">column_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_return</span>
+</div>
 <span class="c1">#==============================================================================</span>
 <span class="c1"># FILLING FUNCTIONS</span>
 <span class="c1">#==============================================================================</span>
@@ -319,8 +307,8 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">filled</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">column</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">meta_valid</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;original&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">filled</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filled</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">())</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="k">pass</span></div>
-                <span class="c1">#wn.warn(&#39;self.filled already contains a column named &#39; +</span>
+                <span class="k">pass</span>
+                <span class="c1">#wn.warn(&#39;self.filled already contains a column named &#39; +</span></div>
                 <span class="c1">#    column + &#39;. The original columns was kept.&#39;)</span>
 
     <span class="c1">#####################</span>
@@ -451,8 +439,8 @@
         <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">plot_analysed</span><span class="p">(</span><span class="n">to_fill</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="kc">None</span></div>
-
+        <span class="k">return</span> <span class="kc">None</span>
+</div>
 <div class="viewcode-block" id="OnlineSensorBased.fill_missing_ratio"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_ratio">[docs]</a>    <span class="k">def</span> <span class="nf">fill_missing_ratio</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">to_fill</span><span class="p">,</span><span class="n">to_use</span><span class="p">,</span><span class="n">ratio</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span>
                              <span class="n">filtered_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span><span class="c1">#,use_smoothing=True):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -558,8 +546,8 @@
         <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">plot_analysed</span><span class="p">(</span><span class="n">to_fill</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="kc">None</span></div>
-
+        <span class="k">return</span> <span class="kc">None</span>
+</div>
 <div class="viewcode-block" id="OnlineSensorBased.fill_missing_correlation"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_correlation">[docs]</a>    <span class="k">def</span> <span class="nf">fill_missing_correlation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">to_fill</span><span class="p">,</span><span class="n">to_use</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span><span class="n">corr_range</span><span class="p">,</span>
                                  <span class="n">zero_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">filtered_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                  <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -678,8 +666,8 @@
         <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">plot_analysed</span><span class="p">(</span><span class="n">to_fill</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="kc">None</span></div>
-
+        <span class="k">return</span> <span class="kc">None</span>
+</div>
 <div class="viewcode-block" id="OnlineSensorBased.fill_missing_standard"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_standard">[docs]</a>    <span class="k">def</span> <span class="nf">fill_missing_standard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">to_fill</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span><span class="n">filtered_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                               <span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -809,8 +797,8 @@
         <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">plot_analysed</span><span class="p">(</span><span class="n">to_fill</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="kc">None</span></div>
-
+        <span class="k">return</span> <span class="kc">None</span>
+</div>
 <div class="viewcode-block" id="OnlineSensorBased.fill_missing_model"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_model">[docs]</a>    <span class="k">def</span> <span class="nf">fill_missing_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">to_fill</span><span class="p">,</span><span class="n">to_use</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span><span class="n">filtered_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                            <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -950,8 +938,8 @@
         <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">plot_analysed</span><span class="p">(</span><span class="n">to_fill</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="kc">None</span></div>
-
+        <span class="k">return</span> <span class="kc">None</span>
+</div>
 <div class="viewcode-block" id="OnlineSensorBased.fill_missing_daybefore"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_OnlineSensorBased.OnlineSensorBased.fill_missing_daybefore">[docs]</a>    <span class="k">def</span> <span class="nf">fill_missing_daybefore</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">to_fill</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span><span class="n">range_to_replace</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span>
                                <span class="n">filtered_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">clear</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -1144,8 +1132,8 @@
         <span class="k">if</span> <span class="n">plot</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">plot_analysed</span><span class="p">(</span><span class="n">to_fill</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="kc">None</span></div>
-
+        <span class="k">return</span> <span class="kc">None</span>
+</div>
 
     <span class="c1">#####################</span>
     <span class="c1">###   CHECKING</span>
@@ -1414,8 +1402,8 @@
               <span class="nb">str</span><span class="p">(</span><span class="n">avg</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;%. This value is also saved in self.filling_error.&quot;</span><span class="p">)</span>
 
         <span class="c1"># turn warnings on again</span>
-        <span class="n">wn</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;always&quot;</span><span class="p">)</span></div></div>
-
+        <span class="n">wn</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;always&quot;</span><span class="p">)</span>
+</div></div>
 
 <span class="c1">#==============================================================================</span>
 <span class="c1"># LOOKUP FUNCTIONS</span>
@@ -1434,14 +1422,14 @@
 <span class="sd">    column : str</span>
 <span class="sd">        column to check &#39;value&#39; against</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">-</span><span class="n">value</span><span class="p">))</span><span class="o">.</span><span class="n">argmin</span><span class="p">()</span></div>
-
+    <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">-</span><span class="n">value</span><span class="p">))</span><span class="o">.</span><span class="n">argmin</span><span class="p">()</span>
+</div>
 <div class="viewcode-block" id="vlookup_day"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_OnlineSensorBased.vlookup_day">[docs]</a><span class="k">def</span> <span class="nf">vlookup_day</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="n">column</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the dataframe index of a given value</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">value</span><span class="p">]</span></div>
-
+    <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+</div>
 
 <span class="c1">####START ADJUSTING HERE NEXT TIME!</span>
 
@@ -1499,8 +1487,8 @@
         <span class="k">else</span> <span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Please provide the location of the log file as &#39;</span><span class="o">+</span> \
                             <span class="s1">&#39;a string type, or leave the argument if no log &#39;</span><span class="o">+</span> \
-                            <span class="s1">&#39;file is needed.&#39;</span><span class="p">)</span></div>
-
+                            <span class="s1">&#39;file is needed.&#39;</span><span class="p">)</span>
+</div>
 
 <span class="k">def</span> <span class="nf">_select_slope</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">ydata</span><span class="p">,</span><span class="n">down</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">limit</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span><span class="c1">#,based_on_max=True):#,bounds=[1,1]):</span>
 
@@ -1619,8 +1607,8 @@
     <span class="n">WEST_compatible</span> <span class="o">=</span> <span class="n">help_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">WEST_compatible</span><span class="p">)</span>
     <span class="n">WEST_compatible</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;#t&#39;</span><span class="p">,</span><span class="n">time_data</span><span class="p">)</span>
     <span class="n">WEST_compatible</span><span class="p">[</span><span class="s1">&#39;#t&#39;</span><span class="p">][</span><span class="s1">&#39;units&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;#d&#39;</span>
-    <span class="k">return</span> <span class="n">WEST_compatible</span></div>
-
+    <span class="k">return</span> <span class="n">WEST_compatible</span>
+</div>
 
 
 <span class="c1">###############################################################################</span>
@@ -1666,8 +1654,8 @@
     <span class="n">log_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 <div class="viewcode-block" id="total_seconds"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_OnlineSensorBased.total_seconds">[docs]</a><span class="k">def</span> <span class="nf">total_seconds</span><span class="p">(</span><span class="n">timedelta_value</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">timedelta_value</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span></div>
-
+    <span class="k">return</span> <span class="n">timedelta_value</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+</div>
 <div class="viewcode-block" id="absolute_to_relative"><a class="viewcode-back" href="../../wwdata.html#wwdata.Class_OnlineSensorBased.absolute_to_relative">[docs]</a><span class="k">def</span> <span class="nf">absolute_to_relative</span><span class="p">(</span><span class="n">series</span><span class="p">,</span><span class="n">start_date</span><span class="p">,</span><span class="n">unit</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span><span class="n">decimals</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    converts a pandas series with datetime timevalues to relative timevalues</span>
@@ -1701,8 +1689,8 @@
     <span class="k">elif</span> <span class="n">unit</span> <span class="o">==</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span>
         <span class="n">relative</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">relative</span><span class="p">)</span> <span class="o">+</span> <span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">24</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">relative</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="p">)</span></div>
-</pre></div>
+    <span class="k">return</span> <span class="n">relative</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="p">)</span>
+</pre></div></div>
 
           </div>
         </div>
@@ -1711,12 +1699,14 @@
         <div class="sphinxsidebarwrapper">
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -1738,7 +1728,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2017, Chaim De Mulder.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
   </body>
 </html>
